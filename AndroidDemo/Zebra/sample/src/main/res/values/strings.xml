@@ -12,5 +12,6 @@
     <string name="scanner_with_margin">Scanner with Margin</string>
     <string name="turn_on_flashlight">Turn on Flashlight</string>
     <string name="turn_off_flashlight">Turn off Flashlight</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

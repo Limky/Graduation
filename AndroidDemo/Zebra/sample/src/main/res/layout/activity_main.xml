@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
@@ -11,10 +13,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoText="false"
-        android:text="ZEBRA"
+        android:text="얼룩말"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="115dp"
+        android:textColor="#ffffff"
         android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="#ffffff"
+        android:id="@+id/mainLogo"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/zebra_logo"/>
 
     <Button
         android:id="@+id/button2"
@@ -31,7 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
         android:onClick="reviewClicked"
         android:text="Go Review" />
 
@@ -43,4 +55,4 @@
         android:layout_centerHorizontal="true"
         android:text="Go Login" />
 
-</RelativeLayout>
+</LinearLayout>

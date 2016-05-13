@@ -4,7 +4,9 @@
     <color name="colorFAB2">#E040FB</color>
     <color name="colorBackground">#000000</color>
     <!-- for toolbar -->
-    <color name="colorPrimary">#ffb341</color>
-    <color name="colorPrimaryDark">#ffb341</color>
+    <color name="ColorPrimary">#FF5722</color>
+    <color name="ColorPrimaryDark">#E64A19</color>
     <color name="colorAccent">#ffb341</color>
+    <color name="holo_blue_light">#33b5e5</color>
+    <color name="holo_green_light">#6AA121</color>
 </resources>
