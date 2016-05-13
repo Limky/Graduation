@@ -46,6 +46,15 @@ public class OfferDAO {
 
 	}
 	
+	public List<Products> getOffers2() {
+
+		String sqlStatement = "select * from producttb";
+
+		return jdbcTemplateObject.query(sqlStatement, new ProductsMapper()); // Anonymous
+																			// Classes
+
+	}
+	
 	public boolean insert(Offer offer){
 		
 		String email = offer.getEmail();

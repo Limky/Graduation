@@ -30,15 +30,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/PopularProducts")
-	public String showPopularProducts(){	
-		
-		
-		
-		return "PopularProducts";
-		
-	}
-
+	
 	
 	@RequestMapping("/MostReviews")
 	public String showMostReviews(){	

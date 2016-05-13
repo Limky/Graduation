@@ -167,7 +167,7 @@
 					<li><a class="page-scroll" href="#contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+					<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span class="glyphicon glyphicon-user"></span>
 							Sign Up</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
@@ -179,9 +179,27 @@
 	</nav>
 
 
-	<div>
+	
 
 
+
+<div class="modal fade" id="SignUp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Registration</h1><br>
+					<c:url var="addUrl" value="doLogin"/>
+				  <form action="${addUrl}" method="GET">
+					<input type="text" name="companyname" placeholder="Company Name">
+					<input type="text" name="email" placeholder="Email">
+					<input type="password" name="password" placeholder="Password">
+					<input type="password" name="ConfrimPassword" placeholder="Confrim Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Registration">
+				  </form>
+					
+				
+				</div>
+			</div>
+		  </div>
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="modal-dialog">
@@ -195,11 +213,12 @@
 				  </form>
 					
 				  <div class="login-help">
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+					 <a href="#">Forgot Password</a>
 				  </div>
 				</div>
 			</div>
 		  </div>
+
 <%-- 
 <c:url var="addUrl" value="/helloSpringMVC/MostReviews.jsp"/>
 <form:form method="post" action="${addUrl}" commandName="contact"
