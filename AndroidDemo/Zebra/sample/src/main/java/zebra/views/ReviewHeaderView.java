@@ -1,9 +1,11 @@
-package example.zxing;
+package zebra.views;
 
 import android.content.Context;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import example.zxing.R;
 
 /**
  * Created by multimedia on 2016-05-13.

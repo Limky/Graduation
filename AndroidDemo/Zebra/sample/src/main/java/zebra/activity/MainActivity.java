@@ -1,27 +1,22 @@
-package example.zxing;
+package zebra.activity;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import example.zxing.R;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Button barcodeButton, reviewButton, loginButton;
 
 
     @Override
@@ -29,25 +24,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        barcodeButton = (Button) findViewById(R.id.barcodeButton);
+        reviewButton = (Button) findViewById(R.id.reviewButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
+
+        barcodeButton.setOnClickListener(this);
+        reviewButton.setOnClickListener(this);
+        loginButton.setOnClickListener(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
+        if (result != null) {
+            if (result.getContents() == null) {
                 Log.d("MainActivity", "Cancelled scan");
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("MainActivity", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
-
-                Intent intent = new Intent();
-                ComponentName name = new ComponentName("example.zxing","example.zxing.ReviewActivity");
-                intent.setComponent(name);
-
-                startActivity(intent);
+                Intent i = new Intent(MainActivity.this, ReviewActivity.class);
+                startActivity(i);
             }
         } else {
             Log.d("MainActivity", "Cancelled scan");
@@ -57,16 +55,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void scanClicked(View v){
-        new IntentIntegrator(this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
-    }
-
-    public void reviewClicked(View v){
-        Intent intent = new Intent();
-        ComponentName name = new ComponentName("example.zxing", "example.zxing.ReviewActivity");
-
-        intent.setComponent(name);
-
-        startActivity(intent);
+    @Override
+    public void onClick(View v) {
+        int buttonId = v.getId();
+        switch (buttonId) {
+            case R.id.barcodeButton:
+                new IntentIntegrator(this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
+                break;
+            case R.id.reviewButton:
+                Intent reviewIntent = new Intent(MainActivity.this, ReviewActivity.class);
+                startActivity(reviewIntent);
+                break;
+            case R.id.loginButton:
+                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+                break;
+        }
     }
 }

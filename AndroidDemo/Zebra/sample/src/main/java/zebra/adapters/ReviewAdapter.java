@@ -1,13 +1,14 @@
-package example.zxing;
+package zebra.adapters;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import zebra.beans.ReviewItem;
+import zebra.views.ReviewItemView;
 
 /**
  * Created by multimedia on 2016-05-13.

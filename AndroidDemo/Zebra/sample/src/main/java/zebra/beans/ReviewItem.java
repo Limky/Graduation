@@ -1,4 +1,4 @@
-package example.zxing;
+package zebra.beans;
 
 /**
  * Created by multimedia on 2016-05-13.

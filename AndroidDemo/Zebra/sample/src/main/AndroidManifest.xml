@@ -8,7 +8,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name">
         <activity
-            android:name=".MainActivity"
+            android:name="zebra.activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme">
@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ToolbarCaptureActivity"
+            android:name="zebra.activity.ToolbarCaptureActivity"
             android:clearTaskOnLaunch="true"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
@@ -29,8 +30,14 @@
 
         <!-- 수정 된 ManiFest -->
         <activity
-            android:name=".ReviewActivity"
+            android:name="zebra.activity.ReviewActivity"
             android:label="ReviewActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity
+            android:name="zebra.activity.LoginActivity"
+            android:label="LoginActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme"></activity>
     </application>

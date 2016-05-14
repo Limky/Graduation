@@ -1,4 +1,4 @@
-package example.zxing;
+package zebra.activity;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
+
+import example.zxing.R;
 
 /**
  * Sample Activity extending from ActionBarActivity to display a Toolbar.
