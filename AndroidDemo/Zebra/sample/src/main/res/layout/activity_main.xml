@@ -1,55 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:background="@color/colorBackground"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="zebra.activity.MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoText="false"
-        android:text="얼룩말"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="115dp"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
-    <ImageView
+    <!--Toolbar Added-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:background="#ffffff"
-        android:id="@+id/mainLogo"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/zebra_logo"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:popupTheme="@style/Theme.AppCompat"
+        app:theme="@style/ToolbarTheme" />
 
-    <Button
-        android:id="@+id/barcodeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Go Scan" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/reviewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Go Review" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Log In / Sing Up" />
+            <ImageView
+                android:id="@+id/mainLogo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="#FFFFFF"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:src="@drawable/zebra_logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp">
+
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/reviewButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_search_black_36dp"
+                    app:cb_color="#FFA7A7"
+                    app:cb_pressedRingWidth="8dip" />
+
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/barcodeButton"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/barcode"
+                    app:cb_color="#FFA7A7"
+                    app:cb_pressedRingWidth="8dip" />
+
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/searchButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_search_black_36dp"
+                    app:cb_color="#FFA7A7"
+                    app:cb_pressedRingWidth="8dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="305dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white" />
+    </android.support.v4.widget.DrawerLayout>
+
 
 </LinearLayout>

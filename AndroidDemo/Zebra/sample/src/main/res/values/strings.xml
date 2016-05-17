@@ -3,15 +3,23 @@
 
     <string name="app_name">Zebra</string>
     <string name="scan_barcode">Scan Barcode</string>
-    <string name="any_orientation">1D Any Orientation</string>
-    <string name="scan_from_fragment">Scan from fragment</string>
-    <string name="front_camera">Front Camera</string>
     <string name="custom_activity">Continuous Scan</string>
     <string name="toolbar_activity">Activity with Toolbar</string>
     <string name="custom_scanner">Custom Scanner Activity</string>
-    <string name="scanner_with_margin">Scanner with Margin</string>
-    <string name="turn_on_flashlight">Turn on Flashlight</string>
-    <string name="turn_off_flashlight">Turn off Flashlight</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
+    <!--For Toolbar-->
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Drawer Opened</string>
+    <string name="drawer_close">Drawer Closed</string>
+    <string-array name="drawer_list">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+        <item>Item 7</item>
+        <item>Item 8</item>
+        <item>Item 9</item>
+    </string-array>
 </resources>
