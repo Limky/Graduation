@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.ac.zebra.dto.Enterprise;
 import kr.ac.zebra.dto.Member;
 import kr.ac.zebra.service.LoginService;
 
@@ -26,29 +27,38 @@ public class LoginController {
 	public String showDoLoginPage(Model model, HttpSession session, HttpServletRequest request){
 
 
-		String tid = request.getParameter("id");
+		String temail = request.getParameter("email");
 		String tpassword = request.getParameter("password");
 		
-		Member member=loginService.checkMember(tid,tpassword);
+		Enterprise enterprise =loginService.checkMember(temail,tpassword);
 		
 
-		if(member == null){
+		if(enterprise == null){
 			System.out.println("로그인 실패");
 			return "failLogin";
 	
 		} else {
 			System.out.println("로그인 성공");
 			
-			model.addAttribute("modelLoginMember", member);
-			session.setAttribute("sessionLoginMember", member);		
-			session.setAttribute("logOk", member.getName());
+			model.addAttribute("modelLoginMember", enterprise);
+			session.setAttribute("sessionLoginMember", enterprise);		
+			session.setAttribute("logOk", enterprise.getCompanyName());
 	
-			return "doLogin";
+			return "home";
 		}		
 		
 	
 	}
 	
+	
+	
+	
+	@RequestMapping("/logout")
+	public String showLogoutPage(){
+		//로그아웃시 홈페이지로 이동시킨다.
+		return "logout";
+	}
+
 	
 	
 }

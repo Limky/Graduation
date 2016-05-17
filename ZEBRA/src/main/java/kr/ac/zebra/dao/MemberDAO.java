@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -34,10 +33,8 @@ public class MemberDAO {
 //---------------------------------------------------------------------------------------------------------------//
 	// Querying and returning a single object
 	public Member getMember(String id) {
-		String sqlStatement = "select * from membertb where id=?";
-
-		return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id }, new MemberMapper());
-		/*
+		
+	
 		try {
 			String sqlStatement = "select * from membertb where id=?";
 
@@ -49,7 +46,7 @@ public class MemberDAO {
 			return null;
 			
 		}
-		*/
+	
 
 	}
 

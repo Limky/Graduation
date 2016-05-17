@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page session="true"%>
 
 <!DOCTYPE html>
@@ -128,13 +128,66 @@
 .login-help {
 	font-size: 12px;
 }
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
 </style>
 
 
 
 <title>Home</title>
 
+<%
+	String rcv = (String) session.getAttribute("logOk");
 
+	if (rcv != null) { // 로그인 완료 상태
+%>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header page-scroll">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand page-scroll" href="#page-top">ZEBRA</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
+				</li>
+				<li><a class="page-scroll" href="#about">About Services</a></li>
+				<li><a class="page-scroll" href="#services">PowerReview</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Page 1-1</a></li>
+						<li><a href="#">Page 1-2</a></li>
+						<li><a href="#">Page 1-3</a></li>
+					</ul></li>
+						<li><a class="page-scroll" href="#contact">MyProduct</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" data-toggle="modal"
+							data-target="#SignUp-modal"><span
+								class="glyphicon glyphicon-user"></span> <%=rcv%></a></li>
+						<li><a href="/ZEBRA/logout"><span
+								class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+					</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+</nav>
+<%
+	} else {// 로그인이 되지 않은 상태
+%>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -155,15 +208,22 @@
 				<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
-				<li><a class="page-scroll" href="#about">About</a></li>
-				<li><a class="page-scroll" href="#services">Services</a></li>
-				<li><a class="page-scroll" href="#contact">Contact</a></li>
+				<li><a class="page-scroll" href="#about">About Services</a></li>
+				<li><a class="page-scroll" href="#services">PowerReviewer</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Page 1-1</a></li>
+						<li><a href="#">Page 1-2</a></li>
+						<li><a href="#">Page 1-3</a></li>
+					</ul></li>
+				<li><a class="page-scroll" href="#contact">MyProduct</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
-				<li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span
+						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#login-modal"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -172,45 +232,66 @@
 </nav>
 
 
+<%
+	}
+%>
+
+
+
+
+
+
+
+
+
+
 
 <!-------------------------------------------메달 부분  ----------------------------------------------->
 
 
-<div class="modal fade" id="SignUp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    	  <div class="modal-dialog">
-				<div class="loginmodal-container">
-					<h1>Registration</h1><br>
-					<c:url var="addUrl" value="doLogin"/>
-				  <form action="${addUrl}" method="GET">
-					<input type="text" name="companyname" placeholder="Company Name">
-					<input type="text" name="email" placeholder="Email">
-					<input type="password" name="password" placeholder="Password">
-					<input type="password" name="ConfrimPassword" placeholder="Confrim Password">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Registration">
-				  </form>
-					
-				
-				</div>
-			</div>
-		  </div>
+<div class="modal fade" id="SignUp-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>Registration</h1>
+			<br>
+			<c:url var="addUrl" value="doLogin" />
+			<form action="${addUrl}" method="GET">
+				<input type="text" name="companyname" placeholder="Company Name">
+				<input type="text" name="email" placeholder="Email"> <input
+					type="password" name="password" placeholder="Password"> <input
+					type="password" name="ConfrimPassword"
+					placeholder="Confrim Password"> <input type="submit"
+					name="login" class="login loginmodal-submit" value="Registration">
+			</form>
 
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    	  <div class="modal-dialog">
-				<div class="loginmodal-container">
-					<h1>Login to Your Account</h1><br>
-					<c:url var="addUrl" value="doLogin"/>
-				  <form action="${addUrl}" method="GET">
-					<input type="text" name="id" placeholder="id">
-					<input type="password" name="password" placeholder="Password">
-					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
-				  </form>
-					
-				  <div class="login-help">
-					 <a href="#">Forgot Password</a>
-				  </div>
-				</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>Login to Your Account</h1>
+			<br>
+			<c:url var="addUrl" value="doLogin" />
+			<form action="${addUrl}" method="GET">
+				<input type="text" name="email" placeholder="email"> <input
+					type="password" name="password" placeholder="Password"> <input
+					type="submit" name="login" class="login loginmodal-submit"
+					value="Login">
+			</form>
+
+			<div class="login-help">
+				<a href="#">Forgot Password</a>
 			</div>
-		  </div>
+		</div>
+	</div>
+</div>
 
 
 

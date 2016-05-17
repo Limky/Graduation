@@ -1,40 +1,39 @@
 package kr.ac.zebra.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.ac.zebra.dao.MemberDAO;
-import kr.ac.zebra.dto.Member;
+import kr.ac.zebra.dao.EnterpriseDAO;
+import kr.ac.zebra.dto.Enterprise;
+
 
 @Service("loginservice") //service로 bean에 등록시켜준다
 public class LoginService {
 
-	private MemberDAO memberDAO;
+	private EnterpriseDAO enterpriseDAO;
 	
 	@Autowired //DI 주입
-	public void setMemberDAO(MemberDAO memberDAO){	
-		this.memberDAO = memberDAO;
+	public void setMemberDAO(EnterpriseDAO enterpriseDAO){	
+		this.enterpriseDAO = enterpriseDAO;
 	}
 	
 	
 
-	public Member checkMember(String tid, String tpassword){	
+	public Enterprise checkMember(String temail, String tpassword){	
 
-		Member member=memberDAO.getMember(tid);
+		Enterprise enterprise=enterpriseDAO.getEnterprise(temail);
 		
-		if(member==null){
+		if(enterprise==null){
 			
 			return null;
 		
 		}else{
 		
-		String dbpassword = member.getPassword();
+		String dbpassword = enterprise.getPassword();
 		
 		if(dbpassword.equals(tpassword)){
 			
-			return member;			
+			return enterprise;			
 		}
 		else{
 			
