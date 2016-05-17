@@ -1,9 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="utf-8">
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- Latest compiled and minified CSS -->
@@ -36,41 +38,9 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header page-scroll">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand page-scroll" href="#page-top">Start
-					Bootstrap</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-					<li class="hidden"><a class="page-scroll" href="#page-top"></a>
-					</li>
-					<li><a class="page-scroll" href="#about">About</a></li>
-					<li><a class="page-scroll" href="#services">Services</a></li>
-					<li><a class="page-scroll" href="#contact">Contact</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
-
+	<!---------------------------------네비게이션 바 시작-------------------------  -->
+		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
+ 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
 
 
@@ -286,5 +256,7 @@
 
 
 		</div><!-- 컨테이너 끝  -->
+		
+		
 </body>
 </html>
