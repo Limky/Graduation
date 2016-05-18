@@ -36,7 +36,7 @@ CREATE TABLE `enterprisetb` (
 
 LOCK TABLES `enterprisetb` WRITE;
 /*!40000 ALTER TABLE `enterprisetb` DISABLE KEYS */;
-INSERT INTO `enterprisetb` VALUES ('농심','nognsim@naver.com','nongsim'),('삼양','samyang@naver.com','samyang');
+INSERT INTO `enterprisetb` VALUES ('농심','nongsim@naver.com','nongsim'),('삼양','samyang@naver.com','samyang');
 /*!40000 ALTER TABLE `enterprisetb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18  3:04:07
+-- Dump completed on 2016-05-18 23:17:07

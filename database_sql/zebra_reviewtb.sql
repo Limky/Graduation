@@ -27,7 +27,7 @@ CREATE TABLE `reviewtb` (
   `id` varchar(45) NOT NULL,
   `barcode` varchar(45) NOT NULL,
   `reviewText` longtext NOT NULL,
-  `starPoint` int(11) NOT NULL,
+  `starPoint` double NOT NULL,
   PRIMARY KEY (`index`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18  3:04:07
+-- Dump completed on 2016-05-18 23:17:07
