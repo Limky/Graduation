@@ -168,16 +168,10 @@
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
-						<li><a href="#">Most reviewed products</a></li>
-						<li><a href="#">Most scanning products</a></li>
+						<li><a href="/ZEBRA/MostReview">Most reviewed products</a></li>
+						<li><a href="/ZEBRA/MostScan">Most scanning products</a></li>
 					</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">OurProduct <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="#">Popular Products</a></li>
-						<li><a href="#">Most reviewed products</a></li>
-						<li><a href="#">Most scanning products</a></li>
-					</ul></li>
+				<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
@@ -219,16 +213,10 @@
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 					<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
-						<li><a href="#">Most reviewed products</a></li>
-						<li><a href="#">Most scanning products</a></li>
+						<li><a href="/ZEBRA/MostReview">Most reviewed products</a></li>
+						<li><a href="/ZEBRA/MostScan">Most scanning products</a></li>
 					</ul></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">OurProduct <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="#">Popular Products</a></li>
-						<li><a href="#">Most reviewed products</a></li>
-						<li><a href="#">Most scanning products</a></li>
-					</ul></li>
+					<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span

@@ -107,7 +107,7 @@ public class ProductDAO {
 	public List<Product> getPopularProducts() {
 		try {
 		
-			String sqlStatement = "select * from producttb where totalReviewCount >= 2 order by starPoint DESC LIMIT 0, 1";
+			String sqlStatement = "select * from producttb where totalReviewCount >= 2 order by starPoint DESC LIMIT 0, 9";
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
 			
@@ -123,7 +123,71 @@ public class ProductDAO {
 
 	}
 	
+	// Querying and returning multiple object
+	public List<Product> getMostReviewProducts() {
+		try {
+		
+			String sqlStatement = "select * from producttb where totalReviewCount > 0 order by totalReviewCount DESC LIMIT 0, 10";
+
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+			
+		}catch (Exception e) {
+		
+		
+		System.out.println("getMostReviewProducts DAO 예외 처리 발생 획인 메세지 ");
+		e.printStackTrace();
+		return null;
+
+	}
+																	// Classes
+
+	}
 	
+	
+	// Querying and returning multiple object
+	public List<Product> getMostScanProducts() {
+		try {
+		
+			String sqlStatement = "select * from producttb  order by scanCount DESC LIMIT 0, 10;";
+
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+			
+		}catch (Exception e) {
+		
+		
+		System.out.println("getMostScanProducts DAO 예외 처리 발생 획인 메세지 ");
+		e.printStackTrace();
+		return null;
+
+	}
+																	// Classes
+
+	}
+	
+	
+	
+	//----------------------------------------자사 상품-----------------------------------------
+	
+
+	// Querying and returning multiple object
+	public List<Product> getHousePopularProducts(String companyName) {
+		try {
+		
+			String sqlStatement = "select * from producttb  where (companyName = ?) and (totalReviewCount > 2) order by starPoint DESC LIMIT 0, 10";
+
+			return jdbcTemplateObject.query(sqlStatement,new Object[] { companyName }, new ProductMapper()); // Anonymous
+			
+		}catch (Exception e) {
+		
+		
+		System.out.println("getHousePopularProducts DAO 예외 처리 발생 획인 메세지 ");
+		e.printStackTrace();
+		return null;
+
+	}
+																	// Classes
+
+	}
 	
 	
 	

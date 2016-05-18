@@ -29,14 +29,53 @@ public class ProductController {
 
 		
 		List<Product> popularProduct =productService.getPopularProducts();
-		model.addAttribute("popularProductmodel", popularProduct);
+		model.addAttribute("popularProductModel", popularProduct);
 
 			return "PopularProduct";
 		
 	
 	}
 	
+	@RequestMapping("/MostReview")
+	public String showMostReviewPage(Model model, HttpSession session, HttpServletRequest request){
+
+		
+		List<Product> mostReviewProducts =productService.getMostReviewProducts();
+		model.addAttribute("mostReviewProductsModel", mostReviewProducts);
+
+			return "MostReview";
+		
 	
+	}
+	
+	
+	@RequestMapping("/MostScan")
+	public String showMostScanPage(Model model, HttpSession session, HttpServletRequest request){
+
+		
+		List<Product> mostScanProducts =productService.getMostScanProducts();
+		model.addAttribute("mostScanProductsModel", mostScanProducts);
+
+			return "MostScan";
+		
+	
+	}
+	
+	
+	
+	
+	//-------------------------------자사 상품 라인---------------------------------------
+	@RequestMapping("/houseProduct")
+	public String showHousePopularProductPage(Model model, HttpSession session, HttpServletRequest request){
+
+		
+		List<Product> housePopularProducts =productService.getHousePopularProducts((String)session.getAttribute("logOk"));
+		model.addAttribute("housePopularProductsModel", housePopularProducts);
+
+			return "houseProduct";
+	
+	
+	}
 	
 	
 	

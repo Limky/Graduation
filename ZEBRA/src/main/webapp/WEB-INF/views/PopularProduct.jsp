@@ -136,7 +136,7 @@
 <!------------------------------------------------------레이아웃 끝  ----------------------------------------------------------->
 
 
-	<c:forEach var="popularProduct" items="${popularProductmodel}">
+	<c:forEach var="popularProduct" items="${popularProductModel}">
 	<p>
 		<c:out value="${popularProduct}">
 		</c:out>

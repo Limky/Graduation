@@ -24,6 +24,27 @@ public class ProductService {
 		
 	}
 
+	public List<Product> getMostReviewProducts() {
+		
+		return productDAO.getMostReviewProducts();
+		
+	}
+
+	public List<Product> getMostScanProducts() {
+		
+		return productDAO.getMostScanProducts();
+		
+	}
+
+
+//-------------------------자사 상품--------------------------
+	
+	public List<Product> getHousePopularProducts(String companyName) {
+		
+		return productDAO.getHousePopularProducts(companyName);
+		
+	}
+	
 	
 
 }
