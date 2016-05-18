@@ -67,9 +67,9 @@
 			<p class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
 				It is our graduaion project, Project members consist of limky,iguru,bang.
 				Vision
-				The purpose of our service is largely divided into two depending on the position . 
+				The purpose of our service is largely divided into two depending on the position . <br>
 				For the consumer while receiving provide a practical product review service assist in efficient purchase selection .
-				 For businesses to readily identify the consumer index , allows the strategic sales management . 
+				 For businesses to readily identify the consumer index , allows the strategic sales management . <br>
 				 In addition, the ultimate purpose of our service is to make a place for the community to build healthy consumption culture among consumers and businesses.
 
 			</p>
@@ -78,10 +78,10 @@
 
 
 
+<!-- 
+		<div class="container"> -->
 
-		<div class="container">
-
-
+<div class="container">
 <!------------------------------------------------------쿠르셜 시작  ----------------------------------------------------------->
 			<div id="carousel-example-generic" class="carousel slide"
 				data-ride="carousel">
@@ -164,7 +164,7 @@
 				})
 			</script>
 <!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
-
+</div>
 <!------------------------------------------------------레이아웃 시작  ----------------------------------------------------------->
 			<div class="bootstrap-demo">
 				<div class="row">
@@ -254,8 +254,9 @@
 
 
 <h1 align="center">ZEBRA Service</h1>
+<img src="https://scontent.xx.fbcdn.net/t31.0-8/13247774_171391666592259_3132038665631639900_o.jpg" alt="china thumbnail">
 
-		</div><!-- 컨테이너 끝  -->
+	<!-- 	</div>컨테이너 끝  -->
 		
 		
 </body>

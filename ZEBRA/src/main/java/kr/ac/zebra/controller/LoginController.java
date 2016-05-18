@@ -30,7 +30,7 @@ public class LoginController {
 		String temail = request.getParameter("email");
 		String tpassword = request.getParameter("password");
 		
-		Enterprise enterprise =loginService.checkMember(temail,tpassword);
+		Enterprise enterprise =loginService.checkEnterprise(temail,tpassword);
 		
 
 		if(enterprise == null){
@@ -60,5 +60,6 @@ public class LoginController {
 	}
 
 	
+
 	
 }

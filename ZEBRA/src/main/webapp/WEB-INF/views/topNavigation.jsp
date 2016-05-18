@@ -163,15 +163,21 @@
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
 				<li><a class="page-scroll" href="#about">About Services</a></li>
-				<li><a class="page-scroll" href="#services">PowerReview</a></li>
+				<li><a class="page-scroll" href="#services">Power Reviewer</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
+						<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
+						<li><a href="#">Most reviewed products</a></li>
+						<li><a href="#">Most scanning products</a></li>
 					</ul></li>
-						<li><a class="page-scroll" href="#contact">MyProduct</a></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">OurProduct <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="#">Popular Products</a></li>
+						<li><a href="#">Most reviewed products</a></li>
+						<li><a href="#">Most scanning products</a></li>
+					</ul></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
@@ -198,8 +204,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand page-scroll" href="#page-top">Start
-				Bootstrap</a>
+			<a class="navbar-brand page-scroll" href="#page-top">ZEBRA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -209,15 +214,21 @@
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
 				<li><a class="page-scroll" href="#about">About Services</a></li>
-				<li><a class="page-scroll" href="#services">PowerReviewer</a></li>
+				<li><a class="page-scroll" href="#services">Power Reviewer</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
+					<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
+						<li><a href="#">Most reviewed products</a></li>
+						<li><a href="#">Most scanning products</a></li>
 					</ul></li>
-				<li><a class="page-scroll" href="#contact">MyProduct</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">OurProduct <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					<li><a href="#">Popular Products</a></li>
+						<li><a href="#">Most reviewed products</a></li>
+						<li><a href="#">Most scanning products</a></li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span
