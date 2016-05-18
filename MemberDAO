@@ -1,0 +1,139 @@
+package kr.ac.zebra.dao;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import kr.ac.zebra.dto.Member;
+
+//@Component占쎈뮉 占쎌뵠 占쎄깻占쎌삋占쎈뮞?몴占? 占쎌쁽占쎈짗占쎌몵嚥∽옙 ?뜮?뜆?몵嚥∽옙 占쎄퐬占쎌젟占쎈퉸 餓ο옙占쎈뼄.
+@Component("memberDAO")
+public class MemberDAO {
+
+	private JdbcTemplate jdbcTemplateObject;
+
+	// @Autowired 野껋럩?뒭 type占쎌뵠 揶쏆늿占? 野껋럩?뒭?몴占? 筌ｌ꼶?봺占쎈립占쎈뼄.
+	@Autowired
+	public void setDataSource(DataSource dataSource) {
+		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+	}
+
+	// ---------------------------------------------------------------------------------------------------------------//
+	// Querying and returning a single object
+	public Member getMember(String id) {
+
+		try {
+			String sqlStatement = "select * from membertb where id=?";
+
+			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id }, new MemberMapper());
+		} catch (Exception e) {
+
+			System.out.println("DAO 예외 처리 발생 획인 메세지 ");
+			e.printStackTrace();
+			return null;
+
+		}
+
+	}
+
+	// Querying and returning multiple object
+	public List<Member> getMembers() {
+
+		String sqlStatement = "select * from membertb";
+
+		return jdbcTemplateObject.query(sqlStatement, new MemberMapper()); // Anonymous
+																			// Classes
+	}
+
+	public List<Member> getFirstGrade() {
+
+		String sqlStatement = "select * from membertb where level = 1 order by totalReviewCount desc limit 0,3";
+
+		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
+
+	}
+	
+	public List<Member> getSecondGrade() {
+
+		String sqlStatement = "select * from membertb where level = 2 order by totalReviewCount desc limit 0,3";
+
+		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
+
+	}
+	
+	public List<Member> getThirdGrade() {
+
+		String sqlStatement = "select * from membertb where level = 3 order by totalReviewCount desc limit 0,3";
+
+		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
+
+	}
+}
+
+/*
+ * public int getRowCount() { String sqlStatement =
+ * "select count(*) from member"; return
+ * jdbcTemplateObject.queryForObject(sqlStatement, Integer.class);// 占쎈릭占쎄돌占쎌벥
+ * // 占쎌궎?뇡?슣?젰占쎈뱜
+ * 
+ * }
+ * 
+ * //
+ * -----------------------------------------------------------------------------
+ * ----------------------------------// // Querying and returning a single
+ * object public Member getMember(String id) {
+ * 
+ * try { String sqlStatement = "select * from membertb where id=?";
+ * 
+ * return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id },
+ * new MemberMapper()); } catch (Exception e) {
+ * 
+ * System.out.println("DAO 예외 처리 발생 획인 메세지 "); e.printStackTrace(); return null;
+ * 
+ * }
+ * 
+ * }
+ * 
+ * 
+ * 
+ * public boolean insert(Member member) {
+ * 
+ * String id = member.getId(); String password = member.getPassword(); String
+ * name = member.getName(); String memberUrl = member.getMemberUrl(); String
+ * lastReviewDate = member.getLastReviewDate(); String phoneNumber =
+ * member.getPhoneNumber(); int point = member.getPoint(); int level =
+ * member.getLevel(); int reviewCount = member.getReviewCount(); int
+ * totalReivewCount = member.getTotalReivewCount();
+ * 
+ * String sqlStatement =
+ * "insert into membertb (id, password, name, memberUrl, lastReviewDate, phoneNumber, point, level, reviewCount, totalReivewCount) values (?,?,?,?,?,?,?,?,?,?)"
+ * ; return (jdbcTemplateObject.update(sqlStatement, new Object[] { id,
+ * password, name, memberUrl, lastReviewDate, phoneNumber, point, level,
+ * reviewCount, totalReivewCount }) == 1); }
+ * 
+ * public boolean update(Member member) {
+ * 
+ * String id = member.getId(); String password = member.getPassword(); String
+ * name = member.getName(); String memberUrl = member.getMemberUrl(); String
+ * lastReviewDate = member.getLastReviewDate(); String phoneNumber =
+ * member.getPhoneNumber(); int point = member.getPoint(); int level =
+ * member.getLevel(); int reviewCount = member.getReviewCount(); int
+ * totalReivewCount = member.getTotalReivewCount();
+ * 
+ * String sqlStatement =
+ * "update membertb set id=?, password=?, name=?, memberUrl=?, lastReviewDate=?, phoneNumber=?, point=?, level=?, reviewCount=?, totalReivewCount=? where id=?"
+ * ; return (jdbcTemplateObject.update(sqlStatement, new Object[] { id,
+ * password, name, memberUrl, lastReviewDate, phoneNumber, point, level,
+ * reviewCount, totalReivewCount }) == 1); }
+ * 
+ * public boolean delete(int id) {
+ * 
+ * String sqlstatement = "delete from membertb where id=?"; return
+ * (jdbcTemplateObject.update(sqlstatement, new Object[] { id }) == 1); }
+ * 
+ * }
+ */
