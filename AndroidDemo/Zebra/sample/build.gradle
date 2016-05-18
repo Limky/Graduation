@@ -32,4 +32,6 @@ dependencies {
     compile 'junit:junit:4.12'
     //for action circle button in activity_main
     compile 'com.github.markushi:circlebutton:1.1'
+    //for circular imageview
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
 }

@@ -14,7 +14,7 @@ public class ReviewHeaderView extends FrameLayout {
 
     ImageView imageView;
     TextView goodsName;
-    TextView ratingBar;
+    //TextView ratingBar;
 
     public ReviewHeaderView(Context context) {
         super(context);
@@ -26,10 +26,10 @@ public class ReviewHeaderView extends FrameLayout {
 
         imageView = (ImageView)findViewById(R.id.goodsImage);
         goodsName = (TextView)findViewById(R.id.goodsName);
-        ratingBar = (TextView)findViewById(R.id.ratingBar);
+        //ratingBar = (TextView)findViewById(R.id.ratingBar);
 
-        imageView.setImageResource(R.drawable.zebra_logo);
-        goodsName.setText("상품상품상품");
-        ratingBar.setText("별점");
+        imageView.setImageResource(R.drawable.book);
+        //goodsName.setText("상품상품상품");
+        //ratingBar.setText("별점");
     }
 }

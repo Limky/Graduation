@@ -3,6 +3,7 @@ package zebra.views;
 import android.content.Context;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import example.zxing.R;
@@ -14,7 +15,7 @@ import zebra.beans.ReviewItem;
 public class ReviewItemView extends FrameLayout{
     ImageView profileImage;
     TextView memberId;
-    TextView ratingBar;
+    RatingBar ratingBar;
     TextView reviewText;
 
     public ReviewItemView(Context context) {
@@ -26,14 +27,14 @@ public class ReviewItemView extends FrameLayout{
         inflate(getContext(), R.layout.review_item, this);
         profileImage = (ImageView) findViewById(R.id.profileImage);
         memberId = (TextView)findViewById(R.id.memberId);
-        ratingBar = (TextView)findViewById(R.id.ratingBar);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         reviewText = (TextView)findViewById(R.id.reviewText);
     }
 
     public void setViewItem(ReviewItem item) {
         profileImage.setImageResource(item.profileImage);
         memberId.setText(item.memberId);
-        ratingBar.setText(item.ratingBar);
+        //ratingBar.setStepSize(item.ratingBar);
         reviewText.setText(item.reviewText);
 
     }

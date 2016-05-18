@@ -52,7 +52,7 @@
                     android:id="@+id/reviewButton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_search_black_36dp"
+                    android:src="@drawable/barcode"
                     app:cb_color="#FFA7A7"
                     app:cb_pressedRingWidth="8dip" />
 
@@ -69,7 +69,7 @@
                     android:id="@+id/searchButton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_search_black_36dp"
+                    android:src="@drawable/barcode"
                     app:cb_color="#FFA7A7"
                     app:cb_pressedRingWidth="8dip" />
             </LinearLayout>
@@ -81,8 +81,8 @@
             android:layout_height="match_parent" />
 
         <ListView
-            android:id="@android:id/list"
-            android:layout_width="305dp"
+            android:id="@+id/naviList"
+            android:layout_width="255dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@android:color/white" />

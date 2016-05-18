@@ -20,10 +20,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.journeyapps.barcodescanner.CompoundBarcodeView
-        android:id="@+id/zxing_barcode_scanner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        app:zxing_use_texture_view="true" />
+        <com.journeyapps.barcodescanner.CompoundBarcodeView
+            android:id="@+id/zxing_barcode_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            app:zxing_use_texture_view="true" />
 </RelativeLayout>

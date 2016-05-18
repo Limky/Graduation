@@ -7,4 +7,12 @@
     <color name="ripple">#ff80ab</color>
     <color name="accent">#ff4081</color>
     <color name="accent_pressed">#f50057</color>
+
+    <!--for ratingbar-->
+    <color name="ratinBar">#ffd700</color>
+    <!--for custom imageview-->
+    <color name="image_boder_red">#F15F5F</color>
+    <color name="image_boder_black">#4C4C4C</color>
+    <color name="image_boder_white">#FFFFFF</color>
+
 </resources>

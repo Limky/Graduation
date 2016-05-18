@@ -21,6 +21,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import at.markushi.ui.CircleButton;
 import example.zxing.R;
+import zebra.adapters.NaviAdapter;
+import zebra.beans.NaviItem;
+import zebra.views.NaviHeaderView;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //for toolbar
     DrawerLayout mDrawerLayout;
     ListView mDrawerList;
+    NaviAdapter naviAdapter;
     ActionBarDrawerToggle mDrawerToggle;
-    String[] mDrawerListItems;
 
 
     @Override
@@ -47,11 +50,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Toolbar 설정
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle("얼룩말");
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        mDrawerList = (ListView)findViewById(android.R.id.list);
 
-        mDrawerListItems = getResources().getStringArray(R.array.drawer_list);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerListItems));
+        mDrawerList = (ListView)findViewById(R.id.naviList);
+        naviAdapter = new NaviAdapter();
+        mDrawerList.setAdapter(naviAdapter);
+
+        NaviHeaderView header = new NaviHeaderView(MainActivity.this);
+        mDrawerList.addHeaderView(header);
+
+        for (int i=0; i<4; i++) {
+            if(i == 0){NaviItem item = new NaviItem(R.drawable.ic_perm_identity_black_48dp, "프로필");naviAdapter.add(item);}
+            if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}
+            if(i == 2){NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");naviAdapter.add(item);}
+            if(i == 3){NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);}
+        }
+
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close){
             public void onDrawerClosed(View v){
                 super.onDrawerClosed(v);
@@ -72,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 syncState();
             }
         };
+
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
