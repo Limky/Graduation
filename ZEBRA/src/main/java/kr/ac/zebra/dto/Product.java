@@ -9,8 +9,8 @@ public class Product {
 	private String productUrl;
 	private String companyName;
 	private int scanCount;
-	private int totalReivewCount;
-	private int starPoint;
+	private int totalReviewCount;
+	private double starPoint;
 	
 	
 	
@@ -20,7 +20,7 @@ public class Product {
 	}
 
 	public Product(String barcode, String productName, String description, String category, String productUrl,
-			String companyName, int scanCount, int totalReivewCount, int starPoint) {
+			String companyName, int scanCount, int totalReviewCount, double starPoint) {
 		super();
 		this.barcode = barcode;
 		this.productName = productName;
@@ -29,7 +29,7 @@ public class Product {
 		this.productUrl = productUrl;
 		this.companyName = companyName;
 		this.scanCount = scanCount;
-		this.totalReivewCount = totalReivewCount;
+		this.totalReviewCount = totalReviewCount;
 		this.starPoint = starPoint;
 	}
 	
@@ -118,25 +118,25 @@ public class Product {
 
 
 
-	public int getTotalReivewCount() {
-		return totalReivewCount;
+	public int getTotalReviewCount() {
+		return totalReviewCount;
 	}
 
 
 
-	public void setTotalReivewCount(int totalReivewCount) {
-		this.totalReivewCount = totalReivewCount;
+	public void setTotalReviewCount(int totalReviewCount) {
+		this.totalReviewCount = totalReviewCount;
 	}
 
 
 
-	public int getStarPoint() {
+	public double getStarPoint() {
 		return starPoint;
 	}
 
 
 
-	public void setStarPoint(int starPoint) {
+	public void setStarPoint(double starPoint) {
 		this.starPoint = starPoint;
 	}
 
@@ -145,7 +145,7 @@ public class Product {
 	public String toString() {
 		return "Product [barcode=" + barcode + ", productName=" + productName + ", description=" + description
 				+ ", category=" + category + ", productUrl=" + productUrl + ", companyName=" + companyName
-				+ ", scanCount=" + scanCount + ", totalReivewCount=" + totalReivewCount + ", starPoint=" + starPoint
+				+ ", scanCount=" + scanCount + ", totalReivewCount=" + totalReviewCount + ", starPoint=" + starPoint
 				+ "]";
 	}
 

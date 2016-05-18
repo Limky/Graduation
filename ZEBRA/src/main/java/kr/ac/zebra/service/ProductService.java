@@ -1,42 +1,29 @@
 package kr.ac.zebra.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.ac.zebra.dao.EnterpriseDAO;
-import kr.ac.zebra.dto.Enterprise;
+import kr.ac.zebra.dao.ProductDAO;
+import kr.ac.zebra.dto.Product;
 
 @Service("productService") // service로 bean에 등록시켜준다
 public class ProductService {
 
-	/*private EnterpriseDAO enterpriseDAO;
+	private ProductDAO productDAO;
 
 	@Autowired // DI 주입
-	public void seEnterpriseDAO(EnterpriseDAO enterpriseDAO) {
-		this.enterpriseDAO = enterpriseDAO;
+	public void setProductDAO(ProductDAO productDAO) {
+		this.productDAO = productDAO;
 	}
 
-	public Enterprise checkEnterprise(String temail, String tpassword) {
+	public List<Product> getPopularProducts() {
+	
+		return productDAO.getPopularProducts();
+		
+	}
 
-		Enterprise enterprise = enterpriseDAO.getEnterprise(temail);
-
-		if (enterprise == null) {
-
-			return null;
-
-		} else {
-
-			String dbpassword = enterprise.getPassword();
-
-			if (dbpassword.equals(tpassword)) {
-
-				return enterprise;
-			} else {
-
-				return null;
-			}
-		}
-
-	}*/
+	
 
 }

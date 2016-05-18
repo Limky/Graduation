@@ -5,13 +5,13 @@ public class Review {
 	private String id;
 	private String barcode;
 	private String reviewText;
-	private int starPoint;
+	private double starPoint;
 
 	public Review() {
 
 	}
 
-	public Review(int index, String id, String barcode, String reviewText, int starPoint) {
+	public Review(int index, String id, String barcode, String reviewText, double starPoint) {
 		super();
 		this.index = index;
 		this.id = id;
@@ -52,11 +52,11 @@ public class Review {
 		this.reviewText = reviewText;
 	}
 
-	public int getStarPoint() {
+	public double getStarPoint() {
 		return starPoint;
 	}
 
-	public void setStarPoint(int starPoint) {
+	public void setStarPoint(double starPoint) {
 		this.starPoint = starPoint;
 	}
 

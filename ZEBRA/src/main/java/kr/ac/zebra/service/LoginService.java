@@ -12,7 +12,7 @@ public class LoginService {
 	private EnterpriseDAO enterpriseDAO;
 
 	@Autowired // DI ¡÷¿‘
-	public void seEnterpriseDAO(EnterpriseDAO enterpriseDAO) {
+	public void setEnterpriseDAO(EnterpriseDAO enterpriseDAO) {
 		this.enterpriseDAO = enterpriseDAO;
 	}
 

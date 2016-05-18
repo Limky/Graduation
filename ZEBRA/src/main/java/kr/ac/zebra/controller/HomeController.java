@@ -2,6 +2,8 @@ package kr.ac.zebra.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,17 @@ public class HomeController {
 		return "topNavigation";
 	}
 	
+	
+	
+	@RequestMapping("/test")
+	public String showAndroidFirst(HttpServletRequest request){
+	
+		String reciveSTR = request.getParameter("test");
+		System.out.println(reciveSTR);
+		
+		
+		return "PopularProduct";
+	}
 	
 	
 	

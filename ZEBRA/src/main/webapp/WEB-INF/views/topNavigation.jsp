@@ -163,7 +163,7 @@
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
 				<li><a class="page-scroll" href="#about">About Services</a></li>
-				<li><a class="page-scroll" href="#services">Power Reviewer</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -214,7 +214,7 @@
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
 				<li><a class="page-scroll" href="#about">About Services</a></li>
-				<li><a class="page-scroll" href="#services">Power Reviewer</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
 					<ul class="dropdown-menu">

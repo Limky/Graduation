@@ -1,5 +1,7 @@
 package kr.ac.zebra.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.ac.zebra.dto.Product;
 import kr.ac.zebra.service.ProductService;
 
 @Controller
@@ -24,6 +27,9 @@ public class ProductController {
 	@RequestMapping("/PopularProduct")
 	public String showPopularProductPage(Model model, HttpSession session, HttpServletRequest request){
 
+		
+		List<Product> popularProduct =productService.getPopularProducts();
+		model.addAttribute("popularProductmodel", popularProduct);
 
 			return "PopularProduct";
 		
