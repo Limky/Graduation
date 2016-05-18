@@ -8,14 +8,43 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="zebra.activity.MainActivity">
-    <!--Toolbar Added-->
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
         app:popupTheme="@style/Theme.AppCompat"
-        app:theme="@style/ToolbarTheme" />
+        app:theme="@style/ToolbarTheme">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/barcodeNaviButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@color/primary"
+                android:src="@drawable/barcode_48" />
+
+            <ImageButton
+                android:id="@+id/searchNaviButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@color/primary"
+                android:src="@drawable/search_48" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"
@@ -27,16 +56,25 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/mainLogo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:background="#FFFFFF"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
-                android:src="@drawable/zebra_logo" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/primary"
+                    android:gravity="center"
+                    android:paddingBottom="50dp"
+                    android:paddingTop="50dp"
+                    android:text="ZEBRA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="100dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,8 +90,8 @@
                     android:id="@+id/reviewButton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/barcode"
-                    app:cb_color="#FFA7A7"
+                    android:src="@drawable/guest_male_48"
+                    app:cb_color="@color/primary"
                     app:cb_pressedRingWidth="8dip" />
 
                 <at.markushi.ui.CircleButton
@@ -61,16 +99,16 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/barcode"
-                    app:cb_color="#FFA7A7"
+                    android:src="@drawable/zebra_icon"
+                    app:cb_color="@color/primary"
                     app:cb_pressedRingWidth="8dip" />
 
                 <at.markushi.ui.CircleButton
                     android:id="@+id/searchButton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/barcode"
-                    app:cb_color="#FFA7A7"
+                    android:src="@drawable/search_48"
+                    app:cb_color="@color/primary"
                     app:cb_pressedRingWidth="8dip" />
             </LinearLayout>
         </LinearLayout>

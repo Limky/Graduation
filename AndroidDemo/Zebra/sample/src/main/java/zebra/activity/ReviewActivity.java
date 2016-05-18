@@ -43,12 +43,6 @@ public class ReviewActivity extends AppCompatActivity{
         ReviewHeaderView reviewHeader = new ReviewHeaderView(ReviewActivity.this);
         reviewList.addHeaderView(reviewHeader);
 
-        //이거 지워!!
-        ReviewItem item1 = new ReviewItem(R.drawable.bang, "Bang", 3, "유상미 교수님이 C++ 수업 시간에 교재로 쓰는 책입니다..");
-        mAdapter.add(item1);
-        ReviewItem item2 = new ReviewItem(R.drawable.imky, "Limky", 3, "설명을 간단하게 잘 했어요. 좋아요.");
-        mAdapter.add(item2);
-
         for (int i=0; i<10; i++) {
             ReviewItem item = new ReviewItem(R.drawable.icon, ""+i, 3, "리뷰입니다.");
             mAdapter.add(item);
@@ -72,7 +66,6 @@ public class ReviewActivity extends AppCompatActivity{
             if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}
             if(i == 2){NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");naviAdapter.add(item);}
             if(i == 3){NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);}
-
         }
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

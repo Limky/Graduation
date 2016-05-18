@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Toolbar 설정
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle("얼룩말");
+        toolbar.setTitle("");
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
 
         mDrawerList = (ListView)findViewById(R.id.naviList);
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NaviHeaderView header = new NaviHeaderView(MainActivity.this);
         mDrawerList.addHeaderView(header);
 
+        //navbar 아이템들, 지워야됨
         for (int i=0; i<4; i++) {
             if(i == 0){NaviItem item = new NaviItem(R.drawable.ic_perm_identity_black_48dp, "프로필");naviAdapter.add(item);}
             if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}

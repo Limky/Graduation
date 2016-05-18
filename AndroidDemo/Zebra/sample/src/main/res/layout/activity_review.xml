@@ -14,7 +14,34 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
         app:popupTheme="@style/Theme.AppCompat"
-        app:theme="@style/ToolbarTheme" />
+        app:theme="@style/ToolbarTheme">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/barcodeNaviButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@color/primary"
+                android:src="@drawable/barcode_48" />
+
+            <ImageButton
+                android:id="@+id/searchNaviButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@color/primary"
+                android:src="@drawable/search_48" />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"

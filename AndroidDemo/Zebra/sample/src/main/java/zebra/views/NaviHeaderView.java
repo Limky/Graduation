@@ -26,7 +26,7 @@ public class NaviHeaderView extends FrameLayout {
         profileImage = (ImageView)findViewById(R.id.profileImage);
         name = (TextView)findViewById(R.id.name);
 
-        profileImage.setImageResource(R.drawable.profile);
+        profileImage.setImageResource(R.drawable.bang);
         name.setText("임인혁님 반갑습니다.");
     }
 }
