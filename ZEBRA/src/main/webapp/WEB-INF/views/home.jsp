@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<!--홈  -->
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!-- Latest compiled and minified CSS -->
@@ -50,30 +51,29 @@
 	@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 	
 	#title {
-		background-color: #969696;
+		background-color: #C00000 ;
 		/* 	margin: 50px;  */
-		padding: 80px;
+		padding-top: 60px;
+		padding-bottom:30px;
 		color: black;
+		font-size: 60px;
+	}
+	
+	#titlep{
+	font-size: 20px;
+	
 	}
 	
 	.bootstrap-demo {
 		padding: 50px;
+		
 	}
 	</style>
 
-		<h1 id="title" align="center"
-			style="font-family: fantasy; color: black">
-			ZEBRA Under Construction<br>
-			<p class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
-				It is our graduaion project, Project members consist of limky,iguru,bang.
-				Vision
-				The purpose of our service is largely divided into two depending on the position . <br>
-				For the consumer while receiving provide a practical product review service assist in efficient purchase selection .
-				 For businesses to readily identify the consumer index , allows the strategic sales management . <br>
-				 In addition, the ultimate purpose of our service is to make a place for the community to build healthy consumption culture among consumers and businesses.
-
-			</p>
-
+		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF" font-siz >ZEBRA<br>
+		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
+Section of the community to build healthy consumption culture
+      </p>
 		</h1>
 
 
@@ -165,99 +165,17 @@
 			</script>
 <!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
 </div>
-<!------------------------------------------------------레이아웃 시작  ----------------------------------------------------------->
-			<div class="bootstrap-demo">
-				<div class="row">
 
-					<div class="col-sm-6 col-md-4">
-						<!-- column 1 -->
-						<div class="thumbnail">
-							<!--  thumbnail 1  -->
-							<img
-								src="http://www.tutorialspark.com/twitterBootstrap/china.jpg"
-								alt="china thumbnail">
-							<!-- image 1 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>The Great Wall of China</h3>
-								<p>The Great Wall of China is a series of fortifications
-									made of stone, brick, tamped earth, wood, and other materials,
-									generally built along an east-to-west line across the
-									historical northern borders of China</p>
-								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 col-md-4">
-						<!-- column 2 -->
-						<div class="thumbnail">
-							<!-- thumbnail 2 -->
-							<img
-								src="http://www.tutorialspark.com/twitterBootstrap/statue-liberty.jpg"
-								alt="Statue of Liberty thumbnail">
-							<!-- image 2 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>Statue of Liberty</h3>
-								<p>The Statue of Liberty is a colossal neoclassical
-									sculpture on Liberty Island in the middle of New York Harbor,
-									in Manhattan, New York City.</p>
-								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 col-md-4">
-						<!-- column 2 -->
-						<div class="thumbnail">
-							<!-- thumbnail 2 -->
-							<img
-								src="https://scontent.xx.fbcdn.net/hphotos-xtl1/t31.0-8/12671674_121428374921922_1736655941279239457_o.jpg"
-								alt="Statue of Liberty thumbnail">
-							<!-- image 2 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>Statue of Liberty</h3>
-								<p>The Statue of Liberty is a colossal neoclassical
-									sculpture on Liberty Island in the middle of New York Harbor,
-									in Manhattan, New York City.</p>
-								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-<!------------------------------------------------------레이아웃 끝  ----------------------------------------------------------->
+<!----------------------------------------------------------  -->
+		<jsp:include page="PopularProduct.jsp" flush="false"></jsp:include>
+ 	<!--------------------------------------------------------  -->
 
 
 <h1 align="center">ZEBRA Service</h1>
 <img src="https://scontent.xx.fbcdn.net/t31.0-8/13247774_171391666592259_3132038665631639900_o.jpg" alt="china thumbnail">
 
 	<!-- 	</div>컨테이너 끝  -->
-		
+	
 		
 </body>
 </html>

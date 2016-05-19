@@ -45,9 +45,9 @@
 
 
 
-	<h1> 인기 상품 페이지 입니다.</h1>
+	<h1 align="center"> 인기 상품 페이지 입니다.</h1>
 
-
+<div class="container">
 <!------------------------------------------------------레이아웃 시작  ----------------------------------------------------------->
 			<div class="bootstrap-demo">
 				<div class="row">
@@ -68,11 +68,7 @@
 									generally built along an east-to-west line across the
 									historical northern borders of China</p>
 								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
+										<button type="button" class="btn btn-danger">Danger</button>
 								</p>
 								<!-- btn 2 -->
 							</div>
@@ -94,11 +90,7 @@
 									sculpture on Liberty Island in the middle of New York Harbor,
 									in Manhattan, New York City.</p>
 								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
+										<button type="button" class="btn btn-danger">Danger</button>
 								</p>
 								<!-- btn 2 -->
 							</div>
@@ -120,11 +112,7 @@
 									sculpture on Liberty Island in the middle of New York Harbor,
 									in Manhattan, New York City.</p>
 								<p>
-									<a href="#" class="btn btn-primary" role="button">Buy
-										Tickets</a>
-									<!-- btn 1 -->
-									<a href="#" class="btn btn-default" role="button">Add to
-										Wishlist</a>
+										<button type="button" class="btn btn-danger">Danger</button>
 								</p>
 								<!-- btn 2 -->
 							</div>
@@ -134,7 +122,7 @@
 				</div>
 			</div>
 <!------------------------------------------------------레이아웃 끝  ----------------------------------------------------------->
-
+</div>
 
 	<c:forEach var="popularProduct" items="${popularProductModel}">
 	<p>

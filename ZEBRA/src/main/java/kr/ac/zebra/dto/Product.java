@@ -143,10 +143,9 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "Product [barcode=" + barcode + ", productName=" + productName + ", description=" + description
+		return "Product barcode=" + barcode + ", productName=" + productName + ", description=" + description
 				+ ", category=" + category + ", productUrl=" + productUrl + ", companyName=" + companyName
-				+ ", scanCount=" + scanCount + ", totalReivewCount=" + totalReviewCount + ", starPoint=" + starPoint
-				+ "]";
+				+ ", scanCount=" + scanCount + ", totalReivewCount=" + totalReviewCount + ", starPoint=" + starPoint;
 	}
 
 

@@ -100,7 +100,7 @@
 	border: 0px;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-	background-color: #4d90fe;
+	background-color: #C00000;
 	padding: 17px 0px;
 	font-family: roboto;
 	font-size: 14px;
@@ -111,7 +111,7 @@
 	/* border: 1px solid #2f5bb7; */
 	border: 0px;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	background-color: #357ae8;
+	background-color: 	#B00000;
 	/* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
@@ -153,7 +153,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand page-scroll" href="#page-top">ZEBRA</a>
+			<a class="navbar-brand page-scroll" href="/ZEBRA/">ZEBRA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -198,7 +198,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand page-scroll" href="#page-top">ZEBRA</a>
+			<a class="navbar-brand page-scroll" href="/ZEBRA/">ZEBRA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
