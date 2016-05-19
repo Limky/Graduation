@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kr.ac.zebra">
+	<logger name="kr.ac.manymani">
 		<level value="info" />
 	</logger>
 	

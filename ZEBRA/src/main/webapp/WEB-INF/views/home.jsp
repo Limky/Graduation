@@ -70,7 +70,7 @@
 	}
 	</style>
 
-		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF" font-siz >ZEBRA<br>
+		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF">ZEBRA<br>
 		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
 Section of the community to build healthy consumption culture
       </p>
@@ -167,7 +167,7 @@ Section of the community to build healthy consumption culture
 </div>
 
 <!----------------------------------------------------------  -->
-		<jsp:include page="PopularProduct.jsp" flush="false"></jsp:include>
+		<jsp:include page="testdesign.jsp" flush="false"></jsp:include>
  	<!--------------------------------------------------------  -->
 
 

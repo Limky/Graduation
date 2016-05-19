@@ -46,5 +46,11 @@ public class HomeController {
 	}
 	
 	
+	@RequestMapping("/testdesign")
+	public String testdesign(){
+	
+		return "testdesign";
+	}
+	
 	
 }

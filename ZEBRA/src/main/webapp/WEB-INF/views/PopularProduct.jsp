@@ -1,139 +1,128 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page session="true"%>
-<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+
 <html>
+
 <head>
 <meta charset="utf-8">
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
+<title>Popular</title>
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-	crossorigin="anonymous">
+<spring:url value="/resources/core/css/bootstrap.min.css" var="coreCss" />
+<spring:url value="/resources/core/css/3-col-portfolio.css"
+	var="bootstrapCss" />
+<spring:url value="/resources/core/css/heroic-features.css"
+	var="heroicfeatures" />
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
+<link href="${bootstrapCss}" rel="stylesheet" />
+<link href="${coreCss}" rel="stylesheet" />
+<link href="${heroicfeatures}" rel="stylesheet" />
 
 
+<%-- 
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" >
 
-<title>Home</title>
+    <!-- Custom CSS -->
+	<link href="${pageContext.request.contextPath}/resources/css/3-col-portfolio.css" rel="stylesheet" >
+ --%>
 
-
+<style>
+#titles {
+	color: black;
+}
+</style>
 
 </head>
 <body>
 
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
-		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
- 	<!---------------------------------네비게이션 바 끝-------------------------  -->
+	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
+	<!---------------------------------네비게이션 바 끝-------------------------  -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4" align="center">
+				<h3 id="" style="font-family: fantasy;">Popularity</h3>
+				<hr align="center" style="border: solid 3px #A91717; width: 30%;">
+			</div>
+			<div class="col-md-4" align="center">
+				<h3 id="" style="font-family: fantasy; color: #7A7A7A">MostReview</h3>
+				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
+			</div>
+			<div class="col-md-4" align="center">
+				<h3 id="" style="font-family: fantasy; color: #7A7A7A">MostScan</h3>
+				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
+			</div>
+		</div>
+	</div>
 
 
 
+	<!-- Page Content -->
+	<div class="container">
+		<h1 align="center" style="font-family: fantasy; padding: 30px">
+			<small>Popularity</small>
+		</h1>
+		<!-- /.row -->
 
-	<h1 align="center"> 인기 상품 페이지 입니다.</h1>
+		<!-- Projects Row -->
+		<div class="row">
 
-<div class="container">
-<!------------------------------------------------------레이아웃 시작  ----------------------------------------------------------->
-			<div class="bootstrap-demo">
-				<div class="row">
+			<c:forEach var="popularProduct" items="${popularProductModel}">
 
-					<div class="col-sm-6 col-md-4">
-						<!-- column 1 -->
-						<div class="thumbnail">
-							<!--  thumbnail 1  -->
-							<img
-								src="http://www.tutorialspark.com/twitterBootstrap/china.jpg"
-								alt="china thumbnail">
-							<!-- image 1 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>The Great Wall of China</h3>
-								<p>The Great Wall of China is a series of fortifications
-									made of stone, brick, tamped earth, wood, and other materials,
-									generally built along an east-to-west line across the
-									historical northern borders of China</p>
-								<p>
-										<button type="button" class="btn btn-danger">Danger</button>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
+				<div class="col-md-4 portfolio-item">
+					<a href="#"> <img class="img-responsive"
+						src="http://placehold.it/700x400" alt=""></a>
+					<h1>
+						<small style="font-weight: 800"><c:out
+								value="${popularProduct.productName}"></c:out></small>
+					</h1>
+					<p>
+						<c:out value="${popularProduct.description}"></c:out>
+					</p>
+					<button type="button" class="btn btn-danger">Danger</button>
+				</div>
 
-					<div class="col-sm-6 col-md-4">
-						<!-- column 2 -->
-						<div class="thumbnail">
-							<!-- thumbnail 2 -->
-							<img
-								src="http://www.tutorialspark.com/twitterBootstrap/statue-liberty.jpg"
-								alt="Statue of Liberty thumbnail">
-							<!-- image 2 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>Statue of Liberty</h3>
-								<p>The Statue of Liberty is a colossal neoclassical
-									sculpture on Liberty Island in the middle of New York Harbor,
-									in Manhattan, New York City.</p>
-								<p>
-										<button type="button" class="btn btn-danger">Danger</button>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
+			</c:forEach>
 
-					<div class="col-sm-6 col-md-4">
-						<!-- column 2 -->
-						<div class="thumbnail">
-							<!-- thumbnail 2 -->
-							<img
-								src="https://scontent.xx.fbcdn.net/hphotos-xtl1/t31.0-8/12671674_121428374921922_1736655941279239457_o.jpg"
-								alt="Statue of Liberty thumbnail">
-							<!-- image 2 -->
-							<div class="caption">
-								<!-- caption -->
-								<h3>Statue of Liberty</h3>
-								<p>The Statue of Liberty is a colossal neoclassical
-									sculpture on Liberty Island in the middle of New York Harbor,
-									in Manhattan, New York City.</p>
-								<p>
-										<button type="button" class="btn btn-danger">Danger</button>
-								</p>
-								<!-- btn 2 -->
-							</div>
-						</div>
-					</div>
 
+		</div>
+		<!-- /.row -->
+		<hr>
+
+
+		<hr>
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
 				</div>
 			</div>
-<!------------------------------------------------------레이아웃 끝  ----------------------------------------------------------->
-</div>
+			<!-- /.row -->
+		</footer>
 
-	<c:forEach var="popularProduct" items="${popularProductModel}">
-	<p>
-		<c:out value="${popularProduct}">
-		</c:out>
-	</p>
+	</div>
+	<!-- /.container -->
 
-	</c:forEach>
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-
-
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
