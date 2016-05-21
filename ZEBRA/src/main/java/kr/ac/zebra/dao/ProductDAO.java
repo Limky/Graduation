@@ -103,7 +103,7 @@ public class ProductDAO {
 	
 	
 	
-	// Querying and returning multiple object
+	// 인기 상품을 가져온다
 	public List<Product> getPopularProducts(String category) {
 		try {
 			if(category.equals("0")){
@@ -130,7 +130,7 @@ public class ProductDAO {
 
 	}
 	
-	// Querying and returning multiple object
+	// 최다 리뷰를 보여준다
 	public List<Product> getMostReviewProducts(String category) {
 		try {
 			if(category.equals("0")){
@@ -157,13 +157,24 @@ public class ProductDAO {
 	}
 	
 	
-	// Querying and returning multiple object
+	// 최다 스캔을 가져온다.
 	public List<Product> getMostScanProducts(String category) {
 		try {
 		
+			if(category.equals("0")){
+			
+			System.out.println("getMostScanProducts 모든 상품 눌렀음 DAO");
 			String sqlStatement = "select * from producttb  order by scanCount DESC LIMIT 0, 10;";
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+			}
+			else{
+				
+			System.out.println("getMostScanProducts 모든 상품 이외 눌렀음 DAO");
+			String sqlStatement = "select * from producttb  where  category =" + category +" order by scanCount DESC LIMIT 0, 10;";
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous	
+				
+			}
 			
 		}catch (Exception e) {
 		
@@ -178,29 +189,6 @@ public class ProductDAO {
 	}
 	
 	
-	
-	//----------------------------------------자사 상품-----------------------------------------
-	
-
-	// Querying and returning multiple object
-	public List<Product> getHousePopularProducts(String companyName) {
-		try {
-		
-			String sqlStatement = "select * from producttb  where (companyName = ?) and (totalReviewCount > 2) order by starPoint DESC LIMIT 0, 10";
-
-			return jdbcTemplateObject.query(sqlStatement,new Object[] { companyName }, new ProductMapper()); // Anonymous
-			
-		}catch (Exception e) {
-		
-		
-		System.out.println("getHousePopularProducts DAO 예외 처리 발생 획인 메세지 ");
-		e.printStackTrace();
-		return null;
-
-	}
-																	// Classes
-
-	}
 	
 	
 	

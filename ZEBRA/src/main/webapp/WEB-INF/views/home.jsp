@@ -163,11 +163,9 @@ Section of the community to build healthy consumption culture
 			</script>
 <!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
 </div>
-<%-- 
-<!----------------------------------------------------------  -->
-		<jsp:include page="testdesign.jsp" flush="false"></jsp:include>
- 	<!--------------------------------------------------------  -->
- --%>
+
+
+
 
 <h1 align="center" style="padding:20px ">ZEBRA Service</h1>
 <img src="https://scontent.xx.fbcdn.net/t31.0-8/13247920_172959903102102_2284409825658967265_o.jpg" alt="china thumbnail">

@@ -165,8 +165,8 @@
 				
 				<li><a class="page-scroll" href="#about">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-				<li><a class="page-scroll" href="/ZEBRA/Product">Product</a></li>
-				<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/OurProduct?filter=All">OurProduct</a></li>
 			
 			</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -206,7 +206,7 @@
 				<li><a class="page-scroll" href="#about">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
-				<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/OurProduct?filter=All">OurProduct</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span
@@ -269,10 +269,9 @@
 			<br>
 			<c:url var="addUrl" value="doLogin" />
 			<form action="${addUrl}" method="GET">
-				<input type="text" name="email" placeholder="email"> <input
-					type="password" name="password" placeholder="Password"> <input
-					type="submit" name="login" class="login loginmodal-submit"
-					value="Login">
+				<input type="text" name="email" placeholder="email"> 
+				<input type="password" name="password" placeholder="Password"> 
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login">
 			</form>
 
 			<div class="login-help">

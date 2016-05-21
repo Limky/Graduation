@@ -12,6 +12,7 @@ import kr.ac.zebra.dto.Product;
 
 @Service("productService") // service로 bean에 등록시켜준다
 public class ProductService {
+	
 
 	private ProductDAO productDAO;
 	private MemberDAO memberDAO;
@@ -19,6 +20,7 @@ public class ProductService {
 	public void setProductDAO(ProductDAO productDAO,MemberDAO memberDAO) {
 		this.productDAO = productDAO;
 		this.memberDAO = memberDAO;
+
 	}
 
 	public List<Product> getPopularProducts(String category) {
@@ -39,31 +41,6 @@ public class ProductService {
 		
 	}
 
-
-//-------------------------자사 상품--------------------------
-	
-	public List<Product> getHousePopularProducts(String companyName) {
-		
-		return productDAO.getHousePopularProducts(companyName);
-		
-	}
-	
-	
-	//---------------------안드로이드------------------
-	public Product getProduct(String barcode) {
-		
-		return productDAO.getProduct(barcode);
-		
-	}
-	
-	//---------------------안드로이드------------------
-	public Member getMember(String id) {
-		
-		return memberDAO.getMember(id);
-		
-	}
-	
-	
 
 	
 

@@ -55,7 +55,7 @@ public class ProductController {
 	
 	}
 	
-	@RequestMapping(value="/AllMostReview",method = RequestMethod.GET)
+	@RequestMapping(value="/MostReview",method = RequestMethod.GET)
 	public String showMostReviewPage(Model model, HttpSession session, HttpServletRequest request){
 
 		String currentCategory=(String)request.getParameter("category");
@@ -63,13 +63,13 @@ public class ProductController {
 		List<Product> mostReviewProducts =productService.getMostReviewProducts(currentCategory);
 		model.addAttribute("mostReviewProductsModel", mostReviewProducts);
 
-			return "AllMostReview";
+			return "MostReview";
 		
 	
 	}
 	
 	
-	@RequestMapping(value="/AllMostScan",method = RequestMethod.GET)
+	@RequestMapping(value="/MostScan",method = RequestMethod.GET)
 	public String showMostScanPage(Model model, HttpSession session, HttpServletRequest request){
 
 		String currentCategory=(String)request.getParameter("category");
@@ -77,13 +77,13 @@ public class ProductController {
 		List<Product> mostScanProducts =productService.getMostScanProducts(currentCategory);
 		model.addAttribute("mostScanProductsModel", mostScanProducts);
 
-			return "AllMostScan";
+			return "MostScan";
 		
 	
 	}
 	
 	
-	//-----------------------------------------
+	//------------------------------------------------------------------------------------------------
 	
 
 	
