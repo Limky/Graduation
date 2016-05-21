@@ -104,12 +104,19 @@ public class ProductDAO {
 	
 	
 	// Querying and returning multiple object
-	public List<Product> getPopularProducts() {
+	public List<Product> getPopularProducts(String category) {
 		try {
-		
-			String sqlStatement = "select * from producttb where totalReviewCount >= 2 order by starPoint DESC LIMIT 0, 9";
-
-			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+			if(category.equals("0")){
+				System.out.println("getPopularProducts 모든 상품 눌렀음 DAO");
+				String sqlStatement = "select * from producttb where totalReviewCount >= 2 order by starPoint DESC LIMIT 0, 9";
+				return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+					
+			}else{
+				System.out.println("getPopularProducts 모든상품 이외 눌렀음 DAO");
+				String sqlStatement = "select * from producttb where totalReviewCount >= 2 and category =" + category +" order by starPoint DESC LIMIT 0, 9";
+				return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+			}
+						
 			
 		}catch (Exception e) {
 		
@@ -124,13 +131,19 @@ public class ProductDAO {
 	}
 	
 	// Querying and returning multiple object
-	public List<Product> getMostReviewProducts() {
+	public List<Product> getMostReviewProducts(String category) {
 		try {
-		
+			if(category.equals("0")){
+				System.out.println("getMostReviewProducts 모든 상품 눌렀음 DAO");
 			String sqlStatement = "select * from producttb where totalReviewCount > 0 order by totalReviewCount DESC LIMIT 0, 10";
-
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
-			
+		
+			}else{
+				System.out.println("getMostReviewProducts 모든상품 이외 눌렀음 DAO");
+				String sqlStatement = "select * from producttb where totalReviewCount > 0 and category =" + category +" order by totalReviewCount DESC LIMIT 0, 10";
+				return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
+				
+			}			
 		}catch (Exception e) {
 		
 		
@@ -145,7 +158,7 @@ public class ProductDAO {
 	
 	
 	// Querying and returning multiple object
-	public List<Product> getMostScanProducts() {
+	public List<Product> getMostScanProducts(String category) {
 		try {
 		
 			String sqlStatement = "select * from producttb  order by scanCount DESC LIMIT 0, 10;";

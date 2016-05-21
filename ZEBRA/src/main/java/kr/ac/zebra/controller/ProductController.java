@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.zebra.dto.Member;
 import kr.ac.zebra.dto.Product;
@@ -24,13 +25,29 @@ public class ProductController {
 	public void setProductService(ProductService productService){
 		this.productService = productService;	
 	}
-	
 
-	@RequestMapping("/PopularProduct")
+	@RequestMapping("/Product")
+	public String showProductPage(Model model, HttpSession session, HttpServletRequest request){	
+		session.setAttribute("currentCategory", "0");
+			return "Product";
+
+	}
+
+	
+	@RequestMapping("/Category")
+	public String showCategoryPage(Model model, HttpSession session, HttpServletRequest request){
+	
+			return "Category";
+	
+	}
+	
+//--------------------------------------모든 상품 메서드-----------------------------------//
+	@RequestMapping(value="/PopularProduct",method = RequestMethod.GET)
 	public String showPopularProductPage(Model model, HttpSession session, HttpServletRequest request){
 
-		
-		List<Product> popularProduct =productService.getPopularProducts();
+		String currentCategory=(String)request.getParameter("category");
+		session.setAttribute("currentCategory", currentCategory);
+		List<Product> popularProduct =productService.getPopularProducts(currentCategory);
 		model.addAttribute("popularProductModel", popularProduct);
 
 			return "PopularProduct";
@@ -38,77 +55,38 @@ public class ProductController {
 	
 	}
 	
-	@RequestMapping("/MostReview")
+	@RequestMapping(value="/AllMostReview",method = RequestMethod.GET)
 	public String showMostReviewPage(Model model, HttpSession session, HttpServletRequest request){
 
-		
-		List<Product> mostReviewProducts =productService.getMostReviewProducts();
+		String currentCategory=(String)request.getParameter("category");
+		session.setAttribute("currentCategory", currentCategory);
+		List<Product> mostReviewProducts =productService.getMostReviewProducts(currentCategory);
 		model.addAttribute("mostReviewProductsModel", mostReviewProducts);
 
-			return "MostReview";
+			return "AllMostReview";
 		
 	
 	}
 	
 	
-	@RequestMapping("/MostScan")
+	@RequestMapping(value="/AllMostScan",method = RequestMethod.GET)
 	public String showMostScanPage(Model model, HttpSession session, HttpServletRequest request){
 
-		
-		List<Product> mostScanProducts =productService.getMostScanProducts();
+		String currentCategory=(String)request.getParameter("category");
+		session.setAttribute("currentCategory", currentCategory);
+		List<Product> mostScanProducts =productService.getMostScanProducts(currentCategory);
 		model.addAttribute("mostScanProductsModel", mostScanProducts);
 
-			return "MostScan";
+			return "AllMostScan";
 		
 	
 	}
 	
-	//----------------------------안드로이드-----------------------------------
 	
-	@RequestMapping("/androidTest")
-	public String showandroidTestPage(HttpServletRequest request,Model model){
+	//-----------------------------------------
+	
 
-		String memberId = "a";
-		String reciveBarcode = request.getParameter("barcode");
-		System.out.println(reciveBarcode);
-				
-		//------------DB---------------------
-		Member member = productService.getMember(memberId);
-		Product product = productService.getProduct(reciveBarcode);
-		//String ProductName = product.getProductName();
-		//System.out.println(ProductName);
-		//model.addAttribute("modelProductName",ProductName);
-		//request.setAttribute("requestProductName", product);
-		request.setAttribute("requestProductObject", product);
-		request.setAttribute("requestMemerObject", member);
-		
-		return "androidTest";
-	}
 	
-	@RequestMapping("/test")
-	public String showtestPage(HttpServletRequest request,Model model){
-
-		String reciveBarcode = request.getParameter("barcode");
-		System.out.println(reciveBarcode);
-				
-		
-		return "failLogin";
-	}
-	
-	
-	
-	//-------------------------------자사 상품 라인---------------------------------------
-	@RequestMapping("/houseProduct")
-	public String showHousePopularProductPage(Model model, HttpSession session, HttpServletRequest request){
-
-		
-		List<Product> housePopularProducts =productService.getHousePopularProducts((String)session.getAttribute("logOk"));
-		model.addAttribute("housePopularProductsModel", housePopularProducts);
-
-			return "houseProduct";
-	
-	
-	}
 	
 	
 	

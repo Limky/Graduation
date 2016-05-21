@@ -1,13 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page session="true"%>
-<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+
 <html>
+
 <head>
 <meta charset="utf-8">
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
+<meta charset="utf-8">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -30,38 +33,31 @@
 	crossorigin="anonymous"></script>
 
 
+<title>Popular</title>
 
-<title>Home</title>
 
 
 
 </head>
 <body>
-
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
- 	<!---------------------------------네비게이션 바 끝-------------------------  -->
-
-
-<style>
-h1 {
-	padding: 100px;
-}
-</style>
-
-
-	<h1>최다 리뷰 페이지</h1>
+	
+<div class="row" align="center">
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=0">All</a></div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=1">Books</a></div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=2">Appliances</a></div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=3">Beauty</a></div>
+  <div class="col-md-1">Food</div>
+  <div class="col-md-1">Necessaries</div>
+</div>
 
 
 
 
-	<c:forEach var="mostReviewProducts" items="${mostReviewProductsModel}">
-	<p>
-		<c:out value="${mostReviewProducts}">
-		</c:out></br>
-	</p>
 
-	</c:forEach>
 
 </body>
+
 </html>

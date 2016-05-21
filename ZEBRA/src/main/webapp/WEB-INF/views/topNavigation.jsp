@@ -100,7 +100,7 @@
 	border: 0px;
 	color: #fff;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-	background-color: #C00000;
+	background-color: #EB4646;
 	padding: 17px 0px;
 	font-family: roboto;
 	font-size: 14px;
@@ -111,7 +111,7 @@
 	/* border: 1px solid #2f5bb7; */
 	border: 0px;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	background-color: 	#B00000;
+	background-color: 	#EB0000;
 	/* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
@@ -153,7 +153,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand page-scroll" href="/ZEBRA/">ZEBRA</a>
+			<a class="navbar-brand page-scroll" href="/ZEBRA/" style="font-family: fantasy;">ZEBRA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -162,17 +162,13 @@
 				<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
+				
 				<li><a class="page-scroll" href="#about">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
-						<li><a href="/ZEBRA/MostReview">Most reviewed products</a></li>
-						<li><a href="/ZEBRA/MostScan">Most scanning products</a></li>
-					</ul></li>
+				<li><a class="page-scroll" href="/ZEBRA/Product">Product</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
-					</ul>
+			
+			</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#SignUp-modal"><span
@@ -209,14 +205,8 @@
 				</li>
 				<li><a class="page-scroll" href="#about">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Product <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a href="/ZEBRA/PopularProduct">Popular Products</a></li>
-						<li><a href="/ZEBRA/MostReview">Most reviewed products</a></li>
-						<li><a href="/ZEBRA/MostScan">Most scanning products</a></li>
-					</ul></li>
-					<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/houseProduct">OurProduct</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span

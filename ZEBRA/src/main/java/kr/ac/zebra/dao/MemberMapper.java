@@ -24,7 +24,7 @@ public class MemberMapper implements RowMapper<Member> {
 		member.setPhoneNumber(rs.getString("phoneNumber"));
 		member.setPoint(rs.getInt("point"));
 		member.setReviewCount(rs.getInt("reviewCount"));
-		member.setTotalReivewCount(rs.getInt("totalReviewCount"));
+		member.setTotalReviewCount(rs.getInt("totalReviewCount"));
 		
 			
 		

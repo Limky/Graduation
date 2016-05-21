@@ -42,20 +42,11 @@
 
 </head>
 <body>
-
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
-
-	
-	<!---------------------------------카테고리 바 시작-------------------------  -->
-	<jsp:include page="Category.jsp"></jsp:include>
-	<!---------------------------------카테고리 바 끝-------------------------  -->
 <%
 
 
 	request.setCharacterEncoding("UTF-8");
-	String currentCategory= (String)session.getAttribute("currentCategory");
+	String currentCategory= (String)request.getAttribute("currentCategory");
 
 
 %>
@@ -72,7 +63,7 @@
 				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
 			</div>
 			<div class="col-md-4" align="center">
-				<h4 id="" style="font-family: fantasy; color: #7A7A7A"><a href="/ZEBRA/AllMostScan?category=<%=currentCategory%>">MostScan</a></h4>
+				<h4 id="" style="font-family: fantasy; color: #7A7A7A"><a href="/ZEBRA/AllMostScan?=<%=currentCategory%>">MostScan</a></h4>
 				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
 			</div>
 		</div>
@@ -80,49 +71,7 @@
 
 
 
-	<!-- Page Content -->
-	<div class="container">
-		<h3 align="center" style="font-family: fantasy; padding: 30px">
-			<small>Popularity</small>
-		</h3>
-		<!-- /.row -->
 
-		<!-- Projects Row -->
-		<div class="row">
-
-			<c:forEach var="popularProduct" items="${popularProductModel}">
-				
-
-				<div class="col-md-4 portfolio-item">
-					<a href="#"> <img class="img-responsive" src="${popularProduct.productUrl}" alt=""  style="width: 700px; height:400px;"></a>
-					<h1>
-						<small style="font-weight: 800"><c:out
-								value="${popularProduct.productName}"></c:out></small>
-					</h1>
-					<div>
-					<p>
-						<c:out value="${popularProduct.description}"></c:out><br>
-					</p>
-					<button type="button" class="btn btn-danger">Review</button>
-					</div>
-					
-				</div>
-
-			</c:forEach>
-
-
-		</div>
-		<!-- /.row -->
-		<hr>
-
-
-		<hr>
-
-	
-
-	</div>
-	
-	
 
 </body>
 

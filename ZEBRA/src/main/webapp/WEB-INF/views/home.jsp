@@ -70,7 +70,7 @@
 	}
 	</style>
 
-		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF">ZEBRA<br>
+		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF;">ZEBRA<br>
 		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
 Section of the community to build healthy consumption culture
       </p>
@@ -100,14 +100,12 @@ Section of the community to build healthy consumption culture
 
 					<div class="item active">
 						<img
-							src="https://scontent.xx.fbcdn.net/hphotos-xpl1/t31.0-8/12898210_121434794921280_5728082899501911314_o.jpg">
+							src="https://scontent.xx.fbcdn.net/t31.0-8/13247694_172669706464455_118460718092039742_o.jpg">
 
 						<div class="carousel-caption">
-							<h1 style="color: #FFFFFF">Don't stop the fashion</h1>
-							<p style="color: #FFFFFF">Beauty is nature's coin, must not
-								be hoarded,but must be current,</p>
-							<p style="color: #FFFFFF">and the good there of consists in
-								mutual and partaken bliss.</p>
+							<h1 style="color: #FFFFFF; text-shadow:3px 3px #3c3c3c">Scan a barcode!</h1>
+							<p style="color: #FFFFFF;  text-shadow:1px 1px #3c3c3c">Find the barcode of the item you want.</p>
+							
 						</div>
 
 					</div>
@@ -165,14 +163,14 @@ Section of the community to build healthy consumption culture
 			</script>
 <!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
 </div>
-
+<%-- 
 <!----------------------------------------------------------  -->
 		<jsp:include page="testdesign.jsp" flush="false"></jsp:include>
  	<!--------------------------------------------------------  -->
+ --%>
 
-
-<h1 align="center">ZEBRA Service</h1>
-<img src="https://scontent.xx.fbcdn.net/t31.0-8/13247774_171391666592259_3132038665631639900_o.jpg" alt="china thumbnail">
+<h1 align="center" style="padding:20px ">ZEBRA Service</h1>
+<img src="https://scontent.xx.fbcdn.net/t31.0-8/13247920_172959903102102_2284409825658967265_o.jpg" alt="china thumbnail">
 
 	<!-- 	</div>컨테이너 끝  -->
 	

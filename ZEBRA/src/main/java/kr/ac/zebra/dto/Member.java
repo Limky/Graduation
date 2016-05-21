@@ -88,10 +88,10 @@ public class Member {
 	public void setReviewCount(int reviewCount) {
 		this.reviewCount = reviewCount;
 	}
-	public int getTotalReivewCount() {
+	public int getTotalReviewCount() {
 		return totalReviewCount;
 	}
-	public void setTotalReivewCount(int totalReviewCount) {
+	public void setTotalReviewCount(int totalReviewCount) {
 		this.totalReviewCount = totalReviewCount;
 	}
 

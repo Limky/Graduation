@@ -21,21 +21,21 @@ public class ProductService {
 		this.memberDAO = memberDAO;
 	}
 
-	public List<Product> getPopularProducts() {
+	public List<Product> getPopularProducts(String category) {
 	
-		return productDAO.getPopularProducts();
+		return productDAO.getPopularProducts(category);
 		
 	}
 
-	public List<Product> getMostReviewProducts() {
+	public List<Product> getMostReviewProducts(String category) {
 		
-		return productDAO.getMostReviewProducts();
+		return productDAO.getMostReviewProducts(category);
 		
 	}
 
-	public List<Product> getMostScanProducts() {
+	public List<Product> getMostScanProducts(String category) {
 		
-		return productDAO.getMostScanProducts();
+		return productDAO.getMostScanProducts(category);
 		
 	}
 

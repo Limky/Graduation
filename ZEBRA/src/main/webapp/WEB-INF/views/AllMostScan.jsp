@@ -27,13 +27,15 @@
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
 <link href="${heroicfeatures}" rel="stylesheet" />
-<!-- 
-<script src="js/jquery.js"></script>
+
+	
+<!-- 	<script src="js/jquery.js"></script>
 
 	Bootstrap Core JavaScript
 	<script src="js/bootstrap.min.js"></script>
-
  -->
+
+
 <style>
 #titles {
 	color: black;
@@ -47,10 +49,11 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
-	
+
 	<!---------------------------------카테고리 바 시작-------------------------  -->
 	<jsp:include page="Category.jsp"></jsp:include>
 	<!---------------------------------카테고리 바 끝-------------------------  -->
+
 <%
 
 
@@ -79,29 +82,28 @@
 	</div>
 
 
-
 	<!-- Page Content -->
 	<div class="container">
 		<h3 align="center" style="font-family: fantasy; padding: 30px">
-			<small>Popularity</small>
+			<small>MostScan</small>
 		</h3>
 		<!-- /.row -->
 
 		<!-- Projects Row -->
 		<div class="row">
 
-			<c:forEach var="popularProduct" items="${popularProductModel}">
+			<c:forEach var="AllmostScanProductsModel" items="${mostScanProductsModel}">
 				
 
 				<div class="col-md-4 portfolio-item">
-					<a href="#"> <img class="img-responsive" src="${popularProduct.productUrl}" alt=""  style="width: 700px; height:400px;"></a>
+					<a href="#"> <img class="img-responsive" src="${AllmostScanProductsModel.productUrl}" alt=""  style="width: 700px; height:400px;"></a>
 					<h1>
 						<small style="font-weight: 800"><c:out
-								value="${popularProduct.productName}"></c:out></small>
+								value="${AllmostScanProductsModel.productName}"></c:out></small>
 					</h1>
 					<div>
 					<p>
-						<c:out value="${popularProduct.description}"></c:out><br>
+						<c:out value="${AllmostScanProductsModel.description}"></c:out><br>
 					</p>
 					<button type="button" class="btn btn-danger">Review</button>
 					</div>
@@ -121,8 +123,6 @@
 	
 
 	</div>
-	
-	
 
 </body>
 
