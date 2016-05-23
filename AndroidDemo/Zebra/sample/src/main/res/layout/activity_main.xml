@@ -87,7 +87,7 @@
                 android:paddingTop="20dp">
 
                 <at.markushi.ui.CircleButton
-                    android:id="@+id/reviewButton"
+                    android:id="@+id/loginButton"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/guest_male_48"

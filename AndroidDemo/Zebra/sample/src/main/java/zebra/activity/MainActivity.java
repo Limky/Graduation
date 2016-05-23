@@ -1,6 +1,5 @@
 package zebra.activity;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +10,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,31 +20,59 @@ import at.markushi.ui.CircleButton;
 import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
+import zebra.json.Review;
+import zebra.manager.ScanManager;
+import zebra.network.NetworkManager;
 import zebra.views.NaviHeaderView;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    CircleButton barcodeButton, reviewButton, loginButton;
+public class MainActivity extends AppCompatActivity {
+    CircleButton loginButton, barcodeButton, searchButton;
+
+    String barcode;
+
     //for toolbar
     DrawerLayout mDrawerLayout;
     ListView mDrawerList;
     NaviAdapter naviAdapter;
     ActionBarDrawerToggle mDrawerToggle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //Button 설정
+        loginButton = (CircleButton) findViewById(R.id.loginButton);
         barcodeButton = (CircleButton) findViewById(R.id.barcodeButton);
-        reviewButton = (CircleButton) findViewById(R.id.reviewButton);
-        loginButton = (CircleButton) findViewById(R.id.searchButton);
+        searchButton = (CircleButton) findViewById(R.id.searchButton);
 
-        barcodeButton.setOnClickListener(this);
-        reviewButton.setOnClickListener(this);
-        loginButton.setOnClickListener(this);
+        //loginButton OnClick
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+            }
+        });
+        barcodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new IntentIntegrator(MainActivity.this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
+            }
+        });
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        setToolbar();
+
+    }
+
+    void setToolbar(){
         //Toolbar 설정
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -97,6 +122,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mDrawerToggle.syncState();
     }
 
+    public void network(){
+        NetworkManager.getInstance().review(this, barcode, new NetworkManager.OnResultResponseListener<Review>() {
+            @Override
+            public void onSuccess(Review result) {
+                if(result.productInfo==null){
+                    Toast.makeText(MainActivity.this, "등록 된 상품이 없습니다.", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(MainActivity.this, ProductRegisterActivity.class);
+                    startActivity(i);
+                }else if(result == null){
+                    Toast.makeText(MainActivity.this, "등록 대기중", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Intent i = new Intent(MainActivity.this, ReviewActivity.class);
+                    i.putExtra("Result", result);
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onFail(int code, String responseString) {
+                Toast.makeText(MainActivity.this, "실패"+code, Toast.LENGTH_LONG).show();
+                Log.d("Main", "실패");
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -108,32 +159,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("MainActivity", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(MainActivity.this, ReviewActivity.class);
-                startActivity(i);
+                //ScanManager에 barcode를 set
+                ScanManager.getInstance().setBarcode(result.getContents());
+                barcode = ScanManager.getInstance().getBarcode();
+                network();
             }
         } else {
             Log.d("MainActivity", "Cancelled scan");
             Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        int buttonId = v.getId();
-        switch (buttonId) {
-            case R.id.barcodeButton:
-                new IntentIntegrator(this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
-                break;
-            case R.id.reviewButton:
-                Intent reviewIntent = new Intent(MainActivity.this, ReviewActivity.class);
-                startActivity(reviewIntent);
-                break;
-            case R.id.loginButton:
-                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-                break;
         }
     }
 

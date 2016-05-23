@@ -1,11 +1,15 @@
 package zebra.views;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import example.zxing.R;
+import zebra.activity.ReviewActivity;
 
 /**
  * Created by multimedia on 2016-05-13.
@@ -14,7 +18,7 @@ public class ReviewHeaderView extends FrameLayout {
 
     ImageView imageView;
     TextView goodsName;
-    //TextView ratingBar;
+    Button dialogButton;
 
     public ReviewHeaderView(Context context) {
         super(context);
@@ -26,10 +30,10 @@ public class ReviewHeaderView extends FrameLayout {
 
         imageView = (ImageView)findViewById(R.id.goodsImage);
         goodsName = (TextView)findViewById(R.id.goodsName);
-        //ratingBar = (TextView)findViewById(R.id.ratingBar);
-
+        dialogButton = (Button)findViewById(R.id.dialogButton);
         imageView.setImageResource(R.drawable.book);
-        //goodsName.setText("상품상품상품");
-        //ratingBar.setText("별점");
+    }
+    public void setReviewHeader(){
+
     }
 }

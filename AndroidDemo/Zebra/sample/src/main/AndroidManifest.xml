@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="example.zxing">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
     <application
         android:name=".SampleApplication"
         android:allowBackup="true"
@@ -38,6 +41,12 @@
         <activity
             android:name="zebra.activity.LoginActivity"
             android:label="LoginActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity
+            android:name="zebra.activity.ProductRegisterActivity"
+            android:label="ProductRegisterActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme"></activity>
     </application>

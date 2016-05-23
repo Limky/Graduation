@@ -2,7 +2,8 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
+        <item name="colorAccent">#FF4081</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
@@ -13,13 +14,22 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="AppCompatCaptureTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="cust_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowTitleStyle">@style/dialog_title_style</item>
+    </style>
+
+    <style name="dialog_title_style" parent="android:Widget.TextView">
+        <item name="android:background">@color/primary</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!--<style name="AppCompatCaptureTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">#ffb341</item>
         <item name="colorPrimaryDark">#ffb341</item>
         <item name="colorAccent">#ffb341</item>
-    </style>
+    </style>-->
 
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>

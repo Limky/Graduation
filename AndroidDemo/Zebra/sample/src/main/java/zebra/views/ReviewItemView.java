@@ -25,6 +25,7 @@ public class ReviewItemView extends FrameLayout{
 
     private void init() {
         inflate(getContext(), R.layout.review_item, this);
+
         profileImage = (ImageView) findViewById(R.id.profileImage);
         memberId = (TextView)findViewById(R.id.memberId);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
@@ -32,11 +33,11 @@ public class ReviewItemView extends FrameLayout{
     }
 
     public void setViewItem(ReviewItem item) {
+
         profileImage.setImageResource(item.profileImage);
         memberId.setText(item.memberId);
-        //ratingBar.setStepSize(item.ratingBar);
+        ratingBar.setRating((float)item.ratingBar);
         reviewText.setText(item.reviewText);
-
     }
 
 

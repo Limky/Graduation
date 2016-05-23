@@ -16,29 +16,31 @@
             android:id="@+id/goodsImage"
             android:layout_width="155dp"
             android:layout_height="180dp"
-            android:src="@drawable/book"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:src="@drawable/book" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/goodsName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
+                android:layout_marginTop="20dp"
                 android:text="명품 C++"
+                android:textColor="#000000"
                 android:textSize="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
                 android:text="황기태 교수님이 집필하신 명품 C++"
+                android:textColor="#000000"
                 android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>
@@ -49,4 +51,15 @@
         android:layout_height="wrap_content"
         android:numStars="5"
         android:theme="@style/RatingBar" />
+
+    <Button
+        android:id="@+id/dialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_button"
+        android:text="리뷰 작성"
+        android:textColor="@color/text_white" />
 </LinearLayout>

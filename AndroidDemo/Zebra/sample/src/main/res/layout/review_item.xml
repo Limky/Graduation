@@ -15,7 +15,6 @@
             android:id="@+id/profileImage"
             android:layout_width="65dp"
             android:layout_height="0dp"
-            android:src="@drawable/zebra_logo"
             app:siBorderWidth="5dp"
             app:siBorderColor="@color/image_boder_red"/>
 
@@ -24,19 +23,19 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical">
-        <TextView
-            android:id="@+id/memberId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="New Text" />
+            <TextView
+                android:id="@+id/memberId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="New Text" />
 
-        <TextView
-            android:id="@+id/reviewText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="New Text" />
+            <TextView
+                android:id="@+id/reviewText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="New Text" />
 
         </LinearLayout>
 
@@ -50,6 +49,7 @@
         android:scaleX="0.7"
         android:scaleY="0.7"
         android:stepSize="0.5"
+        android:isIndicator="true"
         android:theme="@style/RatingBar" />
 
 
