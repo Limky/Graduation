@@ -1,6 +1,3 @@
-![Image](http://cfile22.uf.tistory.com/image/242FC745563E3029112BF8)
-  
-  야미야미!!!스타포트~
 
 # Graduation Project
 It is our graduaion project, Project members consist of limky,iguru,bang.
