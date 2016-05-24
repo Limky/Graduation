@@ -14,6 +14,7 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.client.HttpClient;
 import zebra.json.Login;
 import zebra.json.Review;
+import zebra.json.Search;
 
 /**
  * Created by multimedia on 2016-05-18.
@@ -147,6 +148,27 @@ public class NetworkManager {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 listener.onSuccess(jsonResponseString);
+            }
+        });
+    }
+
+    private static final String PRODUCT_SEARCH_URL = SERVER_URL + "/appProductSearch";
+
+    public void productSearch(Context context, String keyWord, final OnResultResponseListener<Search> listener){
+        RequestParams params = new RequestParams();
+        params.put("keyWord", keyWord);
+
+        client.post(context, PRODUCT_SEARCH_URL, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                listener.onFail(statusCode, responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                String jsonResponseString = responseString.replaceAll("[\n \r]", "");
+                Search result = gson.fromJson(jsonResponseString, Search.class);
+                listener.onSuccess(result);
             }
         });
     }

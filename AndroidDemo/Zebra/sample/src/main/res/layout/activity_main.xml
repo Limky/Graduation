@@ -51,67 +51,74 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/text_white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/primary"
+                        android:gravity="center"
+                        android:paddingBottom="50dp"
+                        android:paddingTop="50dp"
+                        android:text="ZEBRA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="100dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/primary"
+                    android:layout_margin="10dp"
+                    android:background="#FFFFFF"
                     android:gravity="center"
-                    android:paddingBottom="50dp"
-                    android:paddingTop="50dp"
-                    android:text="ZEBRA"
-                    android:textColor="#FFFFFF"
-                    android:textSize="100dp" />
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp">
+
+                    <at.markushi.ui.CircleButton
+                        android:id="@+id/loginButton"
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:src="@drawable/guest_male_48"
+                        app:cb_color="@color/primary"
+                        app:cb_pressedRingWidth="8dip" />
+
+                    <at.markushi.ui.CircleButton
+                        android:id="@+id/barcodeButton"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/zebra_icon"
+                        app:cb_color="@color/primary"
+                        app:cb_pressedRingWidth="8dip" />
+
+                    <at.markushi.ui.CircleButton
+                        android:id="@+id/searchButton"
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:src="@drawable/search_48"
+                        app:cb_color="@color/primary"
+                        app:cb_pressedRingWidth="8dip" />
+                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp">
-
-                <at.markushi.ui.CircleButton
-                    android:id="@+id/loginButton"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/guest_male_48"
-                    app:cb_color="@color/primary"
-                    app:cb_pressedRingWidth="8dip" />
-
-                <at.markushi.ui.CircleButton
-                    android:id="@+id/barcodeButton"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/zebra_icon"
-                    app:cb_color="@color/primary"
-                    app:cb_pressedRingWidth="8dip" />
-
-                <at.markushi.ui.CircleButton
-                    android:id="@+id/searchButton"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/search_48"
-                    app:cb_color="@color/primary"
-                    app:cb_pressedRingWidth="8dip" />
-            </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
 
         <FrameLayout
             android:id="@+id/content_frame"

@@ -21,6 +21,8 @@ import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
 import zebra.json.Review;
+import zebra.manager.MemberManager;
+import zebra.manager.PropertyManager;
 import zebra.manager.ScanManager;
 import zebra.network.NetworkManager;
 import zebra.views.NaviHeaderView;
@@ -64,15 +66,25 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(searchIntent);
             }
         });
 
-        setToolbar();
+        setToolbar(true);
+
+        //자동 로그인일 경우에 설정
+        if(PropertyManager.getInstance().getAutoLogin())PropertyManager.getInstance().setMemberInfoToMemManager();
 
     }
 
-    void setToolbar(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setToolbar(false);
+    }
+
+    void setToolbar(boolean isFirst){
         //Toolbar 설정
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -83,19 +95,31 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setAdapter(naviAdapter);
 
         NaviHeaderView header = new NaviHeaderView(MainActivity.this);
-        mDrawerList.addHeaderView(header);
+        //onResume()에서 두번째 불려지는 경우 naviHeader가 두개 생기는 경우를 방지!!
+        if(isFirst)mDrawerList.addHeaderView(header);
 
         //navbar 아이템들, 지워야됨
         for (int i=0; i<4; i++) {
             if(i == 0){NaviItem item = new NaviItem(R.drawable.ic_perm_identity_black_48dp, "프로필");naviAdapter.add(item);}
             if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}
             if(i == 2){NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");naviAdapter.add(item);}
-            if(i == 3){NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);}
+            if(i == 3){
+                if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);}
+                else {NaviItem item = new NaviItem(R.drawable.logout, "로그인");naviAdapter.add(item);}
+            }
         }
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position){
+                    case 4:
+                        //로그아웃 일 경우에 toolbar를 다시 설정
+                        PropertyManager.getInstance().setAutoLogin(false);
+                        PropertyManager.getInstance().setIsogin(false);
+                        setToolbar(false);
+                }
                 int editedPosition = position+1;
                 Toast.makeText(MainActivity.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);

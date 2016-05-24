@@ -49,6 +49,12 @@
             android:label="ProductRegisterActivity"
             android:launchMode="singleInstance"
             android:theme="@style/AppTheme"></activity>
+
+        <activity
+            android:name="zebra.activity.SearchActivity"
+            android:label="SearchActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

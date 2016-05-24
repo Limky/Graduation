@@ -1,5 +1,7 @@
 package zebra.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.TextUtils;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 import example.zxing.R;
 import zebra.activity.LoginActivity;
 import zebra.json.Login;
+import zebra.manager.MemberManager;
+import zebra.manager.PropertyManager;
 import zebra.network.NetworkManager;
 
 /**
@@ -32,11 +36,11 @@ public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
+        final View view = inflater.inflate(R.layout.fragment_login, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        idEditText = (EditText) v.findViewById(R.id.idEditText);
-        passwordEditText = (EditText) v.findViewById(R.id.passwordEditText);
+        idEditText = (EditText) view.findViewById(R.id.idEditText);
+        passwordEditText = (EditText) view.findViewById(R.id.passwordEditText);
 
         idEditText.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -52,9 +56,9 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        autoLoginCheck = (CheckBox) v.findViewById(R.id.autoLoginCheck);
+        autoLoginCheck = (CheckBox) view.findViewById(R.id.autoLoginCheck);
 
-        loginButton = (Button) v.findViewById(R.id.loginButton);
+        loginButton = (Button) view.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,9 +72,17 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onSuccess(Login result) {
                             if (autoLoginCheck.isChecked()) {
-                                //autoLogin 설정
+                                PropertyManager.getInstance().setAutoLogin(true);
+                                PropertyManager.getInstance().setMemberInfoToPrefManager(result);
+                                PropertyManager.getInstance().setMemberInfoToMemManager();
+                            } else {
+                                PropertyManager.getInstance().setMemberInfoToMemManager(result);
                             }
-                            Toast.makeText(getActivity(), "성공", Toast.LENGTH_LONG).show();
+
+                            PropertyManager.getInstance().setIsogin(true);
+                            Toast.makeText(getActivity(), "로그인 성공", Toast.LENGTH_LONG).show();
+
+                            getActivity().finish();
                         }
 
                         @Override
@@ -79,29 +91,10 @@ public class LoginFragment extends Fragment {
                         }
                     });
                 }
-
             }
         });
 
-        /*
-        signupButton = (Button)v.findViewById(R.id.signupButton);
-        loginButton = (Button)v.findViewById(R.id.loginButton);
-
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((LoginActivity)getActivity()).pushSignUpFragment();
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-            }
-        });*/
-
-        return v;
+        return view;
     }
 
 
