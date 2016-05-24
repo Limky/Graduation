@@ -21,7 +21,7 @@ public class ProductController {
 
 	private ProductService productService;
 	
-	@Autowired//di ÁÖÀÔ 
+	@Autowired//di ÃÃ–Ã€Ã” 
 	public void setProductService(ProductService productService){
 		this.productService = productService;	
 	}
@@ -41,7 +41,7 @@ public class ProductController {
 	
 	}
 	
-//--------------------------------------¸ğµç »óÇ° ¸Ş¼­µå-----------------------------------//
+//--------------------------------------Â¸Ã°ÂµÃ§ Â»Ã³Ã‡Â° Â¸ÃÂ¼Â­ÂµÃ¥-----------------------------------//
 	@RequestMapping(value="/PopularProduct",method = RequestMethod.GET)
 	public String showPopularProductPage(Model model, HttpSession session, HttpServletRequest request){
 

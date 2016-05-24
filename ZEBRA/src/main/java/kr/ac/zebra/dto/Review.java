@@ -6,6 +6,16 @@ public class Review {
 	private String barcode;
 	private String reviewText;
 	private double starPoint;
+	private String memberUrl;
+	private String productUrl;
+
+	public String getProductUrl() {
+		return productUrl;
+	}
+
+	public void setProductUrl(String productUrl) {
+		this.productUrl = productUrl;
+	}
 
 	public Review() {
 
@@ -60,10 +70,18 @@ public class Review {
 		this.starPoint = starPoint;
 	}
 
+	public String getMemberUrl() {
+		return memberUrl;
+	}
+
+	public void setMemberUrl(String memberUrl) {
+		this.memberUrl = memberUrl;
+	}
+
 	@Override
 	public String toString() {
-		return "ReviewDTO [index=" + index + ", id=" + id + ", barcode=" + barcode + ", reviewText=" + reviewText
-				+ ", starPoint=" + starPoint + "]";
+		return "{\"id\"=\"" + id + "\", \"reviewText\"=\"" + reviewText + "\", \"starPoint\"=" + starPoint
+				+ ", \"memberUrl\"=\"" + memberUrl + "\", \"productUrl\"=\"" + productUrl + "\"}";
 	}
 
 }

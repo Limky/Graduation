@@ -47,6 +47,14 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
+
+	<!---------------------------------네비게이션 바 시작-------------------------  -->
+	<jsp:include page="Search.jsp" flush="false"></jsp:include>
+	<!---------------------------------네비게이션 바 끝-------------------------  -->
+
+
+
+
 	
 	<!---------------------------------카테고리 바 시작-------------------------  -->
 	<jsp:include page="Category.jsp"></jsp:include>
@@ -103,7 +111,11 @@
 					<p>
 						<c:out value="${popularProduct.description}"></c:out><br>
 					</p>
-					<button type="button" class="btn btn-danger" value="${popularProduct.barcode}">Review</button>
+					
+		<%-- 			<c:url var="addUrl" value="review" /> --%>
+				<form action="review" method="GET">
+					<button type="submit" class="btn btn-danger" name="barcode" value="${popularProduct.barcode}">Review</button>
+					</form>
 					</div>
 					
 				</div>

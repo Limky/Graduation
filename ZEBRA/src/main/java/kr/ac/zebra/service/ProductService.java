@@ -23,6 +23,12 @@ public class ProductService {
 
 	}
 
+	public Product getProduct(String barcode){
+		
+		return productDAO.getProduct(barcode);
+	}
+	
+	
 	public List<Product> getPopularProducts(String category) {
 	
 		return productDAO.getPopularProducts(category);

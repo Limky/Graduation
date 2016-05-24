@@ -16,11 +16,29 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-
-
-
 <title>Popular</title>
 
+<spring:url value="/resources/core/css/bootstrap.min.css" var="coreCss" />
+<spring:url value="/resources/core/css/3-col-portfolio.css"
+	var="bootstrapCss" />
+<spring:url value="/resources/core/css/heroic-features.css"
+	var="heroicfeatures" />
+
+<link href="${bootstrapCss}" rel="stylesheet" />
+<link href="${coreCss}" rel="stylesheet" />
+<link href="${heroicfeatures}" rel="stylesheet" />
+<!-- 
+<script src="js/jquery.js"></script>
+
+	Bootstrap Core JavaScript
+	<script src="js/bootstrap.min.js"></script>
+
+ -->
+<style>
+#titles {
+	color: black;
+}
+</style>
 
 </head>
 <body>
@@ -29,56 +47,19 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
-
-<!---------------------------------모든 인기 상품 페이지------------------------  -->
-	<jsp:include page="PopularProduct.jsp"></jsp:include>
-	<!----------------------------------모든 인기 상품 페이지 바 끝-------------------------  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- Page Content -->
-	<div class="container">
-		
-
-
-
-		<!-- /.row -->
-		<hr>
-
-
-		<hr>
-
-		<!-- Footer -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright &copy; Your Website 2014</p>
-				</div>
-			</div>
-			<!-- /.row -->
-		</footer>
-
-	</div>
+			<c:out value="${productInfo}"></c:out>
 	
-	<!-- /.container -->
+
+
+	<c:forEach var="reviewList" items="${reviewList}">
+		<p>
+			<c:out value="${reviewList}">
+			</c:out>
+		</p>
+
+	</c:forEach>
+
+
 
 </body>
 

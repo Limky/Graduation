@@ -49,6 +49,11 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
+	<!---------------------------------네비게이션 바 시작-------------------------  -->
+	<jsp:include page="Search.jsp" flush="false"></jsp:include>
+	<!---------------------------------네비게이션 바 끝-------------------------  -->
+
+
 
 	<!---------------------------------카테고리 바 시작-------------------------  -->
 	<jsp:include page="Category.jsp"></jsp:include>
@@ -64,7 +69,7 @@
 %>
 <%=currentCategory %>
 
-	<div class="container" style="padding:15px">
+	<div class="container" style="padding:15px" >
 		<div class="row">
 			<div class="col-md-4" align="center">
 				<h4 id="" style="font-family: fantasy;"><a href="/ZEBRA/PopularProduct?category=<%=currentCategory%>">Popularity</a></h4>

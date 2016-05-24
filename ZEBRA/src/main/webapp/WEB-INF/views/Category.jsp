@@ -41,7 +41,7 @@
 </head>
 <body>
 	
-<div class="row" align="center">
+<div class="row" align="center" style="padding-top:50px">
   <div class="col-md-1"></div>
   <div class="col-md-1"></div>
   <div class="col-md-1"></div>

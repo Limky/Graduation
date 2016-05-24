@@ -53,5 +53,13 @@ public class HomeController {
 		return "testdesign";
 	}
 	
+
+	
+	@RequestMapping("/Search")
+	public String Search(){
+	
+		return "Search";
+	}
+	
 	
 }
