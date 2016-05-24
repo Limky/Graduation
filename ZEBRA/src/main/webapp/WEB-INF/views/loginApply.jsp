@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -31,44 +31,18 @@
 
 
 
-<title>Home</title>
-
-
-
+<title>Login Apply</title>
 </head>
 <body>
 
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
+		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
+ 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
 
-
-
-	<h1>여기는 파워 리뷰어 페이지 입니다.</h1>
-
-
-
-
-	<h2>
-		<c:forEach var="firstGrade" items="${firstGrade}">
-
-			<c:out value="${firstGrade.name}"></c:out>
-
-		</c:forEach>
-		</br>
-		<c:forEach var="secondGrade" items="${secondGrade}">
-
-			<c:out value="${secondGrade.name}"></c:out>
-
-		</c:forEach>
-		</br>
-		<c:forEach var="thirdGrade" items="${thirdGrade}">
-
-			<c:out value="${thirdGrade.name}"></c:out>
-
-		</c:forEach>
-	
+	<h1>자사 상품 페이지</h1>
+	</br>
+	<h1>로그인 후 이용해주세요.</h1>
 
 </body>
 </html>

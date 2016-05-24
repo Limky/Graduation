@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page session="true"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
@@ -38,37 +37,19 @@
 </head>
 <body>
 
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
+	�ڻ� �α��ǰ ������
 
 
+</br>
+	<c:forEach var="ourPopularProduct" items="${ourPopularProducts}">
 
-
-	<h1>여기는 파워 리뷰어 페이지 입니다.</h1>
-
-
-
-
-	<h2>
-		<c:forEach var="firstGrade" items="${firstGrade}">
-
-			<c:out value="${firstGrade.name}"></c:out>
+			<c:out value="${ourPopularProduct}"></c:out></br>
 
 		</c:forEach>
-		</br>
-		<c:forEach var="secondGrade" items="${secondGrade}">
 
-			<c:out value="${secondGrade.name}"></c:out>
 
-		</c:forEach>
-		</br>
-		<c:forEach var="thirdGrade" items="${thirdGrade}">
 
-			<c:out value="${thirdGrade.name}"></c:out>
 
-		</c:forEach>
-	
 
 </body>
 </html>

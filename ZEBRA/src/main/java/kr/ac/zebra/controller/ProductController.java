@@ -17,66 +17,40 @@ import kr.ac.zebra.service.ProductService;
 public class ProductController {
 
 	private ProductService productService;
-	
-	@Autowired//di 주입 
-	public void setProductService(ProductService productService){
-		this.productService = productService;	
+
+	@Autowired // di 주입
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
 	}
-	
 
 	@RequestMapping("/PopularProduct")
-	public String showPopularProductPage(Model model, HttpSession session, HttpServletRequest request){
+	public String showPopularProductPage(Model model, HttpSession session, HttpServletRequest request) {
 
-		
-		List<Product> popularProduct =productService.getPopularProducts();
+		List<Product> popularProduct = productService.getPopularProducts();
 		model.addAttribute("popularProductModel", popularProduct);
 
-			return "PopularProduct";
-		
-	
-	}
-	
-	@RequestMapping("/MostReview")
-	public String showMostReviewPage(Model model, HttpSession session, HttpServletRequest request){
+		return "PopularProduct";
 
-		
-		List<Product> mostReviewProducts =productService.getMostReviewProducts();
+	}
+
+	@RequestMapping("/MostReview")
+	public String showMostReviewPage(Model model, HttpSession session, HttpServletRequest request) {
+
+		List<Product> mostReviewProducts = productService.getMostReviewProducts();
 		model.addAttribute("mostReviewProductsModel", mostReviewProducts);
 
-			return "MostReview";
-		
-	
-	}
-	
-	
-	@RequestMapping("/MostScan")
-	public String showMostScanPage(Model model, HttpSession session, HttpServletRequest request){
+		return "MostReview";
 
-		
-		List<Product> mostScanProducts =productService.getMostScanProducts();
+	}
+
+	@RequestMapping("/MostScan")
+	public String showMostScanPage(Model model, HttpSession session, HttpServletRequest request) {
+
+		List<Product> mostScanProducts = productService.getMostScanProducts();
 		model.addAttribute("mostScanProductsModel", mostScanProducts);
 
-			return "MostScan";
-		
-	
-	}
-	
-	
-	
-	
-	//-------------------------------자사 상품 라인---------------------------------------
-	@RequestMapping("/houseProduct")
-	public String showHousePopularProductPage(Model model, HttpSession session, HttpServletRequest request){
+		return "MostScan";
 
-		
-		List<Product> housePopularProducts =productService.getHousePopularProducts((String)session.getAttribute("logOk"));
-		model.addAttribute("housePopularProductsModel", housePopularProducts);
-
-			return "houseProduct";
-	
-	
 	}
-	
-	
-	
+
 }

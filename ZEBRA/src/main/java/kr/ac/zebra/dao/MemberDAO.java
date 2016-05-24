@@ -28,7 +28,7 @@ public class MemberDAO {
 
 		try {
 			String sqlStatement = "select * from membertb where id=?";
-
+			System.out.println("34");
 			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id }, new MemberMapper());
 		} catch (Exception e) {
 
@@ -56,7 +56,7 @@ public class MemberDAO {
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
 	}
-	
+
 	public List<Member> getSecondGrade() {
 
 		String sqlStatement = "select * from membertb where level = 2 order by totalReviewCount desc limit 0,3";
@@ -64,7 +64,7 @@ public class MemberDAO {
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
 	}
-	
+
 	public List<Member> getThirdGrade() {
 
 		String sqlStatement = "select * from membertb where level = 3 order by totalReviewCount desc limit 0,3";

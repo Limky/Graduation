@@ -10,34 +10,34 @@ import org.springframework.stereotype.Component;
 
 import kr.ac.zebra.dto.Product;
 
-
-//@ComponentÔøΩÎíó ÔøΩÏî† ÔøΩÍ≤¢ÔøΩÏòíÔøΩÎí™?ëúÔø? ÔøΩÏòÑÔøΩÎ£ûÔøΩÏëùÊø°ÔøΩ ?çÆ?çâ?ëùÊø°ÔøΩ ÔøΩÍΩïÔøΩÏ†ôÔøΩÎπê ‰ª•ÔøΩÔøΩÎñé.
 @Component("productDAO")
 public class ProductDAO {
 
 	private JdbcTemplate jdbcTemplateObject;
 
-	// @Autowired ÂØÉÏéå?ä¶ typeÔøΩÏî† Â™õÏààÔø? ÂØÉÏéå?ä¶?ëúÔø? Ôß£ÏÑé?îÅÔøΩÎ∏≥ÔøΩÎñé.
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public int getRowCount() {
-		String sqlStatement = "select count(*) from producttb";
-		return jdbcTemplateObject.queryForObject(sqlStatement, Integer.class);// ÔøΩÎ∏ØÔøΩÍµπÔøΩÏìΩ
-																				// ÔøΩÏÇ§?áâ?öØ?†•ÔøΩÎìÉ
-
-	}
-
-	// --------------------------------------ºˆ¡§ ∂Û¿Œ-------------------------------------------------------------------------//
-	// Querying and returning a single object
 	public Product getProduct(String barcode) {
+
+		System.out.println("Product DAO");
 
 		try {
 			String sqlStatement = "select * from producttb where barcode=?";
 
-			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { barcode }, new ProductMapper());
+			Product product = jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { barcode },
+					new ProductMapper());
+
+			if (product.getBarcode().isEmpty()) {
+
+				return null;
+			} else {
+
+				return product;
+			}
+
 		} catch (Exception e) {
 
 			System.out.println("getProduct DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
@@ -45,53 +45,50 @@ public class ProductDAO {
 			return null;
 
 		}
-
 	}
 
-	// Querying and returning multiple object
 	public List<Product> getProducts() {
 
 		String sqlStatement = "select * from producttb";
 
 		return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
-																				// Classes
+																			// Classes
 
 	}
 
 	public boolean insert(Product product) {
 
-		
-		 String barcode = product.getBarcode();
-		 String productName = product.getCompanyName();
-		 String description = product.getDescription();
-		 String category = product.getCategory();
-		 String productUrl = product.getProductUrl();
-		 String companyName = product.getCompanyName();
-		 int scanCount = product.getScanCount();
-		 int totalReviewCount = product.getTotalReviewCount();
-		 double starPoint = product.getStarPoint();
-		
-	
+		String barcode = product.getBarcode();
+		String productName = product.getCompanyName();
+		String description = product.getDescription();
+		String category = product.getCategory();
+		String productUrl = product.getProductUrl();
+		String companyName = product.getCompanyName();
+		int scanCount = product.getScanCount();
+		int totalReviewCount = product.getTotalReviewCount();
+		double starPoint = product.getStarPoint();
+
 		String sqlStatement = "insert into producttb (barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint) values (?,?,?,?,?,?,?,?,?)";
-		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
-	
-	
+		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category,
+				productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
+
 	}
 
 	public boolean update(Product product) {
 
-		 String barcode = product.getBarcode();
-		 String productName = product.getCompanyName();
-		 String description = product.getDescription();
-		 String category = product.getCategory();
-		 String productUrl = product.getProductUrl();
-		 String companyName = product.getCompanyName();
-		 int scanCount = product.getScanCount();
-		 int totalReviewCount = product.getTotalReviewCount();
-		 double starPoint = product.getStarPoint();
+		String barcode = product.getBarcode();
+		String productName = product.getCompanyName();
+		String description = product.getDescription();
+		String category = product.getCategory();
+		String productUrl = product.getProductUrl();
+		String companyName = product.getCompanyName();
+		int scanCount = product.getScanCount();
+		int totalReviewCount = product.getTotalReviewCount();
+		double starPoint = product.getStarPoint();
 
 		String sqlStatement = "update producttb set barcode=?, productName=?, description=?, category=?, productUrl=?, companyName=?, scanCount=?, totalReviewCount=?, starPoint=? where barcode=?";
-		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
+		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category,
+				productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
 	}
 
 	public boolean delete(int barcode) {
@@ -99,98 +96,68 @@ public class ProductDAO {
 		String sqlstatement = "delete from producttb where barcode=?";
 		return (jdbcTemplateObject.update(sqlstatement, new Object[] { barcode }) == 1);
 	}
-	
-	
-	
-	
+
 	// Querying and returning multiple object
 	public List<Product> getPopularProducts() {
 		try {
-		
+
 			String sqlStatement = "select * from producttb where totalReviewCount >= 2 order by starPoint DESC LIMIT 0, 9";
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
-			
-		}catch (Exception e) {
-		
-		
-		System.out.println("getPopularProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
-		e.printStackTrace();
-		return null;
+
+		} catch (Exception e) {
+
+			System.out.println("getPopularProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
+			e.printStackTrace();
+			return null;
+
+		}
 
 	}
-																	// Classes
 
-	}
-	
-	// Querying and returning multiple object
 	public List<Product> getMostReviewProducts() {
 		try {
-		
+
 			String sqlStatement = "select * from producttb where totalReviewCount > 0 order by totalReviewCount DESC LIMIT 0, 10";
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
-			
-		}catch (Exception e) {
-		
-		
-		System.out.println("getMostReviewProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
-		e.printStackTrace();
-		return null;
+
+		} catch (Exception e) {
+
+			System.out.println("getMostReviewProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
+			e.printStackTrace();
+			return null;
+
+		}
 
 	}
-																	// Classes
 
-	}
-	
-	
-	// Querying and returning multiple object
 	public List<Product> getMostScanProducts() {
 		try {
-		
+
 			String sqlStatement = "select * from producttb  order by scanCount DESC LIMIT 0, 10;";
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous
-			
-		}catch (Exception e) {
-		
-		
-		System.out.println("getMostScanProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
-		e.printStackTrace();
-		return null;
 
+		} catch (Exception e) {
+
+			System.out.println("getMostScanProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
+			e.printStackTrace();
+			return null;
+		}
 	}
-																	// Classes
 
-	}
-	
-	
-	
-	//----------------------------------------¿⁄ªÁ ªÛ«∞-----------------------------------------
-	
-
-	// Querying and returning multiple object
-	public List<Product> getHousePopularProducts(String companyName) {
+	public List<Product> getSearchProduct(String keyword) {
 		try {
-		
-			String sqlStatement = "select * from producttb  where (companyName = ?) and (totalReviewCount > 2) order by starPoint DESC LIMIT 0, 10";
+			String sqlStatement = "select * from producttb where productName like '%" + keyword + "%'";
 
-			return jdbcTemplateObject.query(sqlStatement,new Object[] { companyName }, new ProductMapper()); // Anonymous
-			
-		}catch (Exception e) {
-		
-		
-		System.out.println("getHousePopularProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
-		e.printStackTrace();
-		return null;
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
+		} catch (Exception e) {
+			System.out.println("getMostScanProducts DAO øπø‹ √≥∏Æ πﬂª˝ »π¿Œ ∏ﬁºº¡ˆ ");
+			e.printStackTrace();
+			return null;
 
+		}
 	}
-																	// Classes
-
-	}
-	
-	
-	
-	
 
 }

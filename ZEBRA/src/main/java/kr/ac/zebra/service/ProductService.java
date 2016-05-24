@@ -18,33 +18,37 @@ public class ProductService {
 		this.productDAO = productDAO;
 	}
 
+	public Product getProduct(String barcode) {
+
+		System.out.println("Product Service");
+
+		Product product = productDAO.getProduct(barcode);
+
+		if (product == null) {
+
+			return null;
+		} else {
+
+			return product;
+		}
+	}
+
 	public List<Product> getPopularProducts() {
-	
+
 		return productDAO.getPopularProducts();
-		
+
 	}
 
 	public List<Product> getMostReviewProducts() {
-		
+
 		return productDAO.getMostReviewProducts();
-		
+
 	}
 
 	public List<Product> getMostScanProducts() {
-		
+
 		return productDAO.getMostScanProducts();
-		
-	}
 
-
-//-------------------------자사 상품--------------------------
-	
-	public List<Product> getHousePopularProducts(String companyName) {
-		
-		return productDAO.getHousePopularProducts(companyName);
-		
 	}
-	
-	
 
 }

@@ -42,13 +42,6 @@
 		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
  	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
-<style>
-h1 {
-	padding: 100px;
-}
-</style>
-
-
 
 	<h1>자사 상품 페이지</h1>
 
