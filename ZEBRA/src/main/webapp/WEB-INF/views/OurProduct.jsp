@@ -35,24 +35,10 @@
 	<jsp:include page="topNavigation.jsp"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="Search.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
 
+	<div class="container" style="padding: 15px;padding-top:80px">
 
-
-
-	<%
-		request.setCharacterEncoding("UTF-8");
-		String currentCategory = (String) request.getAttribute("currentCategory");
-	%>
-	<%=currentCategory%>
-	<h1 style="padding: 50px"></h1>
-
-
-
-	<div class="container" style="padding: 15px">
 		<div class="row">
 			<div class="col-xs-6 col-sm-3" align="center">
 				<h4 id="" style="font-family: fantasy;">

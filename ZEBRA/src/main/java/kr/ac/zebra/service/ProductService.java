@@ -46,8 +46,12 @@ public class ProductService {
 		return productDAO.getMostScanProducts(category);
 		
 	}
-
-
+	
+	public List<Product> getProductSearch(String keyword){
+	      System.out.println("service");
+	      
+	      return productDAO.getSearchProduct(keyword);
+	   }
 	
 
 }

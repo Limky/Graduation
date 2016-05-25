@@ -85,9 +85,10 @@
 </style>
 
 <div class="container">
-	<div class="row" align="center">
+	<div class="row" align="center" style="padding-top:30px; padding-bottom:50px">
            <div id="custom-search-input">
                             <div class="input-group col-md-4">
+                         
                                 <input type="text" class="  search-query form-control" placeholder="Search" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-danger" type="button">

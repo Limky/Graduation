@@ -51,7 +51,7 @@
 	@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 	
 	#title {
-		background-color: #C00000 ;
+		background-color:#880000     ;
 		/* 	margin: 50px;  */
 		padding-top: 60px;
 		padding-bottom:30px;
@@ -70,8 +70,11 @@
 	}
 	</style>
 
-		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF;">ZEBRA<br>
-		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc">
+		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF;">
+			<!-- <img alt="" src="/ZEBRA/resources/image/test.png" width="150px" height="100px"> -->ZEBRA<br>
+		<div class="container" align="center">
+</div>
+		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc; border:1" >
 Section of the community to build healthy consumption culture
       </p>
 		</h1>
@@ -163,8 +166,6 @@ Section of the community to build healthy consumption culture
 			</script>
 <!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
 </div>
-
-
 
 
 <h1 align="center" style="padding:20px ">ZEBRA Service</h1>

@@ -188,6 +188,19 @@ public class ProductDAO {
 
 	}
 	
+	public List<Product> getSearchProduct(String keyword) {
+	      try {
+	         String sqlStatement = "select * from producttb where productName like '%" + keyword + "%'";
+
+	         return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
+	      } catch (Exception e) {
+	         System.out.println("getMostScanProducts DAO 예외 처리 발생 획인 메세지 ");
+	         e.printStackTrace();
+	         return null;
+
+	      }
+	   }
+	
 	
 	
 	
