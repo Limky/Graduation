@@ -1,7 +1,7 @@
-package zebra.network;
+package zebra.manager;
 
 import android.content.Context;
-import android.util.Log;
+import android.widget.Toast;
 
 
 import com.google.gson.Gson;
@@ -154,18 +154,20 @@ public class NetworkManager {
 
     private static final String PRODUCT_SEARCH_URL = SERVER_URL + "/appProductSearch";
 
-    public void productSearch(Context context, String keyWord, final OnResultResponseListener<Search> listener){
+    public void productSearch(final Context context, String keyword, final OnResultResponseListener<Search> listener){
         RequestParams params = new RequestParams();
-        params.put("keyWord", keyWord);
+        params.put("keyword", keyword);
 
         client.post(context, PRODUCT_SEARCH_URL, params, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 listener.onFail(statusCode, responseString);
+                Toast.makeText(context, "실패 "+statusCode, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Toast.makeText(context, "성공 "+statusCode, Toast.LENGTH_LONG).show();
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 Search result = gson.fromJson(jsonResponseString, Search.class);
                 listener.onSuccess(result);

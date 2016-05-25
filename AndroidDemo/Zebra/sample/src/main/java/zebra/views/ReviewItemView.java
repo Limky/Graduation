@@ -39,6 +39,4 @@ public class ReviewItemView extends FrameLayout{
         ratingBar.setRating((float)item.ratingBar);
         reviewText.setText(item.reviewText);
     }
-
-
 }

@@ -1,28 +1,22 @@
 package zebra.fragments;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import example.zxing.R;
-import zebra.activity.LoginActivity;
 import zebra.json.Login;
-import zebra.manager.MemberManager;
 import zebra.manager.PropertyManager;
-import zebra.network.NetworkManager;
+import zebra.manager.NetworkManager;
 
 /**
  * Created by multimedia on 2016-05-14.
@@ -93,9 +87,6 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
-
         return view;
     }
-
-
 }

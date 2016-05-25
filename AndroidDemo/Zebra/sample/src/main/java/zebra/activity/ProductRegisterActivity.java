@@ -19,7 +19,7 @@ import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
 import zebra.manager.ScanManager;
-import zebra.network.NetworkManager;
+import zebra.manager.NetworkManager;
 import zebra.views.NaviHeaderView;
 
 /**

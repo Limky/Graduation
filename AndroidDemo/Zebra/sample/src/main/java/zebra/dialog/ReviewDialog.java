@@ -15,7 +15,7 @@ import android.widget.Toast;
 import example.zxing.R;
 import zebra.json.Review;
 import zebra.manager.ScanManager;
-import zebra.network.NetworkManager;
+import zebra.manager.NetworkManager;
 
 /**
  * Created by multimedia on 2016-05-20.
