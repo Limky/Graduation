@@ -16,28 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `enterprisetb`
+-- Table structure for table `applytb`
 --
 
-DROP TABLE IF EXISTS `enterprisetb`;
+DROP TABLE IF EXISTS `applytb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `enterprisetb` (
-  `companyName` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`companyName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `applytb` (
+  `index` int(11) NOT NULL AUTO_INCREMENT,
+  `barcode` varchar(45) NOT NULL,
+  `id` varchar(45) NOT NULL,
+  `productName` varchar(45) NOT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `enterprisetb`
+-- Dumping data for table `applytb`
 --
 
-LOCK TABLES `enterprisetb` WRITE;
-/*!40000 ALTER TABLE `enterprisetb` DISABLE KEYS */;
-INSERT INTO `enterprisetb` VALUES ('농심','nongsim@naver.com','123'),('삼양','samyang@naver.com','456');
-/*!40000 ALTER TABLE `enterprisetb` ENABLE KEYS */;
+LOCK TABLES `applytb` WRITE;
+/*!40000 ALTER TABLE `applytb` DISABLE KEYS */;
+INSERT INTO `applytb` VALUES (2,'8801056059842','a','옥시'),(6,'8801237707890','a','옥시'),(7,'8801237707890','a','옥시'),(8,'8801237707890','a','옥시'),(9,'8801237707890','a','옥시');
+/*!40000 ALTER TABLE `applytb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-26 22:46:43
+-- Dump completed on 2016-05-26 22:46:45

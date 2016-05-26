@@ -28,7 +28,7 @@ CREATE TABLE `producttb` (
   `description` longtext NOT NULL,
   `starPoint` double NOT NULL,
   `category` varchar(45) NOT NULL,
-  `productUrl` varchar(45) NOT NULL,
+  `productUrl` longtext NOT NULL,
   `scanCount` int(11) NOT NULL,
   `companyName` varchar(45) NOT NULL,
   `totalReviewCount` int(11) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `producttb` (
 
 LOCK TABLES `producttb` WRITE;
 /*!40000 ALTER TABLE `producttb` DISABLE KEYS */;
-INSERT INTO `producttb` VALUES ('15489','가나우유','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.9,'음료','http://가나우유',4,'코카콜라',8),('21654','레쓰비','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.5,'음료','http://레쓰비',25,'칠성',17),('25497','실론티','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.8,'음료','http://실론티',17,'북스힐',16),('321654','코카콜라','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',4.2,'음료','http://코카콜라',6,'코카콜라',15),('36989','갤럭시노트','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.7,'가전제품','http://갤럭시노트',7,'북스힐',21),('54897','아이패드','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',1.9,'가전제품','http://아이패드',11,'그린',19),('5498','스프라이트','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.1,'음료','http://스프라이트',8,'칠성',10),('78954','코코팜','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.7,'음료','http://코코팜',13,'코카콜라',13),('9788955268423','통계학계론','쉽게 이해하고, 자료분석적 접근방식으로 통계적 방법을 익히고, 적응하도록 개발',4.5,'도서','http://통계학계론',10,'북스힐',11),('9788986497878','UML과객체지향','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',1.2,'도서','http://UML과객체지향',5,'그린',12),('9842156','오렌지주스','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',4.5,'음료','http://오렌지주스',9,'칠성',3);
+INSERT INTO `producttb` VALUES ('21654','갤럭시노트11','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.5,'1','http://레쓰비',25,'삼양',17),('25497','갤럭시노트22','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.8,'2','http://실론티',17,'삼양',16),('321654','삼성전자3 AX80K7580WFD','사용면적 90㎡, 소비전력 90W, 필터 항균필터, 기타특징 필터점검알림',4.2,'3','http://shopping.phinf.naver.net/main_9261996/9261996568.20160107095622.jpg?type=f300',6,'농심',15),('36989','갤럭시노트3','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.7,'3','http://갤럭시노트',7,'삼성',21),('54897','갤럭시노트4','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',1.9,'4','http://아이패드',11,'애플',19),('5498','스프라이트2','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.1,'2','http://스프라이트',8,'농심',10),('841456049881','가나우유11','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',3.9,'1','http://가나우유',4,'농심',8),('8801056049881','코코팜4','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',2.7,'4','http://코코팜',13,'해태',13),('8801056059842','아이시스 8.0','Natural Mineral Water Get a concise introduction to Spring, the popular open source framework for building lightweight enterprise',3.5,'1','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg',10,'롯데',5),('9788955268423','Just Spring4','Get a concise introduction to Spring, the popular open source framework for building lightweight enterprise',4.5,'4','https://scontent.xx.fbcdn.net/v/t1.0-9/13240509_172684289796330_2913376845849042849_n.jpg?oh=29e67d3e4ade26b3071fbdd803a56ca1&oe=57E17ADE',10,'농심',11),('9788986497878','UML과객체지향3','처음 접하는 초보자라도 알 수 있도록 쉽게 그리고 체계적으로 서술',1.2,'3','http://UML과객체지향',5,'삼양',12),('9842156','디올 foundation3','제형 리퀴드, 종류 파운데이션, 제품구성 본품, 제품 특징 자외선차단, 지속력, 커버력, 밀착력 사용 효과',4.5,'3','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg',9,'해태',3);
 /*!40000 ALTER TABLE `producttb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 23:17:06
+-- Dump completed on 2016-05-26 22:46:43
