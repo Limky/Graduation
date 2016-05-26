@@ -35,6 +35,7 @@ public class ReviewController {
 		
 			String barcode = request.getParameter("barcode");
 			List<Review> reviews = reviewService.getReviews(barcode);
+			System.out.println(reviews);
 			model.addAttribute("reviewList", reviews);
 		
 			Product	product =productService.getProduct(barcode);

@@ -194,7 +194,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand page-scroll" href="/ZEBRA/">ZEBRA</a>
+			<a class="navbar-brand page-scroll" href="/ZEBRA/" style="font-family: fantasy;">ZEBRA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
