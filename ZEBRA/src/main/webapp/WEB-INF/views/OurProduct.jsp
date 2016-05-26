@@ -47,10 +47,10 @@
 				<hr align="center" style="border: solid 3px #A91717; width: 30%;">
 			</div>
 			<div class="col-xs-6 col-sm-3" align="center">
-				<h4 id="" style="font-family: fantasy;">
+				<h4 id="" style="font-family: fantasy; color: #7A7A7A">
 					<a href="/ZEBRA/OurProduct?filter=Popularity">Popularity</a>
 				</h4>
-				<hr align="center" style="border: solid 3px #A91717; width: 30%;">
+				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
 			</div>
 			<div class="col-xs-6 col-sm-3" align="center">
 				<h4 id="" style="font-family: fantasy; color: #7A7A7A">

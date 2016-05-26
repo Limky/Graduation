@@ -46,9 +46,9 @@
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
-<div class="container" align="center">
+<!-- <div class="container" align="center">
    <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13256535_175802452817847_8678238176295810481_n.jpg?oh=3225592a48c3e7d8aa379b47c23f7a15&oe=57C68B66" width=200px, height=120px>
-</div>
+</div> -->
 	<!---------------------------------검색 바 시작-------------------------  -->
 	<jsp:include page="Search.jsp" flush="false"></jsp:include>
 	<!---------------------------------검색 바 끝-------------------------  -->
@@ -99,11 +99,15 @@
 			<c:forEach var="popularProduct" items="${popularProductModel}">
 				
 
-				<div class="col-md-4 portfolio-item">
+				<div class="col-md-4 portfolio-item" style="border:3">
 					<a href="#"> <img class="img-responsive" src="${popularProduct.productUrl}" alt=""  style="width: 700px; height:400px;"></a>
 					<h1>
 						<small style="font-weight: 800"><c:out
-								value="${popularProduct.productName}"></c:out></small>
+								value="${popularProduct.productName}"></c:out></small><br/>
+								<img alt="" src="/ZEBRA/resources/image/star4.png"
+							width="120px" height="30px"style="padding-top: 6px"><p style="font-size:20px">리뷰:<c:out
+								value="${popularProduct.totalReviewCount}"></c:out> 스캔:<c:out
+								value="${popularProduct.scanCount}"></c:out></p>
 					</h1>
 					<div>
 					<p>

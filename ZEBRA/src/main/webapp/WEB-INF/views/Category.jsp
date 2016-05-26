@@ -49,8 +49,8 @@
   <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=1">Books</a></div>
   <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=2">Appliances</a></div>
   <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=3">Beauty</a></div>
-  <div class="col-md-1">Food</div>
-  <div class="col-md-1">Necessaries</div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=4">Food</a></div>
+  <div class="col-md-1"><a href="/ZEBRA/PopularProduct?category=4">Necessaries</a></div>
 </div>
 
 
