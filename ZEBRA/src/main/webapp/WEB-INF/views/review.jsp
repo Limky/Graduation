@@ -19,22 +19,13 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
-<link rel="stylesheet"
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
-<spring:url value="/resources/core/css/bootstrap.min.css" var="coreCss" />
+<spring:url value="/resources/core/css/bootstrap.min.css"
+	var="bootstrapmincss" />
 <spring:url value="/resources/core/css/shop-item.css"
 	var="cssshopitemcss" />
 <spring:url value="/resources/core/css/blog-home" var="bloghome" />
 <link href="${bloghome}" rel="stylesheet" />
-<link href="${bootstrapCss}" rel="stylesheet" />
+<link href="${bootstrapmincss}" rel="stylesheet" />
 <link href="${cssshopitemcss}" rel="stylesheet" />
 
 <spring:url value="/resources/core/js/jquery.js" var="jsjqueryjs" />
@@ -47,11 +38,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
+
+
+
+<spring:url value="/resources/core/css/heroic-features"
+	var="heroicfeatures" />
+<link href="${heroicfeatures}" rel="stylesheet" />
 
 </head>
 
@@ -62,7 +54,9 @@
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
-
+	<%
+		String str = "star4";
+	%>
 
 
 
@@ -79,56 +73,18 @@
 			<!-- Blog Entries Column -->
 			<div class="col-md-8">
 
-				<h1 class="page-header">
-					Page Heading <small>Secondary Text</small>
-				</h1>
+				<h1 class="page-header">Product reviews</h1>
 
-
-				<img class="img-responsive" src="http://placehold.it/900x300" alt="">
 				<div class="row">
-					<div class="col-md-6" style="padding-top: 20px">
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger)
-									<p>5점</p>
-								</span>
-								<p>5점</p>
-							</div>
-						</div>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 70%">
-								<span class="sr-only">80% Complete (danger)</span>
-							</div>
-						</div>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 90%">
-								<span class="sr-only">80% Complete (danger)</span>
-							</div>
-						</div>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 20%">
-								<span class="sr-only">80% Complete (danger)</span>
-							</div>
-						</div>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 10%">
-								<span class="sr-only">80% Complete (danger)</span>
-							</div>
-						</div>
-					
 
+					<div class="col-md-6" style="">
+						<img class="img-responsive"
+							src="http://www.sa.all.biz/img/sa/catalog/1551.jpeg" alt=""
+							align="middle" style="width: 350px; height: 350px;">
 					</div>
 					<div class="col-md-6">
+						<img alt="" src="/ZEBRA/resources/image/<%=str%>.png"
+							width="230px" height="50px">
 
 						<h2>
 							<c:out value="${productInfo.productName}"></c:out>
@@ -137,11 +93,57 @@
 							<c:out value="${productInfo.description}"></c:out>
 						</p>
 
-
 					</div>
-				</div>
+					<div class="col-md-6" align="left">
+						<div class="col-md-3" align="left"><img alt="" src="/ZEBRA/resources/image/star5.png" width="80px" height="20px" align="left"></div>
+						<div class="col-md-9">	<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">
+								<span class="sr-only"> 80% Complete (danger) </span>
 
-				<hr>
+							</div>
+						</div></div>
+						<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star4.png" width="80px" height="20px"></div>
+						<div class="col-md-9">	<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">
+								<span class="sr-only"> 80% Complete (danger) </span>
+
+							</div>
+						</div></div>
+					<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star3.png" width="80px" height="20px"></div>
+						<div class="col-md-9">	<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">
+								<span class="sr-only"> 80% Complete (danger) </span>
+
+							</div>
+						</div></div>
+				<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star2.png" width="80px" height="20px"></div>
+						<div class="col-md-9">	<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">
+								<span class="sr-only"> 80% Complete (danger) </span>
+
+							</div>
+						</div></div>
+					<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star1.png" width="80px" height="20px"></div>
+						<div class="col-md-9">	<div class="progress">
+							<div class="progress-bar progress-bar-danger" role="progressbar"
+								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+								style="width: 80%">
+								<span class="sr-only"> 80% Complete (danger) </span>
+
+							</div>
+						</div></div>
+					</div>
+
+
+				</div>
 
 
 
@@ -164,19 +166,16 @@
 
 						<div class="row">
 							<div class="col-md-12">
+								<p>
 								<img
 									src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
 									alt="..." class="img-circle" width="50px" height="50px">
 								<c:out value="${reviewList.starPoint}"></c:out>
-								<span class="glyphicon glyphicon-star"></span> <span
-									class="glyphicon glyphicon-star"></span> <span
-									class="glyphicon glyphicon-star"></span> <span
-									class="glyphicon glyphicon-star"></span> <span
-									class="glyphicon glyphicon-star-empty"></span>
 								<c:out value="${reviewList.id}"></c:out>
-								<span class="pull-right">10 days ago</span>
+								<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px" height="20px">
+								</p>
 								<p>
-									<c:out value="${reviewList.reviewText}"></c:out>
+									<c:out value="${reviewList.reviewText}"></c:out><br/>		
 								</p>
 							</div>
 						</div>
@@ -191,53 +190,40 @@
 
 			<!-- Blog Sidebar Widgets Column -->
 			<div class="col-md-4" style="padding-top: 80px">
+				<h3>Related Products</h3>
+				<!-- 	<h1 class="page-header"><small>Related Products</small></h1> -->
+				<div class="thumbnail" style="width: 250px; height: 250px">
+					<img src="http://placehold.it/800x500" alt="">
+					<div class="caption">
+						<h5>Feature Label</h5>
+						<form action="review" method="GET">
+							<button type="submit" class="btn btn-danger" name="barcode"
+								value="${popularProduct.barcode}">Review</button>
+						</form>
 
-				<!-- Blog Search Well -->
-				<div class="well">
-					<h4>Blog Search</h4>
-					<div class="input-group">
-						<input type="text" class="form-control"> <span
-							class="input-group-btn">
-							<button class="btn btn-default" type="button">
-								<span class="glyphicon glyphicon-search"></span>
-							</button>
-						</span>
 					</div>
-					<!-- /.input-group -->
 				</div>
+				<div class="thumbnail" style="width: 250px; height: 250px">
+					<img src="http://placehold.it/800x500" alt="">
+					<div class="caption">
+						<h5>Feature Label</h5>
+						<form action="review" method="GET">
+							<button type="submit" class="btn btn-danger" name="barcode"
+								value="${popularProduct.barcode}">Review</button>
+						</form>
 
-				<!-- Blog Categories Well -->
-				<div class="well">
-					<h4>Blog Categories</h4>
-					<div class="row">
-						<div class="col-lg-6">
-							<ul class="list-unstyled">
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-							</ul>
-						</div>
-						<!-- /.col-lg-6 -->
-						<div class="col-lg-6">
-							<ul class="list-unstyled">
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-								<li><a href="#">Category Name</a></li>
-							</ul>
-						</div>
-						<!-- /.col-lg-6 -->
 					</div>
-					<!-- /.row -->
 				</div>
+				<div class="thumbnail" style="width: 250px; height: 250px">
+					<img src="http://placehold.it/800x500" alt="">
+					<div class="caption">
+						<h5>Feature Label</h5>
+						<form action="review" method="GET">
+							<button type="submit" class="btn btn-danger" name="barcode"
+								value="${popularProduct.barcode}">Review</button>
+						</form>
 
-				<!-- Side Widget Well -->
-				<div class="well">
-					<h4>Side Widget Well</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
-						repellat tempore quos aspernatur vero.</p>
+					</div>
 				</div>
 
 			</div>

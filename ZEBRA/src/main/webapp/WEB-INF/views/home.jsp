@@ -72,8 +72,7 @@
 
 		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF;">
 			<!-- <img alt="" src="/ZEBRA/resources/image/test.png" width="150px" height="100px"> -->ZEBRA<br>
-		<div class="container" align="center">
-</div>
+
 		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc; border:1" >
 Section of the community to build healthy consumption culture
       </p>
@@ -84,7 +83,7 @@ Section of the community to build healthy consumption culture
 <!-- 
 		<div class="container"> -->
 
-<div class="container">
+<div class="container" style="padding-top: 40px">
 <!------------------------------------------------------쿠르셜 시작  ----------------------------------------------------------->
 			<div id="carousel-example-generic" class="carousel slide"
 				data-ride="carousel">
@@ -116,7 +115,7 @@ Section of the community to build healthy consumption culture
 
 					<div class="item">
 						<img
-							src="https://scontent.xx.fbcdn.net/hphotos-xaf1/t31.0-8/12898409_121419598256133_5437606159514345821_o.jpg"
+							src="/ZEBRA/resources/image/cru-2.png"
 							title="cold" alt="...">
 						<div class="carousel-caption">
 							<h1>Cold Play</h1>
@@ -168,7 +167,7 @@ Section of the community to build healthy consumption culture
 </div>
 
 
-<h1 align="center" style="padding:20px ">ZEBRA Service</h1>
+<h1 align="center" style="padding:40px ">ZEBRA Service</h1>
 <img src="https://scontent.xx.fbcdn.net/t31.0-8/13247920_172959903102102_2284409825658967265_o.jpg" alt="china thumbnail">
 
 	<!-- 	</div>컨테이너 끝  -->
