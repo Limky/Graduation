@@ -114,8 +114,11 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "{\"id\"=\"" + id + "\", \"password\"=\"" + password + "\", \"name\"=\"" + name + "\", \"memberUrl\"=\""
-				+ memberUrl + "\"}";
+		return "{\"id\"=\"" + id + "\", \"name\"=\"" + name + "\", \"memberUrl\"=\"" + memberUrl + "\", \"lastReviewDate\"=\"" + lastReviewDate
+				+ "\", \"phoneNumber\"=\"" + phoneNumber + "\", \"point\"=" + point + ", \"level\"=\"" + level + "\", \"reviewCount\"="
+				+ reviewCount + ", \"totalReviewCount\"=" + totalReviewCount + "}";
 	}
+
+	
 
 }

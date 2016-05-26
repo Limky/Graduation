@@ -1,6 +1,6 @@
 package kr.ac.zebra.dto;
 
-public class AppReview {
+public class Review {
 	private int index;
 	private String id;
 	private String barcode;
@@ -17,11 +17,11 @@ public class AppReview {
 		this.productUrl = productUrl;
 	}
 
-	public AppReview() {
+	public Review() {
 
 	}
 
-	public AppReview(int index, String id, String barcode, String reviewText, double starPoint) {
+	public Review(int index, String id, String barcode, String reviewText, double starPoint) {
 		super();
 		this.index = index;
 		this.id = id;

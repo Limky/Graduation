@@ -22,7 +22,6 @@ public class AppLoginController {
 	@RequestMapping("/appLogin")
 	public String showloginTest(HttpServletRequest request) {
 
-		System.out.println("µ¿È­");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 

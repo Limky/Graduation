@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import kr.ac.zebra.dto.AppReview;
+import kr.ac.zebra.dto.Review;
 
 @Component("ReviewDAO")
 public class ReviewDAO {
@@ -19,12 +19,12 @@ public class ReviewDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
-	
-	public AppReview getReviewsById(String id){
+
+	public List<Review> getReviewsById(String id) {
 		try {
 			String sqlStatement = "select * from reviewtb where id=?";
 
-			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id }, new AppReviewMapper());
+			return jdbcTemplateObject.query(sqlStatement, new Object[] { id }, new AppReviewMapper());
 		} catch (Exception e) {
 
 			System.out.println("DAO 예외 처리 발생 획인 메세지 getReviewsById ");
@@ -34,7 +34,7 @@ public class ReviewDAO {
 		}
 	}
 
-	public AppReview getReview(String barcode) {
+	public Review getReview(String barcode) {
 
 		try {
 			String sqlStatement = "select * from reviewtb where barcode=?";
@@ -49,7 +49,7 @@ public class ReviewDAO {
 		}
 	}
 
-	public List<AppReview> getReviews(String barcode) {
+	public List<Review> getReviews(String barcode) {
 
 		try {
 			String sqlStatement = "select * from reviewtb where barcode= ?";
@@ -65,16 +65,45 @@ public class ReviewDAO {
 
 	}
 
-	public void setReview(String id, String barcode, String reviewText, double starPoint, String memberUrl, String productUrl) {
+	public void setReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
+			String productUrl) {
 
 		try {
 			String sqlStatement = "insert into reviewtb (id, barcode, reviewText, starPoint, memberUrl, productUrl) values (?, ?, ?, ?, ?, ?)";
 
-			jdbcTemplateObject.update(sqlStatement, new Object[] { id, barcode, reviewText, starPoint, memberUrl, productUrl});
+			jdbcTemplateObject.update(sqlStatement,
+					new Object[] { id, barcode, reviewText, starPoint, memberUrl, productUrl });
 		} catch (Exception e) {
 			System.out.println("DAO 예외 처리 발생 획인 메세지 setReview ");
 			e.printStackTrace();
 		}
+	}
+
+	public void updateReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
+			String productUrl) {
+		try {
+			String sqlStatement = "update reviewtb set reviewText=?, starPoint=? where id=? and barcode=?";
+
+			jdbcTemplateObject.update(sqlStatement, new Object[] { reviewText, starPoint, id, barcode });
+		} catch (Exception e) {
+			System.out.println("DAO 예외 처리 발생 획인 메세지 updateReview ");
+			e.printStackTrace();
+		}
 
 	}
+
+	public String isexit(String id, String barcode) {
+
+		try {
+			String sqlStatement = "select reviewText from reviewtb where id=? and barcode=?";
+
+			Review review = jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id, barcode },
+					new AppReviewMapper());
+
+			return review.getReviewText();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

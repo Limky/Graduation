@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.zebra.dao.AppApplyDAO;
 import kr.ac.zebra.dao.ProductDAO;
 import kr.ac.zebra.dto.Product;
 
@@ -12,10 +13,16 @@ import kr.ac.zebra.dto.Product;
 public class ProductService {
 
 	private ProductDAO productDAO;
+	private AppApplyDAO appApplyDAO;
 
-	@Autowired // DI ¡÷¿‘
+	@Autowired
 	public void setProductDAO(ProductDAO productDAO) {
 		this.productDAO = productDAO;
+	}
+	
+	@Autowired 
+	public void setAppApplyDAO(AppApplyDAO appApplyDAO) {
+		this.appApplyDAO = appApplyDAO;
 	}
 
 	public Product getProduct(String barcode) {
@@ -33,22 +40,21 @@ public class ProductService {
 		}
 	}
 
-	public List<Product> getPopularProducts() {
+	public Boolean insertProduct(String id, String barcode, String productName) {
 
-		return productDAO.getPopularProducts();
-
+		return appApplyDAO.insertProduct(id, barcode, productName);
 	}
 
-	public List<Product> getMostReviewProducts() {
+	public List<Product> getProductSearch(String keyword) {
 
-		return productDAO.getMostReviewProducts();
-
+		return productDAO.getSearchProduct(keyword);
 	}
 
-	public List<Product> getMostScanProducts() {
+	public List<Product> getCategoryProducts(String category) {
 
-		return productDAO.getMostScanProducts();
+		List<Product> categoryProducts = productDAO.getCategoryProducts(category);
 
+		return categoryProducts;
 	}
 
 }

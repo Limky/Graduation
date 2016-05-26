@@ -9,19 +9,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.zebra.dto.Product;
-import kr.ac.zebra.dto.AppReview;
+import kr.ac.zebra.dto.Review;
+import kr.ac.zebra.service.ReviewService;
 import kr.ac.zebra.service.ProductService;
-import kr.ac.zebra.service.AppReviewService;
 
 @Controller
 public class AppReviewController {
 
-	private AppReviewService appReviewService;
+	private ReviewService reviewService;
 	private ProductService productService;
 
 	@Autowired
-	public void setReviewService(AppReviewService appReviewService) {
-		this.appReviewService = appReviewService;
+	public void setReviewService(ReviewService reviewService) {
+		this.reviewService = reviewService;
 	}
 
 	@Autowired
@@ -31,17 +31,30 @@ public class AppReviewController {
 
 	@RequestMapping("/appReviewRegister")
 	public String showProductReviews(HttpServletRequest request) {
+		System.out.println("appReviewController");
 
-		appReviewService.setReview(request.getParameter("id"), request.getParameter("barcode"),
+		reviewService.setReview(request.getParameter("id"), request.getParameter("barcode"),
 				request.getParameter("reviewText"), Double.parseDouble(request.getParameter("starPoint")),
-				request.getParameter("memberUrl"),request.getParameter("productUrl"));
+				request.getParameter("memberUrl"), request.getParameter("productUrl"));
 
-		List<AppReview> reviews = appReviewService.getReviews(request.getParameter("barcode"));
+		List<Review> reviews = reviewService.getReviews(request.getParameter("barcode"));
 		Product product = productService.getProduct(request.getParameter("barcode"));
+		
+		System.out.println(reviews);
+		//System.out.println(product);
 
 		request.setAttribute("reviews", reviews);
 		request.setAttribute("product", product);
 
 		return "appScan";
+	}
+
+	@RequestMapping("/appShowMyReview")
+	public String showMyReviews(HttpServletRequest request) {
+
+		List<Review> myReviewList = reviewService.getReviewsById(request.getParameter("id"));
+		request.setAttribute("reviews", myReviewList);
+
+		return "appShowMyReview";
 	}
 }

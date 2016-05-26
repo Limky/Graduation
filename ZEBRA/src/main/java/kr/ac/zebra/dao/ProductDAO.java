@@ -148,6 +148,7 @@ public class ProductDAO {
 	}
 
 	public List<Product> getSearchProduct(String keyword) {
+
 		try {
 			String sqlStatement = "select * from producttb where productName like '%" + keyword + "%'";
 
@@ -158,6 +159,18 @@ public class ProductDAO {
 			return null;
 
 		}
+	}
+
+	public List<Product> getCategoryProducts(String category) {
+		try {
+			String sqlStatement = "select * from producttb where category=" + category;
+
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
+		} catch (Exception e) {
+			
+			return null;
+		}
+
 	}
 
 }

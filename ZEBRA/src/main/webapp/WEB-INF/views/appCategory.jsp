@@ -6,19 +6,13 @@
 <%@ page session="true"%>
 
 <%
-	//데이터를 안드로이드에서 받음
 	request.setCharacterEncoding("UTF-8");
 
-	List<Review> reviews = (List<Review>) request.getAttribute("reviews");
-	Product product = (Product) request.getAttribute("product");
+	List<Product> products = (List<Product>) request.getAttribute("products");
 
-	// 초기 선언	
 	JSONObject jObject = new JSONObject();
 
-	// 안드로이드로 보낼 메시지를 만듬
-	jObject.put("productInfo", product);
-	jObject.put("reviews", reviews);
+	jObject.put("products", products);
 
-	// 안드로이드에 보낼 데이터를 출력
 	out.println(jObject.toJSONString());
 %>

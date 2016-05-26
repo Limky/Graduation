@@ -53,17 +53,15 @@ public class AppApplyDAO {
 
 		String sqlStatement = "select * from producttb";
 
-		return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper()); // Anonymous
-																				// Classes
+		return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
 
 	}
 
 	public boolean insertProduct(String id, String barcode, String productName) {
 
 		String sqlStatement = "insert into applytb (barcode, id, productName) values (?,?,?)";
-		return (jdbcTemplateObject.update(sqlStatement, new Object[] {barcode, id, productName}) == 1);
+		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, id, productName }) == 1);
 
 	}
-	
 
 }

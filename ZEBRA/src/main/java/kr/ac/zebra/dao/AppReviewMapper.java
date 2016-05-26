@@ -5,13 +5,13 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import kr.ac.zebra.dto.AppReview;
+import kr.ac.zebra.dto.Review;
 
-public class AppReviewMapper implements RowMapper<AppReview> {
+public class AppReviewMapper implements RowMapper<Review> {
 
-	public AppReview mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-		AppReview appReview = new AppReview();
+		Review appReview = new Review();
 
 		appReview.setId(rs.getString("id"));
 		appReview.setBarcode(rs.getString("barcode"));
