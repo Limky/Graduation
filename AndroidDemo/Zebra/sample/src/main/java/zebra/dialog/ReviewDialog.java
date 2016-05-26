@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import example.zxing.R;
 import zebra.json.Review;
+import zebra.manager.MemberManager;
 import zebra.manager.ScanManager;
 import zebra.manager.NetworkManager;
 
@@ -25,7 +26,7 @@ public class ReviewDialog extends DialogFragment {
     Button dialogButton;
     RatingBar ratingBar;
 
-    String id, reviewText, barcode, productUrl;
+    String id, reviewText, barcode, productUrl, memberUrl;
     double starPoint = 0;
 
     public ReviewDialog() {
@@ -45,16 +46,17 @@ public class ReviewDialog extends DialogFragment {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //id = MemberManager.getInstance().getId();
+                id = MemberManager.getInstance().getId();
                 barcode = ScanManager.getInstance().getBarcode();
                 productUrl = ScanManager.getInstance().getProductUrl();
-                id = "a";
+                //id = "a";
+                memberUrl = MemberManager.getInstance().getMemberUrl();
                 reviewText = reviewEditText.getText().toString();
                 starPoint = (double) ratingBar.getRating();
                 if (reviewText.equals("") || starPoint == 0)
                     Toast.makeText(getContext(), "리뷰와 별점을 입력해주세요", Toast.LENGTH_LONG).show();
                 else {
-                    NetworkManager.getInstance().review(getContext(), id, reviewText, barcode, starPoint, productUrl, new NetworkManager.OnResultResponseListener<Review>() {
+                    NetworkManager.getInstance().reviewRegister(getContext(), id, reviewText, barcode, starPoint, productUrl, memberUrl, new NetworkManager.OnResultResponseListener<Review>() {
                         @Override
                         public void onSuccess(Review result) {
                             //getActivity().startActivityForResult(intent, code);

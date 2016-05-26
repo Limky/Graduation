@@ -21,6 +21,7 @@ import com.google.zxing.integration.android.IntentResult;
 import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
+import zebra.beans.ReviewHeaderItem;
 import zebra.dialog.ReviewDialog;
 import zebra.json.Review;
 import zebra.manager.ScanManager;
@@ -28,6 +29,7 @@ import zebra.manager.NetworkManager;
 import zebra.views.NaviHeaderView;
 import zebra.beans.ReviewItem;
 import zebra.adapters.ReviewAdapter;
+import zebra.views.ReviewHeaderView;
 
 /**
  * Created by multimedia on 2016-05-01.
@@ -36,8 +38,9 @@ public class ReviewActivity extends AppCompatActivity {
     ListView reviewList;
     ReviewAdapter mAdapter;
     View reviewHeader;
+    ReviewHeaderView reviewHeaderView;
 
-    String barcode;
+    String barcode, productUrl;
     Review result;
 
     //for toolbar
@@ -63,6 +66,7 @@ public class ReviewActivity extends AppCompatActivity {
 
         //getIntent
         barcode = ScanManager.getInstance().getBarcode();
+        productUrl = ScanManager.getInstance().getProductUrl();
         result = (Review)getIntent().getParcelableExtra("Result");
 
         //listView 구성
@@ -71,7 +75,7 @@ public class ReviewActivity extends AppCompatActivity {
         //Toolbar 설정
         setToolbar();
 
-        reviewHeader.findViewById(R.id.dialogButton).setOnClickListener(new View.OnClickListener() {
+        reviewHeaderView.findViewById(R.id.dialogButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getSupportFragmentManager();
@@ -83,10 +87,13 @@ public class ReviewActivity extends AppCompatActivity {
 
     private void setListView(){
         reviewList = (ListView) findViewById(R.id.reviewList);
+        reviewHeaderView = new ReviewHeaderView(this);
+        ReviewHeaderItem reviewHeaderItem =new ReviewHeaderItem(result.productInfo.productUrl, result.productInfo.productName, result.productInfo.description, result.productInfo.starPoint);
+        reviewHeaderView.setReviewHeader(reviewHeaderItem);
         mAdapter = new ReviewAdapter();
         reviewList.setAdapter(mAdapter);
-        reviewHeader = getLayoutInflater().inflate(R.layout.review_header, null, false);
-        reviewList.addHeaderView(reviewHeader);
+        //reviewHeader = getLayoutInflater().inflate(R.layout.review_header, null, false);
+        reviewList.addHeaderView(reviewHeaderView);
 
         for (int i = 0; i < result.reviews.size(); i++) {
             ReviewItem item = new ReviewItem(R.drawable.icon,
@@ -130,6 +137,8 @@ public class ReviewActivity extends AppCompatActivity {
                     Intent i = new Intent(ReviewActivity.this,ProductRegisterActivity.class);
                     startActivity(i);
                     finish();
+                }else if(result == null){
+                    Toast.makeText(ReviewActivity.this, "등록 대기중", Toast.LENGTH_LONG).show();
                 }
                 else{
                     ScanManager.getInstance().setProductUrl(result.productInfo.productUrl);
@@ -146,7 +155,6 @@ public class ReviewActivity extends AppCompatActivity {
                 Toast.makeText(ReviewActivity.this, "실패 "+code, Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     private void setToolbar() {

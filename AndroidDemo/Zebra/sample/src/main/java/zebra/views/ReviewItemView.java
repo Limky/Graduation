@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import example.zxing.R;
 import zebra.beans.ReviewItem;
+import zebra.manager.MemberManager;
 
 /**
  * Created by multimedia on 2016-05-13.
@@ -34,7 +37,7 @@ public class ReviewItemView extends FrameLayout{
 
     public void setViewItem(ReviewItem item) {
 
-        profileImage.setImageResource(item.profileImage);
+        Glide.with(getContext()).load(MemberManager.getInstance().getMemberUrl()).into(profileImage);
         memberId.setText(item.memberId);
         ratingBar.setRating((float)item.ratingBar);
         reviewText.setText(item.reviewText);

@@ -3,7 +3,7 @@
     <color name="colorBackground">#D5D5D5</color>
     <!-- for toolbar -->
     <color name="primary">#CE3636</color>
-    <color name="primaryDark">#CE3636</color>
+    <color name="primaryDark">#680000</color>
     <color name="ripple">#ff80ab</color>
     <color name="accent">#ff4081</color>
     <color name="accent_pressed">#f50057</color>

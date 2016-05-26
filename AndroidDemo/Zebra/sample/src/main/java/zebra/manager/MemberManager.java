@@ -11,15 +11,16 @@ public class MemberManager {
         }
         return instance;
     }
+
     private MemberManager(){
 
     }
 
     String id;
     String name;
-    int phoneNumber;
+    String phoneNumber;
     int point;
-    int level;
+    String level;
     String lastReviewDate;
     String memberUrl;
     int reviewCount;
@@ -37,11 +38,11 @@ public class MemberManager {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -53,11 +54,11 @@ public class MemberManager {
         this.point = point;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

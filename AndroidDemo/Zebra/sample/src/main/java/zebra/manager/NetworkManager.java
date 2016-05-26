@@ -60,7 +60,7 @@ public class NetworkManager {
 
     private static final String LOGIN_URL = SERVER_URL + "/appLogin";
 
-    public void login(Context context, String id, String password, final OnResultResponseListener<Login> listener) {
+    public void login(final Context context, String id, String password, final OnResultResponseListener<Login> listener) {
         RequestParams params = new RequestParams();
         params.put("id", id);
         params.put("password", password);
@@ -72,7 +72,8 @@ public class NetworkManager {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Login result = gson.fromJson(responseString, Login.class);
+                String jsonResponseString = responseString.replaceAll("[\n \r]", "");
+                Login result = gson.fromJson(jsonResponseString, Login.class);
                 listener.onSuccess(result);
             }
         });
@@ -80,12 +81,13 @@ public class NetworkManager {
 
     private static final String REVIEW_REGISTER_URL = SERVER_URL + "/appReviewRegister";
 
-    public void review(Context context, String id, String reviewText, String barcode, double starPoint, String productUrl, final OnResultResponseListener<Review> listener) {
+    public void reviewRegister(Context context, String id, String reviewText, String barcode, double starPoint, String productUrl, String memberUrl, final OnResultResponseListener<Review> listener) {
         RequestParams params = new RequestParams();
         params.put("id", id);
         params.put("reviewText", reviewText);
         params.put("barcode", barcode);
         params.put("starPoint", starPoint);
+        params.put("memberUrl", memberUrl);
         params.put("productUrl", productUrl);
 
         client.post(context, REVIEW_REGISTER_URL, params, new TextHttpResponseHandler() {

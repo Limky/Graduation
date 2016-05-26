@@ -1,6 +1,5 @@
 package zebra.adapters;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,12 +17,10 @@ public class ReviewAdapter extends BaseAdapter {
 
     private List<ReviewItem> items = new ArrayList<ReviewItem>();
 
-
     public void add(ReviewItem item) {
         items.add(item);
         notifyDataSetChanged();
     }
-
 
     @Override
     public int getCount() {

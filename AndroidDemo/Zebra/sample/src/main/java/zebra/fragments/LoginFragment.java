@@ -1,5 +1,6 @@
 package zebra.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import example.zxing.R;
+import example.zxing.SampleApplication;
 import zebra.json.Login;
 import zebra.manager.PropertyManager;
 import zebra.manager.NetworkManager;
@@ -56,6 +58,7 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final View viewLogin = v;
                 id = idEditText.getText().toString();
                 password = passwordEditText.getText().toString();
 
@@ -66,9 +69,9 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onSuccess(Login result) {
                             if (autoLoginCheck.isChecked()) {
-                                PropertyManager.getInstance().setAutoLogin(true);
+                                PropertyManager.getInstance().setAutoLogin(viewLogin.getContext(),true);
                                 PropertyManager.getInstance().setMemberInfoToPrefManager(result);
-                                PropertyManager.getInstance().setMemberInfoToMemManager();
+                                PropertyManager.getInstance().setMemberInfoToMemManager(result);
                             } else {
                                 PropertyManager.getInstance().setMemberInfoToMemManager(result);
                             }

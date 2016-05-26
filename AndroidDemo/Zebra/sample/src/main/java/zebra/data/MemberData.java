@@ -8,11 +8,11 @@ import java.util.Date;
 public class MemberData {
     public String id;
     public String name;
-    public int phoneNumber;
-    public String memberUrl;
-    public int point;
-    public int level;
     public String lastReviewDate;
+    public String memberUrl;
+    public String phoneNumber;
+    public int point;
+    public String level;
     public int reviewCount;
     public int totalReviewCount;
 }

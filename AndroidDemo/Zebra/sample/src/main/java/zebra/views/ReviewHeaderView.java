@@ -5,20 +5,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import example.zxing.R;
 import zebra.activity.ReviewActivity;
+import zebra.beans.ReviewHeaderItem;
 
 /**
  * Created by multimedia on 2016-05-13.
  */
 public class ReviewHeaderView extends FrameLayout {
 
-    ImageView imageView;
-    TextView goodsName;
+    ImageView productImage;
+    TextView productName, description;
     Button dialogButton;
+    RatingBar ratingBar;
 
     public ReviewHeaderView(Context context) {
         super(context);
@@ -28,12 +33,17 @@ public class ReviewHeaderView extends FrameLayout {
     private void init() {
         inflate(getContext(), R.layout.review_header, this);
 
-        imageView = (ImageView)findViewById(R.id.goodsImage);
-        goodsName = (TextView)findViewById(R.id.goodsName);
+        productImage = (ImageView)findViewById(R.id.productImage);
+        productName = (TextView)findViewById(R.id.productName);
         dialogButton = (Button)findViewById(R.id.dialogButton);
-        imageView.setImageResource(R.drawable.book);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+        description = (TextView)findViewById(R.id.description);
     }
-    public void setReviewHeader(){
 
+    public void setReviewHeader(ReviewHeaderItem reviewHeaderItem){
+        Glide.with(getContext()).load(reviewHeaderItem.productUrl).into(productImage);
+        productName.setText(reviewHeaderItem.productName);
+        ratingBar.setRating((float) reviewHeaderItem.ratingBar);
+        description.setText(reviewHeaderItem.description);
     }
 }

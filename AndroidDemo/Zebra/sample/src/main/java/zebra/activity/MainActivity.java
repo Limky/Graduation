@@ -1,6 +1,7 @@
 package zebra.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
 import zebra.json.Review;
+import zebra.manager.MemberManager;
+import zebra.manager.ProductManager;
 import zebra.manager.PropertyManager;
 import zebra.manager.ScanManager;
 import zebra.manager.NetworkManager;
@@ -29,6 +33,9 @@ import zebra.views.NaviHeaderView;
 
 public class MainActivity extends AppCompatActivity {
     CircleButton loginButton, barcodeButton, searchButton;
+
+    AnimationDrawable frameAnimation;
+    ImageView imageAnimation;
 
     String barcode;
 
@@ -70,11 +77,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         setToolbar(true);
+        setAnimation();
 
         //자동 로그인일 경우에 설정
         if(PropertyManager.getInstance().getAutoLogin())PropertyManager.getInstance().setMemberInfoToMemManager();
 
+    }
+
+
+    public void setAnimation(){
+        imageAnimation = (ImageView) findViewById(R.id.imageAnimation);
+        // animation_list.xml 를 ImageView 백그라운드에 셋팅한다
+        imageAnimation.setBackgroundResource(R.drawable.zebra_animation);
+        // 이미지를 동작시키기위해  AnimationDrawable 객체를 가져온다.
+        frameAnimation = (AnimationDrawable)imageAnimation.getBackground();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            // 어플에 포커스가 갈때 시작된다
+            frameAnimation.start();
+        } else {
+            // 어플에 포커스를 떠나면 종료한다
+            frameAnimation.stop();
+        }
     }
 
     @Override
@@ -86,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     void setToolbar(boolean isFirst){
         //Toolbar 설정
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+        //toolbar.setTitle("");
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
 
         mDrawerList = (ListView)findViewById(R.id.naviList);
@@ -103,8 +133,14 @@ public class MainActivity extends AppCompatActivity {
             if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}
             if(i == 2){NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");naviAdapter.add(item);}
             if(i == 3){
-                if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);}
-                else {NaviItem item = new NaviItem(R.drawable.logout, "로그인");naviAdapter.add(item);}
+                if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){
+                    PropertyManager.getInstance();
+                    NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);
+                }
+                else
+                {
+                    NaviItem item = new NaviItem(R.drawable.logout, "로그인");naviAdapter.add(item);
+                }
             }
         }
 
@@ -115,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 4:
                         //로그아웃 일 경우에 toolbar를 다시 설정
-                        PropertyManager.getInstance().setAutoLogin(false);
+                        PropertyManager.getInstance().setAutoLogin(MainActivity.this, false);
                         PropertyManager.getInstance().setIsogin(false);
                         setToolbar(false);
                 }
@@ -158,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     Intent i = new Intent(MainActivity.this, ReviewActivity.class);
+                    ScanManager.getInstance().setProductUrl(result.productInfo.productUrl);
                     i.putExtra("Result", result);
                     startActivity(i);
                 }

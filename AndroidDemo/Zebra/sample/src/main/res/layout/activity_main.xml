@@ -23,29 +23,19 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/barcodeNaviButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginRight="10dp"
-                android:paddingBottom="15dp"
-                android:background="@color/primary"
-                android:src="@drawable/ic_barcode_white" />
-
-            <ImageButton
-                android:id="@+id/searchNaviButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginRight="10dp"
-                android:background="@color/primary"
-                android:src="@drawable/ic_searche_white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ZEBRA"
+                android:gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/text_white"
+                android:layout_marginRight="70dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
-
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"
@@ -55,8 +45,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/text_white">
+            android:background="@color/text_white"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,22 +55,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/primary"
-                        android:gravity="center"
-                        android:paddingBottom="50dp"
-                        android:paddingTop="50dp"
-                        android:text="ZEBRA"
-                        android:textColor="#FFFFFF"
-                        android:textSize="100dp" />
+                    <ImageView
+                        android:id="@+id/imageAnimation"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="40dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,16 +81,16 @@
 
                     <at.markushi.ui.CircleButton
                         android:id="@+id/loginButton"
-                        android:layout_width="115dp"
-                        android:layout_height="115dp"
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
                         android:src="@drawable/guest_male_48"
                         app:cb_color="@color/primary"
                         app:cb_pressedRingWidth="8dip" />
 
                     <at.markushi.ui.CircleButton
                         android:id="@+id/barcodeButton"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:layout_margin="5dp"
                         android:src="@drawable/zebra_icon"
                         app:cb_color="@color/primary"
@@ -112,8 +98,8 @@
 
                     <at.markushi.ui.CircleButton
                         android:id="@+id/searchButton"
-                        android:layout_width="115dp"
-                        android:layout_height="115dp"
+                        android:layout_width="105dp"
+                        android:layout_height="105dp"
                         android:src="@drawable/search_48"
                         app:cb_color="@color/primary"
                         app:cb_pressedRingWidth="8dip" />
