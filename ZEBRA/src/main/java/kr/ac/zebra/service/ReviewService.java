@@ -29,7 +29,7 @@ public class ReviewService {
 		return reviewDAO.getReviews(barcode);
 		
 	}
-
+	
 
 
 	

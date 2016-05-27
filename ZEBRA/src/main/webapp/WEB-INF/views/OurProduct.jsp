@@ -118,7 +118,7 @@ blockquote {
 
 
 
-		<div class="row">
+		<%-- <div class="row">
 			<div class="col-md-6">
 				<table class="table table-striped" id="testTable">
 					<thead>
@@ -175,7 +175,7 @@ blockquote {
 			</div>
 		</div>
 
-	</div>
+	</div> --%>
 
 
 

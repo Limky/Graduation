@@ -78,8 +78,7 @@
 				<div class="row">
 
 					<div class="col-md-6" style="">
-						<img class="img-responsive"
-							src="http://www.sa.all.biz/img/sa/catalog/1551.jpeg" alt=""
+						<img class="img-responsive" src="${productInfo.productUrl}" alt=""
 							align="middle" style="width: 350px; height: 350px;">
 					</div>
 					<div class="col-md-6">
@@ -95,51 +94,79 @@
 
 					</div>
 					<div class="col-md-6" align="left">
-						<div class="col-md-3" align="left"><img alt="" src="/ZEBRA/resources/image/star5.png" width="80px" height="20px" align="left"></div>
-						<div class="col-md-9">	<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger) </span>
-
+						<div class="col-md-3" align="left">
+							<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
+								height="20px" align="left">
+						</div>
+						<div class="col-md-9">
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width: 80%">
+									<span class="sr-only"> 80% Complete (danger) </span>
+									<p>80%</p>
+								</div>
 							</div>
-						</div></div>
-						<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star4.png" width="80px" height="20px"></div>
-						<div class="col-md-9">	<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger) </span>
+						</div>
+						<div class="col-md-3">
+							<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
+								height="20px">
+						</div>
+						<div class="col-md-9">
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"
+									aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+									style="width: 60%">
+									<span class="sr-only"> 60% Complete (danger) </span>
+									<p>60%</p>
 
+								</div>
 							</div>
-						</div></div>
-					<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star3.png" width="80px" height="20px"></div>
-						<div class="col-md-9">	<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger) </span>
+						</div>
+						<div class="col-md-3">
+							<img alt="" src="/ZEBRA/resources/image/star3.png" width="80px"
+								height="20px">
+						</div>
+						<div class="col-md-9">
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+									style="width: 40%">
+									<span class="sr-only"> 40% Complete (danger) </span>
+									<p>40%</p>
 
+								</div>
 							</div>
-						</div></div>
-				<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star2.png" width="80px" height="20px"></div>
-						<div class="col-md-9">	<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger) </span>
+						</div>
+						<div class="col-md-3">
+							<img alt="" src="/ZEBRA/resources/image/star2.png" width="80px"
+								height="20px">
+						</div>
+						<div class="col-md-9">
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"
+									aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+									style="width: 20%">
+									<span class="sr-only">20% Complete (danger) </span>
+									<p>20%</p>
 
+								</div>
 							</div>
-						</div></div>
-					<div class="col-md-3"><img alt="" src="/ZEBRA/resources/image/star1.png" width="80px" height="20px"></div>
-						<div class="col-md-9">	<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%">
-								<span class="sr-only"> 80% Complete (danger) </span>
-
+						</div>
+						<div class="col-md-3">
+							<img alt="" src="/ZEBRA/resources/image/star1.png" width="80px"
+								height="20px">
+						</div>
+						<div class="col-md-9">
+							<div class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"
+									aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+									style="width: 10%">
+									<span class="sr-only"> 10% Complete (danger) </span>
+									<p>10%</p>
+								</div>
 							</div>
-						</div></div>
+						</div>
 					</div>
 
 
@@ -167,15 +194,17 @@
 						<div class="row">
 							<div class="col-md-12">
 								<p>
-								<img
-									src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
-									alt="..." class="img-circle" width="50px" height="50px">
-								<c:out value="${reviewList.starPoint}"></c:out>
-								<c:out value="${reviewList.id}"></c:out>
-								<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px" height="20px">
+									<img
+										src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
+										alt="..." class="img-circle" width="50px" height="50px">
+									<c:out value="${reviewList.starPoint}"></c:out>
+									<c:out value="${reviewList.id}"></c:out>
+									<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
+										height="20px">
 								</p>
 								<p>
-									<c:out value="${reviewList.reviewText}"></c:out><br/>		
+									<c:out value="${reviewList.reviewText}"></c:out>
+									<br />
 								</p>
 							</div>
 						</div>
@@ -191,41 +220,26 @@
 			<!-- Blog Sidebar Widgets Column -->
 			<div class="col-md-4" style="padding-top: 80px">
 				<h3>Related Products</h3>
-				<!-- 	<h1 class="page-header"><small>Related Products</small></h1> -->
-				<div class="thumbnail" style="width: 250px; height: 250px">
-					<img src="http://placehold.it/800x500" alt="">
-					<div class="caption">
-						<h5>Feature Label</h5>
-						<form action="review" method="GET">
-							<button type="submit" class="btn btn-danger" name="barcode"
-								value="${popularProduct.barcode}">Review</button>
-						</form>
+				
+				<c:forEach var="relatedProducts" items="${relatedProducts}">
+					<div class="thumbnail" style="width: 250px; height: 315px">
+						<img src="${relatedProducts.productUrl}" alt="" width="150px" height="170px">
+					
+						<div class="caption">
+						
+							<h5>
+							<hr>
+							<c:out value="${relatedProducts.productName}"></c:out></h5>
+							<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
+								height="20px">
+							<form action="review" method="GET">
+								<button type="submit" class="btn btn-danger" name="barcode"
+									value="${popularProduct.barcode}">Review</button>
+							</form>
 
+						</div>
 					</div>
-				</div>
-				<div class="thumbnail" style="width: 250px; height: 250px">
-					<img src="http://placehold.it/800x500" alt="">
-					<div class="caption">
-						<h5>Feature Label</h5>
-						<form action="review" method="GET">
-							<button type="submit" class="btn btn-danger" name="barcode"
-								value="${popularProduct.barcode}">Review</button>
-						</form>
-
-					</div>
-				</div>
-				<div class="thumbnail" style="width: 250px; height: 250px">
-					<img src="http://placehold.it/800x500" alt="">
-					<div class="caption">
-						<h5>Feature Label</h5>
-						<form action="review" method="GET">
-							<button type="submit" class="btn btn-danger" name="barcode"
-								value="${popularProduct.barcode}">Review</button>
-						</form>
-
-					</div>
-				</div>
-
+					</c:forEach>
 			</div>
 
 		</div>

@@ -39,8 +39,10 @@ public class ReviewController {
 			model.addAttribute("reviewList", reviews);
 		
 			Product	product =productService.getProduct(barcode);
+		
+			List<Product> relatedProducts =productService.getPopularProducts((String)product.getCategory());
 			model.addAttribute("productInfo", product);
-			
+			model.addAttribute("relatedProducts", relatedProducts);
 			
 			return "review";
 	
