@@ -167,7 +167,8 @@
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/OurProduct?filter=All">OurProduct</a></li>
-			
+				<li><a class="page-scroll" href="/ZEBRA/Management">Management</a></li>
+					
 			</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
@@ -206,7 +207,6 @@
 				<li><a class="page-scroll" href="#about">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
-				<li><a class="page-scroll" href="/ZEBRA/OurProduct?filter=All">OurProduct</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#SignUp-modal"><span

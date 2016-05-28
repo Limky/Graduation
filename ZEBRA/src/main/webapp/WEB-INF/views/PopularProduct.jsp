@@ -63,6 +63,10 @@
 	request.setCharacterEncoding("UTF-8");
 	String currentCategory= (String)session.getAttribute("currentCategory");
 
+	
+
+
+
 
 %>
 <%=currentCategory %>

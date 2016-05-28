@@ -39,10 +39,12 @@ public class ReviewController {
 			model.addAttribute("reviewList", reviews);
 		
 			Product	product =productService.getProduct(barcode);
-		
-			List<Product> relatedProducts =productService.getPopularProducts((String)product.getCategory());
 			model.addAttribute("productInfo", product);
+			request.setAttribute("starPoint", (double)product.getStarPoint());
+			List<Product> relatedProducts =productService.getPopularProducts((String)product.getCategory());
 			model.addAttribute("relatedProducts", relatedProducts);
+			
+			request.setAttribute("reviewsList", reviews);
 			
 			return "review";
 	
