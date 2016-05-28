@@ -1,11 +1,12 @@
 package kr.ac.zebra.dto;
 
 public class Review {
-	private int index;
+
 	private String id;
 	private String barcode;
 	private String reviewText;
 	private double starPoint;
+	private String level;
 	private String memberUrl;
 	private String productUrl;
 
@@ -21,21 +22,14 @@ public class Review {
 
 	}
 
-	public Review(int index, String id, String barcode, String reviewText, double starPoint) {
+	public Review(String id, String barcode, String reviewText, double starPoint, String level) {
 		super();
-		this.index = index;
+
 		this.id = id;
 		this.barcode = barcode;
 		this.reviewText = reviewText;
 		this.starPoint = starPoint;
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
+		this.level = level;
 	}
 
 	public String getId() {
@@ -78,10 +72,19 @@ public class Review {
 		this.memberUrl = memberUrl;
 	}
 
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
 	@Override
 	public String toString() {
 		return "{\"id\"=\"" + id + "\", \"reviewText\"=\"" + reviewText + "\", \"starPoint\"=" + starPoint
-				+ ", \"memberUrl\"=\"" + memberUrl + "\", \"productUrl\"=\"" + productUrl + "\"}";
+				+ ", \"level\"=\"" + level + "\", \"memberUrl\"=\"" + memberUrl + "\", \"productUrl\"=\"" + productUrl
+				+ "\"}";
 	}
 
 }
