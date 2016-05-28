@@ -1,5 +1,6 @@
 package kr.ac.zebra.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,20 +38,32 @@ public class ReviewService {
 	}
 
 	public void setReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
-			String productUrl) {
+			String productUrl, String level) {
 
-		if (reviewDAO.isexit(id, barcode) == null) {
-			reviewDAO.setReview(id, barcode, reviewText, starPoint, memberUrl, productUrl);
+		if (reviewDAO.isExit(id, barcode) == null) {
+			reviewDAO.setReview(id, barcode, reviewText, starPoint, memberUrl, productUrl, level);
 		} else {
 
-			System.out.println(id);
-			System.out.println(barcode);
-			System.out.println(reviewText);
-			System.out.println(starPoint);
-			System.out.println(memberUrl);
-			System.out.println(productUrl);
-			reviewDAO.updateReview(id, barcode, reviewText, starPoint, memberUrl, productUrl);
+			reviewDAO.updateReview(id, barcode, reviewText, starPoint, memberUrl, productUrl, level);
 		}
 
+	}
+
+	public List<Integer> getStarPoint(String barcode) {
+
+		List<Integer> star = reviewDAO.getStarPoint(barcode);
+		List<Integer> starAvarage = new ArrayList<Integer>();
+		int sum = star.get(star.size() - 1);
+		int count;
+
+		for (int i = 0; i < 6; i++) {
+			count = (star.get(i)*100)/sum;
+			starAvarage.add(i, count);
+			System.out.println(count);
+		}
+		
+		System.out.println(starAvarage);
+
+		return starAvarage;
 	}
 }

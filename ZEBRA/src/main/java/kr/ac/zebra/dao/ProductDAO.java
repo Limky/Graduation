@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
 
 @Component("productDAO")
@@ -41,7 +42,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 
 			System.out.println("getProduct DAO 예외 처리 발생 획인 메세지 ");
-			e.printStackTrace();
+
 			return null;
 
 		}
@@ -108,7 +109,6 @@ public class ProductDAO {
 		} catch (Exception e) {
 
 			System.out.println("getPopularProducts DAO 예외 처리 발생 획인 메세지 ");
-			e.printStackTrace();
 			return null;
 
 		}
@@ -125,7 +125,6 @@ public class ProductDAO {
 		} catch (Exception e) {
 
 			System.out.println("getMostReviewProducts DAO 예외 처리 발생 획인 메세지 ");
-			e.printStackTrace();
 			return null;
 
 		}
@@ -142,7 +141,6 @@ public class ProductDAO {
 		} catch (Exception e) {
 
 			System.out.println("getMostScanProducts DAO 예외 처리 발생 획인 메세지 ");
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -155,7 +153,6 @@ public class ProductDAO {
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
 		} catch (Exception e) {
 			System.out.println("getMostScanProducts DAO 예외 처리 발생 획인 메세지 ");
-			e.printStackTrace();
 			return null;
 
 		}
@@ -167,10 +164,31 @@ public class ProductDAO {
 
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
 		} catch (Exception e) {
-			
+
 			return null;
 		}
 
+	}
+
+	public Boolean isExit(String barcode) {
+
+		System.out.println("DAO isExit()");
+		try {
+			String sqlStatement = "select * from applytb where barcode=?";
+
+			List<AppApply> apply = jdbcTemplateObject.query(sqlStatement, new Object[] { barcode },
+					new AppApplyMapper());
+
+			System.out.println(apply);
+
+			if (apply == null) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

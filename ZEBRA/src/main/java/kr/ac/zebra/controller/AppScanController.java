@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
 import kr.ac.zebra.dto.Review;
-import kr.ac.zebra.service.AppApplyRegisterService;
 import kr.ac.zebra.service.ProductService;
 import kr.ac.zebra.service.ReviewService;
 
@@ -20,7 +19,6 @@ public class AppScanController {
 
 	private ProductService productService;
 	private ReviewService reviewService;
-	private AppApplyRegisterService appApplyService;
 
 	@Autowired
 	public void setReviewService(ReviewService reviewService) {
@@ -30,11 +28,6 @@ public class AppScanController {
 	@Autowired
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
-	}
-
-	@Autowired
-	public void setApplyService(AppApplyRegisterService appApplyService) {
-		this.appApplyService = appApplyService;
 	}
 
 	@RequestMapping("/appScan")
@@ -48,7 +41,7 @@ public class AppScanController {
 		List<Review> reviews = reviewService.getReviews(request.getParameter("barcode"));
 
 		if (product == null) {
-			AppApply apply = appApplyService.getApply(request.getParameter("barcode"));
+			AppApply apply = productService.getApply(request.getParameter("barcode"));
 
 			if (apply == null) {
 

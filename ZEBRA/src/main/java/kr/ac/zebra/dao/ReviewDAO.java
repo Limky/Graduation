@@ -1,5 +1,6 @@
 package kr.ac.zebra.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -66,25 +67,24 @@ public class ReviewDAO {
 	}
 
 	public void setReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
-			String productUrl) {
+			String productUrl, String level) {
 
 		try {
-			String sqlStatement = "insert into reviewtb (id, barcode, reviewText, starPoint, memberUrl, productUrl) values (?, ?, ?, ?, ?, ?)";
+			String sqlStatement = "insert into reviewtb (id, barcode, reviewText, starPoint, level, memberUrl, productUrl) values (?, ?, ?, ?, ?, ?, ?)";
 
 			jdbcTemplateObject.update(sqlStatement,
-					new Object[] { id, barcode, reviewText, starPoint, memberUrl, productUrl });
+					new Object[] { id, barcode, reviewText, starPoint, level, memberUrl, productUrl });
 		} catch (Exception e) {
-			System.out.println("DAO 예외 처리 발생 획인 메세지 setReview ");
-			e.printStackTrace();
+			System.out.println("setReview() 예외 처리 발생 획인 메세지 ");
 		}
 	}
 
 	public void updateReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
-			String productUrl) {
+			String productUrl, String level) {
 		try {
-			String sqlStatement = "update reviewtb set reviewText=?, starPoint=? where id=? and barcode=?";
+			String sqlStatement = "update reviewtb set reviewText=?, starPoint=?, level=? where id=? and barcode=?";
 
-			jdbcTemplateObject.update(sqlStatement, new Object[] { reviewText, starPoint, id, barcode });
+			jdbcTemplateObject.update(sqlStatement, new Object[] { reviewText, starPoint, level, id, barcode });
 		} catch (Exception e) {
 			System.out.println("DAO 예외 처리 발생 획인 메세지 updateReview ");
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class ReviewDAO {
 
 	}
 
-	public String isexit(String id, String barcode) {
+	public String isExit(String id, String barcode) {
 
 		try {
 			String sqlStatement = "select reviewText from reviewtb where id=? and barcode=?";
@@ -101,6 +101,30 @@ public class ReviewDAO {
 					new AppReviewMapper());
 
 			return review.getReviewText();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public List<Integer> getStarPoint(String barcode) {
+
+		try {
+			String sqlStatement = "select count(if(starPoint=?, starPoint, null)) from reviewtb where barcode = ?";
+			int sum = 0;
+			int count = 0;
+			int i = 0;
+			List<Integer> star = new ArrayList<Integer>();
+
+			for (i = 0; i < 5; i++) {
+				count = jdbcTemplateObject.queryForInt(sqlStatement, new Object[] { i + 1, barcode });
+				sum += count;
+				star.add(i, count);
+			}
+			star.add(i, sum);
+
+			System.out.println("star=" + star);
+
+			return star;
 		} catch (Exception e) {
 			return null;
 		}

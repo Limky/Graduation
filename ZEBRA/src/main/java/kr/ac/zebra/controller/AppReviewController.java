@@ -35,7 +35,7 @@ public class AppReviewController {
 
 		reviewService.setReview(request.getParameter("id"), request.getParameter("barcode"),
 				request.getParameter("reviewText"), Double.parseDouble(request.getParameter("starPoint")),
-				request.getParameter("memberUrl"), request.getParameter("productUrl"));
+				request.getParameter("memberUrl"), request.getParameter("productUrl"), request.getParameter("level"));
 
 		List<Review> reviews = reviewService.getReviews(request.getParameter("barcode"));
 		Product product = productService.getProduct(request.getParameter("barcode"));

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.zebra.dao.AppApplyDAO;
 import kr.ac.zebra.dao.ProductDAO;
+import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
 
 @Service("productService") // service로 bean에 등록시켜준다
@@ -19,8 +20,8 @@ public class ProductService {
 	public void setProductDAO(ProductDAO productDAO) {
 		this.productDAO = productDAO;
 	}
-	
-	@Autowired 
+
+	@Autowired
 	public void setAppApplyDAO(AppApplyDAO appApplyDAO) {
 		this.appApplyDAO = appApplyDAO;
 	}
@@ -55,6 +56,26 @@ public class ProductService {
 		List<Product> categoryProducts = productDAO.getCategoryProducts(category);
 
 		return categoryProducts;
+	}
+
+	public AppApply getApply(String barcode) {
+		System.out.println("AppApply Service");
+
+		AppApply apply = appApplyDAO.getApply(barcode);
+
+		if (apply == null) {
+
+			return null;
+		} else {
+
+			return apply;
+		}
+	}
+	
+	public Boolean isExit(String barcode){
+		System.out.println("Service isExit()");
+		
+		return productDAO.isExit(barcode);
 	}
 
 }

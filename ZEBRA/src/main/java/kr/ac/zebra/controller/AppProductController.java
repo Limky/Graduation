@@ -23,18 +23,24 @@ public class AppProductController {
 	@RequestMapping("/appProductRegister")
 	public String showAppProductRegister(HttpServletRequest request) {
 
-		System.out.println("appProductRegiset");
+		System.out.println("appProductRegister");
 		String id = request.getParameter("id");
 		String barcode = request.getParameter("barcode");
 		String productName = request.getParameter("productName");
 
-		if (productService.insertProduct(id, barcode, productName)) {
-			request.setAttribute("result", "{\"1\"}");
-		} else {
-			request.setAttribute("result", "{\"0\"}");
-		}
+		if (productService.isExit(barcode)) {
+			request.setAttribute("result", "");
 
-		return "appProductRegister";
+			return "appProductRegister";
+		} else {
+			if (productService.insertProduct(id, barcode, productName)) {
+				request.setAttribute("result", "{\"1\"}");
+			} else {
+				request.setAttribute("result", "{\"0\"}");
+			}
+
+			return "appProductRegister";
+		}
 	}
 
 	@RequestMapping("/appProductSearch")

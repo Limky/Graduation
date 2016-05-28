@@ -8,18 +8,18 @@ import kr.ac.zebra.dao.MemberDAO;
 import kr.ac.zebra.dto.Enterprise;
 import kr.ac.zebra.dto.Member;
 
-@Service("loginservice") // service로 bean에 등록시켜준다
+@Service("loginservice")
 public class LoginService {
 
 	private EnterpriseDAO enterpriseDAO;
 	private MemberDAO memberDAO;
 
-	@Autowired // DI 주입
+	@Autowired
 	public void setEnterpriseDAO(EnterpriseDAO enterpriseDAO) {
 		this.enterpriseDAO = enterpriseDAO;
 	}
 
-	@Autowired // DI 주입
+	@Autowired
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
 	}
@@ -60,7 +60,7 @@ public class LoginService {
 			String dbpassword = member.getPassword();
 
 			if (dbpassword.equals(password)) {
-				System.out.println("2");
+
 				return member;
 			} else {
 

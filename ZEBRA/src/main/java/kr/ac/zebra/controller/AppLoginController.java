@@ -29,6 +29,11 @@ public class AppLoginController {
 
 		request.setAttribute("member", member);
 
+		/*
+		 * System.out.println("login test"); List<Integer> star =
+		 * reviewService.getStarPoint("8801056059842");
+		 */
 		return "appLogin";
+
 	}
 }

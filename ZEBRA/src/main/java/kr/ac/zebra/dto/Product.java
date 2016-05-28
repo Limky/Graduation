@@ -104,7 +104,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "{\"productName\"=\"" + productName + "\", \"description\"=\"" + description + "\", \"productUrl\"=\""
+		return "{\"barcode\"=\"" + barcode + "\", \"productName\"=\"" + productName + "\", \"description\"=\"" + description + "\", \"productUrl\"=\""
 				+ productUrl + "\", \"starPoint\"=" + starPoint + "}";
 	}
 
