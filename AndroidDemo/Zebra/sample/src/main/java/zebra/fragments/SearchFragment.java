@@ -18,8 +18,6 @@ import zebra.manager.NetworkManager;
  */
 public class SearchFragment extends Fragment {
 
-    String keyword;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_search, container, false);

@@ -1,40 +1,37 @@
 package zebra.fragments;
 
-import android.app.Fragment;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import example.zxing.R;
 import zebra.activity.ReviewActivityTest;
-import zebra.activity.SearchActivity;
 import zebra.adapters.SearchAdapter;
 import zebra.beans.SearchItem;
 import zebra.json.Review;
 import zebra.json.Search;
 import zebra.manager.NetworkManager;
 import zebra.manager.ScanManager;
+import zebra.manager.SearchManager;
 
 /**
- * Created by multimedia on 2016-05-25.
+ * Created by multimedia on 2016-05-29.
  */
-public class SearchOkFragment extends Fragment {
+public class CategorySearchFragment extends Fragment {
 
     ListView searchList;
     SearchAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_ok, container, false);
 
-        Search result = zebra.manager.SearchManager.getInstance().getSearch();
+        Search result = SearchManager.getInstance().getSearch();
         setListView(view, result);
 
         searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -7,17 +7,18 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import zebra.beans.ReviewItem;
-import zebra.views.ReviewItemView;
+import zebra.beans.SearchItem;
+import zebra.views.SearchItemView;
 
 /**
- * Created by multimedia on 2016-05-13.
+ * Created by multimedia on 2016-05-29.
  */
-public class ReviewAdapter extends BaseAdapter {
+public class CategorySearchAdapter extends BaseAdapter {
 
-    private List<ReviewItem> items = new ArrayList<ReviewItem>();
+    private List<SearchItem> items = new ArrayList<SearchItem>();
 
-    public void add(ReviewItem item) {
+
+    public void add(SearchItem item) {
         items.add(item);
         notifyDataSetChanged();
     }
@@ -39,27 +40,15 @@ public class ReviewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ReviewItemView view = null;
+        SearchItemView view = null;
 
         if (convertView == null) {
-            view = new ReviewItemView(parent.getContext());
+            view = new SearchItemView(parent.getContext());
         } else {
-            view = (ReviewItemView) convertView;
+            view = (SearchItemView) convertView;
         }
         view.setViewItem(items.get(position));
 
         return view;
     }
-
-    /*
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
-    */
 }

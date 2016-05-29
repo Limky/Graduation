@@ -10,6 +10,8 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 
+import org.junit.experimental.categories.Category;
+
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.client.HttpClient;
 import zebra.json.Login;
@@ -59,7 +61,6 @@ public class NetworkManager {
     private static final String SERVER_URL = "http://113.198.84.84:8080/ZEBRA/";
 
     private static final String LOGIN_URL = SERVER_URL + "/appLogin";
-
     public void login(final Context context, String id, String password, final OnResultResponseListener<Login> listener) {
         RequestParams params = new RequestParams();
         params.put("id", id);
@@ -81,7 +82,7 @@ public class NetworkManager {
 
     private static final String REVIEW_REGISTER_URL = SERVER_URL + "/appReviewRegister";
 
-    public void reviewRegister(Context context, String id, String reviewText, String barcode, double starPoint, String productUrl, String memberUrl, final OnResultResponseListener<Review> listener) {
+    public void reviewRegister(Context context, String id, String reviewText, String barcode, double starPoint, String productUrl, String memberUrl, String level, final OnResultResponseListener<Review> listener) {
         RequestParams params = new RequestParams();
         params.put("id", id);
         params.put("reviewText", reviewText);
@@ -89,6 +90,7 @@ public class NetworkManager {
         params.put("starPoint", starPoint);
         params.put("memberUrl", memberUrl);
         params.put("productUrl", productUrl);
+        params.put("level", level);
 
         client.post(context, REVIEW_REGISTER_URL, params, new TextHttpResponseHandler() {
             @Override
@@ -100,7 +102,12 @@ public class NetworkManager {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 Review result = gson.fromJson(jsonResponseString, Review.class);
-                listener.onSuccess(result);
+                if(result.reviews == null){
+                    result = null;
+                    listener.onSuccess(result);
+                }else {
+                    listener.onSuccess(result);
+                }
             }
         });
     }
@@ -133,12 +140,11 @@ public class NetworkManager {
 
     private static final String PRODUCT_REGISTER_URL = SERVER_URL + "/appProductRegister";
 
-    public void productRegister(Context context, String barcode, String productName, final OnResultListener<String> listener) {
+    public void productRegister(Context context, String id, String barcode, String productName, final OnResultListener<String> listener) {
         RequestParams params = new RequestParams();
-        params.put("id", "a");
+        params.put("id", id);
         params.put("barcode", barcode);
-        //params.put("productName", productName);
-        params.put("productName", "옥시");
+        params.put("productName", productName);
 
         client.post(context, PRODUCT_REGISTER_URL, params, new TextHttpResponseHandler() {
             @Override
@@ -165,6 +171,27 @@ public class NetworkManager {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 listener.onFail(statusCode, responseString);
                 Toast.makeText(context, "실패 "+statusCode, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Toast.makeText(context, "성공 "+statusCode, Toast.LENGTH_LONG).show();
+                String jsonResponseString = responseString.replaceAll("[\n \r]", "");
+                Search result = gson.fromJson(jsonResponseString, Search.class);
+                listener.onSuccess(result);
+            }
+        });
+    }
+    private static final String CATEGORY_URL = SERVER_URL + "/appCategory";
+
+    public void category(final Context context, String category, final OnResultResponseListener<Search> listener){
+        RequestParams params = new RequestParams();
+        params.put("category", category);
+
+        client.post(context, CATEGORY_URL, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
             }
 
             @Override

@@ -11,7 +11,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,7 +27,6 @@ import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
 import zebra.json.Review;
 import zebra.manager.MemberManager;
-import zebra.manager.ProductManager;
 import zebra.manager.PropertyManager;
 import zebra.manager.ScanManager;
 import zebra.manager.NetworkManager;
@@ -32,10 +34,7 @@ import zebra.views.NaviHeaderView;
 
 
 public class MainActivity extends AppCompatActivity {
-    CircleButton loginButton, barcodeButton, searchButton;
-
-    AnimationDrawable frameAnimation;
-    ImageView imageAnimation;
+    LinearLayout loginButton, barcodeButton, categoryButton, searchButton;
 
     String barcode;
 
@@ -50,12 +49,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Button 설정
-        loginButton = (CircleButton) findViewById(R.id.loginButton);
-        barcodeButton = (CircleButton) findViewById(R.id.barcodeButton);
-        searchButton = (CircleButton) findViewById(R.id.searchButton);
+        loginButton = (LinearLayout)findViewById(R.id.loginButton);
+        barcodeButton = (LinearLayout)findViewById(R.id.barcodeButton);
+        categoryButton = (LinearLayout)findViewById(R.id.categoryButton);
+        searchButton = (LinearLayout)findViewById(R.id.searchButton);
 
-        //loginButton OnClick
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 new IntentIntegrator(MainActivity.this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
             }
         });
+        categoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent categoryItent = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(categoryItent);
+            }
+        });
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,68 +83,62 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        setToolbar(true);
-        setAnimation();
 
         //자동 로그인일 경우에 설정
-        if(PropertyManager.getInstance().getAutoLogin())PropertyManager.getInstance().setMemberInfoToMemManager();
-
-    }
-
-
-    public void setAnimation(){
-        imageAnimation = (ImageView) findViewById(R.id.imageAnimation);
-        // animation_list.xml 를 ImageView 백그라운드에 셋팅한다
-        imageAnimation.setBackgroundResource(R.drawable.zebra_animation);
-        // 이미지를 동작시키기위해  AnimationDrawable 객체를 가져온다.
-        frameAnimation = (AnimationDrawable)imageAnimation.getBackground();
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            // 어플에 포커스가 갈때 시작된다
-            frameAnimation.start();
-        } else {
-            // 어플에 포커스를 떠나면 종료한다
-            frameAnimation.stop();
+        if(PropertyManager.getInstance().getAutoLogin(MainActivity.this))PropertyManager.getInstance().setMemberInfoToMemManager();
+/*
+        if (PropertyManager.getInstance().getAutoLogin()){
+            PropertyManager.getInstance().setMemberInfoToMemManager();
+            MemberManager.getInstance().setIsLogin(true);
         }
+        */
+
+        setToolbar(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         setToolbar(false);
+        if (PropertyManager.getInstance().getAutoLogin(MainActivity.this)){
+            MemberManager.getInstance().setIsLogin(true);
+            PropertyManager.getInstance().setMemberInfoToMemManager();
+        }
     }
 
-    void setToolbar(boolean isFirst){
+    void setToolbar(boolean isFirst) {
         //Toolbar 설정
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        //toolbar.setTitle("");
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-
-        mDrawerList = (ListView)findViewById(R.id.naviList);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerList = (ListView) findViewById(R.id.naviList);
         naviAdapter = new NaviAdapter();
         mDrawerList.setAdapter(naviAdapter);
-
         NaviHeaderView header = new NaviHeaderView(MainActivity.this);
-        //onResume()에서 두번째 불려지는 경우 naviHeader가 두개 생기는 경우를 방지!!
-        if(isFirst)mDrawerList.addHeaderView(header);
 
-        //navbar 아이템들, 지워야됨
-        for (int i=0; i<4; i++) {
-            if(i == 0){NaviItem item = new NaviItem(R.drawable.ic_perm_identity_black_48dp, "프로필");naviAdapter.add(item);}
-            if(i == 1){NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");naviAdapter.add(item);}
-            if(i == 2){NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");naviAdapter.add(item);}
-            if(i == 3){
-                if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){
-                    PropertyManager.getInstance();
-                    NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");naviAdapter.add(item);
-                }
-                else
-                {
-                    NaviItem item = new NaviItem(R.drawable.logout, "로그인");naviAdapter.add(item);
+        //onResume()에서 두번째 불려지는 경우 naviHeader가 두개 생기는 경우를 방지!!
+        if (isFirst) mDrawerList.addHeaderView(header);
+
+        for (int i = 0; i < 4; i++) {
+            if (i == 0) {
+                NaviItem item = new NaviItem(R.drawable.ic_perm_identity_black_48dp, "프로필");
+                naviAdapter.add(item);
+            }
+            if (i == 1) {
+                NaviItem item = new NaviItem(R.drawable.ic_library_books_black_48dp, "나의 리뷰");
+                naviAdapter.add(item);
+            }
+            if (i == 2) {
+                NaviItem item = new NaviItem(R.drawable.ic_redeem_black_48dp, "선물함");
+                naviAdapter.add(item);
+            }
+            if (i == 3) {
+                //if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){
+                if(PropertyManager.getInstance().getIsLogin()) {
+                    NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");
+                    naviAdapter.add(item);
+                } else {
+                    NaviItem item = new NaviItem(R.drawable.logout, "로그인");
+                    naviAdapter.add(item);
                 }
             }
         }
@@ -147,27 +146,28 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                switch (position){
+                switch (position) {
                     case 4:
-                        //로그아웃 일 경우에 toolbar를 다시 설정
                         PropertyManager.getInstance().setAutoLogin(MainActivity.this, false);
-                        PropertyManager.getInstance().setIsogin(false);
+                        PropertyManager.getInstance().setIsLogin(false);
+                        PropertyManager.getInstance().setLogOut();
+                        //로그아웃 일 경우에 toolbar를 다시 설정
                         setToolbar(false);
                 }
-                int editedPosition = position+1;
+                int editedPosition = position + 1;
                 Toast.makeText(MainActivity.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close){
-            public void onDrawerClosed(View v){
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
+            public void onDrawerClosed(View v) {
                 super.onDrawerClosed(v);
                 invalidateOptionsMenu();
                 syncState();
             }
-            public void onDrawerOpened(View v){
+
+            public void onDrawerOpened(View v) {
                 super.onDrawerOpened(v);
                 invalidateOptionsMenu();
                 syncState();
@@ -181,19 +181,17 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
-    public void network(){
+    public void network() {
         NetworkManager.getInstance().review(this, barcode, new NetworkManager.OnResultResponseListener<Review>() {
             @Override
             public void onSuccess(Review result) {
-                if(result.productInfo==null){
-                    Toast.makeText(MainActivity.this, "등록 된 상품이 없습니다.", Toast.LENGTH_LONG).show();
+
+                //등록 된 상품이 없는 경우
+                if (result.productInfo == null) {
                     Intent i = new Intent(MainActivity.this, ProductRegisterActivity.class);
                     startActivity(i);
-                }else if(result == null){
-                    Toast.makeText(MainActivity.this, "등록 대기중", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Intent i = new Intent(MainActivity.this, ReviewActivity.class);
+                } else { //리뷰 get
+                    Intent i = new Intent(MainActivity.this, ReviewActivityTest.class);
                     ScanManager.getInstance().setProductUrl(result.productInfo.productUrl);
                     i.putExtra("Result", result);
                     startActivity(i);
@@ -202,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFail(int code, String responseString) {
-                Toast.makeText(MainActivity.this, "실패"+code, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "실패" + code, Toast.LENGTH_LONG).show();
                 Log.d("Main", "실패");
             }
         });
@@ -233,17 +231,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home: {
-                if (mDrawerLayout.isDrawerOpen(mDrawerList)){
+                if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
                     mDrawerLayout.closeDrawer(mDrawerList);
                 } else {
                     mDrawerLayout.openDrawer(mDrawerList);
                 }
                 return true;
             }
-            default: return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

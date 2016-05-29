@@ -11,6 +11,7 @@ public class ProductData implements Parcelable{
     public String description;
     public double starPoint;
     public String productUrl;
+    public String barcode;
 
     @Override
     public int describeContents() {
@@ -25,6 +26,7 @@ public class ProductData implements Parcelable{
         description = in.readString();
         productUrl = in.readString();
         starPoint = in.readDouble();
+        barcode = in.readString();
     }
 
     @Override
@@ -33,6 +35,7 @@ public class ProductData implements Parcelable{
         dest.writeString(description);
         dest.writeString(productUrl);
         dest.writeDouble(starPoint);
+        dest.writeString(barcode);
     }
 
     public static final Parcelable.Creator<ProductData> CREATOR

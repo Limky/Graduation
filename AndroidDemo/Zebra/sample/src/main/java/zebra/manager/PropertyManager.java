@@ -36,7 +36,7 @@ public class PropertyManager{
         mEditor.commit();
     }
 
-    public void setIsogin(boolean isLogin){
+    public void setIsLogin(boolean isLogin){
         this.isLogin = isLogin;
     }
 
@@ -44,8 +44,8 @@ public class PropertyManager{
         return isLogin;
     }
 
-    public boolean getAutoLogin(){
-        if(mPrefs == null)return false;
+    public boolean getAutoLogin(Context context){
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         return mPrefs.getBoolean(KEY_AUTO_LOGIN, false);
     }
 
@@ -71,19 +71,36 @@ public class PropertyManager{
         MemberManager.getInstance().setMemberUrl(result.member.memberUrl);
         MemberManager.getInstance().setReviewCount(result.member.reviewCount);
         MemberManager.getInstance().setTotalReviewCount(result.member.totalReviewCount);
+        //MemberManager.getInstance().setIsLogin(true);
     }
 
     public void setMemberInfoToMemManager(){
         MemberManager.getInstance().setId(mPrefs.getString("id", null));
         MemberManager.getInstance().setName(mPrefs.getString("name", null));
         MemberManager.getInstance().setPhoneNumber(mPrefs.getString("phoneNumber", null));
-        String s = mPrefs.getString("phoneNumber", null);
         MemberManager.getInstance().setPoint(mPrefs.getInt("point", 0));
+        int i = mPrefs.getInt("point", 0);
         MemberManager.getInstance().setLevel(mPrefs.getString("level", null));
         MemberManager.getInstance().setLastReviewDate(mPrefs.getString("lastReviewDate", null));
         MemberManager.getInstance().setMemberUrl(mPrefs.getString("memberUrl", null));
         MemberManager.getInstance().setReviewCount(mPrefs.getInt("reviewCount", 0));
         MemberManager.getInstance().setTotalReviewCount(mPrefs.getInt("totalReviewCount", 0));
+        MemberManager.getInstance().setIsLogin(true);
+    }
+
+    public void setLogOut(){
+        if(mPrefs == null)return;
+        MemberManager.getInstance().clearMemberInfo();
+        mEditor.putString("id", "");
+        mEditor.putString("name", "");
+        mEditor.putString("phoneNumber", "");
+        mEditor.putInt("point", 0);
+        mEditor.putString("level", "");
+        mEditor.putString("lastReviewDate", "");
+        mEditor.putString("memberUrl", "");
+        mEditor.putInt("reviewCount", 0);
+        mEditor.putInt("totalReviewCount", 0);
+        mEditor.commit();
     }
 
     public static final String KEY_AUTO_LOGIN = "auto_login";

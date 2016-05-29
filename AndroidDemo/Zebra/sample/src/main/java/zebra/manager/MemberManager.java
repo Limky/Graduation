@@ -25,6 +25,7 @@ public class MemberManager {
     String memberUrl;
     int reviewCount;
     int totalReviewCount;
+    boolean isLogin;
 
     public void setId(String id) {
         this.id = id;
@@ -98,7 +99,24 @@ public class MemberManager {
         return this.id;
     }
 
-    public void setMember(){
+    public void clearMemberInfo(){
+        String id = null;
+        String name = null;
+        String phoneNumber = null;
+        int point = 0;
+        String level = null;
+        String lastReviewDate = null;
+        String memberUrl = null;
+        int reviewCount = 0;
+        int totalReviewCount = 0;
+        setIsLogin(false);
+    }
 
+    public boolean getIsLogin(){
+        return isLogin;
+    }
+
+    public void setIsLogin(boolean isLogin){
+        this.isLogin = isLogin;
     }
 }

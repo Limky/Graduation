@@ -33,7 +33,7 @@
                 android:layout_marginTop="20dp"
                 android:text="명품 C++"
                 android:textColor="#000000"
-                android:textSize="30dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:layout_marginBottom="10dp"
                 android:id="@+id/description"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -54,7 +54,7 @@
         android:isIndicator="true"
         android:theme="@style/RatingBar" />
 
-    <Button
+    <!--Button
         android:id="@+id/dialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,5 +63,5 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/rounded_button"
         android:text="리뷰 작성"
-        android:textColor="@color/text_white" />
+        android:textColor="@color/text_white" /-->
 </LinearLayout>

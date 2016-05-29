@@ -1,6 +1,5 @@
 package zebra.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.TextUtils;
@@ -15,8 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import example.zxing.R;
-import example.zxing.SampleApplication;
+import zebra.activity.LoginActivity;
 import zebra.json.Login;
+import zebra.manager.MemberManager;
 import zebra.manager.PropertyManager;
 import zebra.manager.NetworkManager;
 
@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final View viewLogin = v;
+                //final View viewLogin = v;
                 id = idEditText.getText().toString();
                 password = passwordEditText.getText().toString();
 
@@ -69,14 +69,16 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onSuccess(Login result) {
                             if (autoLoginCheck.isChecked()) {
-                                PropertyManager.getInstance().setAutoLogin(viewLogin.getContext(),true);
+                                PropertyManager.getInstance().setAutoLogin(view.getContext(),true);
                                 PropertyManager.getInstance().setMemberInfoToPrefManager(result);
                                 PropertyManager.getInstance().setMemberInfoToMemManager(result);
                             } else {
                                 PropertyManager.getInstance().setMemberInfoToMemManager(result);
                             }
 
-                            PropertyManager.getInstance().setIsogin(true);
+                            PropertyManager.getInstance().setIsLogin(true);
+                            //MemberManager.getInstance().setIsLogin(true);
+
                             Toast.makeText(getActivity(), "로그인 성공", Toast.LENGTH_LONG).show();
 
                             getActivity().finish();
