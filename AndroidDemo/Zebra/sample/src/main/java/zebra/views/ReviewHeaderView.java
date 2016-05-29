@@ -1,7 +1,6 @@
 package zebra.views;
 
 import android.content.Context;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -19,7 +18,6 @@ public class ReviewHeaderView extends FrameLayout {
 
     ImageView productImage;
     TextView productName, description;
-    Button dialogButton;
     RatingBar ratingBar;
 
     public ReviewHeaderView(Context context) {
@@ -32,7 +30,6 @@ public class ReviewHeaderView extends FrameLayout {
 
         productImage = (ImageView)findViewById(R.id.productImage);
         productName = (TextView)findViewById(R.id.productName);
-        dialogButton = (Button)findViewById(R.id.dialogButton);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         description = (TextView)findViewById(R.id.description);
     }

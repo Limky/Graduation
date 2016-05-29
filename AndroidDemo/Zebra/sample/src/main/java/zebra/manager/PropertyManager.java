@@ -57,6 +57,7 @@ public class PropertyManager{
         mEditor.putString("level", result.member.level);
         mEditor.putString("lastReviewDate", result.member.lastReviewDate);
         mEditor.putString("memberUrl", result.member.memberUrl);
+        String s = result.member.memberUrl;
         mEditor.putInt("reviewCount", result.member.reviewCount);
         mEditor.putInt("totalReviewCount", result.member.totalReviewCount);
     }
@@ -69,9 +70,10 @@ public class PropertyManager{
         MemberManager.getInstance().setLevel(result.member.level);
         MemberManager.getInstance().setLastReviewDate(result.member.lastReviewDate);
         MemberManager.getInstance().setMemberUrl(result.member.memberUrl);
+        String s = MemberManager.getInstance().getMemberUrl();
         MemberManager.getInstance().setReviewCount(result.member.reviewCount);
         MemberManager.getInstance().setTotalReviewCount(result.member.totalReviewCount);
-        //MemberManager.getInstance().setIsLogin(true);
+        MemberManager.getInstance().setIsLogin(true);
     }
 
     public void setMemberInfoToMemManager(){

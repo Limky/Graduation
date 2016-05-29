@@ -14,7 +14,9 @@ import org.junit.experimental.categories.Category;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.client.HttpClient;
+import zebra.activity.MyPageActivity;
 import zebra.json.Login;
+import zebra.json.MyReview;
 import zebra.json.Review;
 import zebra.json.Search;
 
@@ -61,6 +63,7 @@ public class NetworkManager {
     private static final String SERVER_URL = "http://113.198.84.84:8080/ZEBRA/";
 
     private static final String LOGIN_URL = SERVER_URL + "/appLogin";
+
     public void login(final Context context, String id, String password, final OnResultResponseListener<Login> listener) {
         RequestParams params = new RequestParams();
         params.put("id", id);
@@ -102,10 +105,10 @@ public class NetworkManager {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 Review result = gson.fromJson(jsonResponseString, Review.class);
-                if(result.reviews == null){
+                if (result.reviews == null) {
                     result = null;
                     listener.onSuccess(result);
-                }else {
+                } else {
                     listener.onSuccess(result);
                 }
             }
@@ -162,7 +165,7 @@ public class NetworkManager {
 
     private static final String PRODUCT_SEARCH_URL = SERVER_URL + "/appProductSearch";
 
-    public void productSearch(final Context context, String keyword, final OnResultResponseListener<Search> listener){
+    public void productSearch(final Context context, String keyword, final OnResultResponseListener<Search> listener) {
         RequestParams params = new RequestParams();
         params.put("keyword", keyword);
 
@@ -170,21 +173,22 @@ public class NetworkManager {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 listener.onFail(statusCode, responseString);
-                Toast.makeText(context, "실패 "+statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "실패 " + statusCode, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Toast.makeText(context, "성공 "+statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "성공 " + statusCode, Toast.LENGTH_LONG).show();
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 Search result = gson.fromJson(jsonResponseString, Search.class);
                 listener.onSuccess(result);
             }
         });
     }
+
     private static final String CATEGORY_URL = SERVER_URL + "/appCategory";
 
-    public void category(final Context context, String category, final OnResultResponseListener<Search> listener){
+    public void category(final Context context, String category, final OnResultResponseListener<Search> listener) {
         RequestParams params = new RequestParams();
         params.put("category", category);
 
@@ -196,9 +200,30 @@ public class NetworkManager {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Toast.makeText(context, "성공 "+statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "성공 " + statusCode, Toast.LENGTH_LONG).show();
                 String jsonResponseString = responseString.replaceAll("[\n \r]", "");
                 Search result = gson.fromJson(jsonResponseString, Search.class);
+                listener.onSuccess(result);
+            }
+        });
+    }
+
+    private static final String MY_REVIEW = SERVER_URL + "/appShowMyReview";
+
+    public void myReview(final Context context, String id, final OnResultResponseListener<MyReview> listener) {
+        RequestParams params = new RequestParams();
+        params.put("id", "a");
+
+        client.post(context, MY_REVIEW, params, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(context, "실패 " + statusCode, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                String jsonResponseString = responseString.replaceAll("[\n \r]", "");
+                MyReview result = gson.fromJson(jsonResponseString, MyReview.class);
                 listener.onSuccess(result);
             }
         });

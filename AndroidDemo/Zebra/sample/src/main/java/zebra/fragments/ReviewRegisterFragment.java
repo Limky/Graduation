@@ -80,7 +80,7 @@ public class ReviewRegisterFragment  extends Fragment {
                         }
                         @Override
                         public void onFail(int code, String responseString) {
-                            Toast.makeText(viewGettedOnclick.getContext(), "야미실패", Toast.LENGTH_LONG).show();
+                            Toast.makeText(viewGettedOnclick.getContext(), "야미실패"+code, Toast.LENGTH_LONG).show();
                         }
                     });
                 }

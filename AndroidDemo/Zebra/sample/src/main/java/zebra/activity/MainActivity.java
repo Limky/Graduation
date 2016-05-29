@@ -25,6 +25,7 @@ import at.markushi.ui.CircleButton;
 import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
+import zebra.json.MyReview;
 import zebra.json.Review;
 import zebra.manager.MemberManager;
 import zebra.manager.PropertyManager;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         barcodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //networkMyPage();
                 new IntentIntegrator(MainActivity.this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
             }
         });
@@ -82,17 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        //자동 로그인일 경우에 설정
-        if(PropertyManager.getInstance().getAutoLogin(MainActivity.this))PropertyManager.getInstance().setMemberInfoToMemManager();
-/*
-        if (PropertyManager.getInstance().getAutoLogin()){
-            PropertyManager.getInstance().setMemberInfoToMemManager();
-            MemberManager.getInstance().setIsLogin(true);
-        }
-        */
-
         setToolbar(true);
     }
 
@@ -100,10 +91,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setToolbar(false);
-        if (PropertyManager.getInstance().getAutoLogin(MainActivity.this)){
-            MemberManager.getInstance().setIsLogin(true);
-            PropertyManager.getInstance().setMemberInfoToMemManager();
-        }
     }
 
     void setToolbar(boolean isFirst) {
@@ -132,8 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 naviAdapter.add(item);
             }
             if (i == 3) {
-                //if(PropertyManager.getInstance().getAutoLogin() || PropertyManager.getInstance().getIsLogin()){
-                if(PropertyManager.getInstance().getIsLogin()) {
+                if(MemberManager.getInstance().getIsLogin()) {
                     NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");
                     naviAdapter.add(item);
                 } else {
@@ -148,9 +134,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 4:
-                        PropertyManager.getInstance().setAutoLogin(MainActivity.this, false);
-                        PropertyManager.getInstance().setIsLogin(false);
-                        PropertyManager.getInstance().setLogOut();
+                        MemberManager.getInstance().clearMemberInfo();
                         //로그아웃 일 경우에 toolbar를 다시 설정
                         setToolbar(false);
                 }
@@ -179,6 +163,22 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
+    }
+
+    public void networkMyPage(){
+        NetworkManager.getInstance().myReview(this, MemberManager.getInstance().getId(), new NetworkManager.OnResultResponseListener<MyReview>() {
+            @Override
+            public void onSuccess(MyReview result) {
+                MemberManager.getInstance().setReviews(result);
+                Intent i = new Intent(MainActivity.this, MyPageActivity.class);
+                startActivity(i);
+            }
+
+            @Override
+            public void onFail(int code, String responseString) {
+
+            }
+        });
     }
 
     public void network() {

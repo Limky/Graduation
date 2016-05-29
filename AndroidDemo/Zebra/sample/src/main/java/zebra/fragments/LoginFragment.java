@@ -68,6 +68,14 @@ public class LoginFragment extends Fragment {
                     NetworkManager.getInstance().login(v.getContext(), id, password, new NetworkManager.OnResultResponseListener<Login>() {
                         @Override
                         public void onSuccess(Login result) {
+
+                            MemberManager.getInstance().memberSet(result);
+
+                            Toast.makeText(getActivity(), "로그인 성공", Toast.LENGTH_LONG).show();
+
+                            getActivity().finish();
+
+                            /*
                             if (autoLoginCheck.isChecked()) {
                                 PropertyManager.getInstance().setAutoLogin(view.getContext(),true);
                                 PropertyManager.getInstance().setMemberInfoToPrefManager(result);
@@ -82,6 +90,7 @@ public class LoginFragment extends Fragment {
                             Toast.makeText(getActivity(), "로그인 성공", Toast.LENGTH_LONG).show();
 
                             getActivity().finish();
+                            */
                         }
 
                         @Override
