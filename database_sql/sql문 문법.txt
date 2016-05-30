@@ -12,3 +12,5 @@ update board set count = count + 2 where num = '7'
 http://blog.serpongs.net/24
 
 http://demun.tistory.com/2358
+
+http://www.learningjquery.com/2015/03/15-top-jquery-chart-plugins-for-developers
