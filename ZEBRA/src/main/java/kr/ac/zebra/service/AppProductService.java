@@ -14,12 +14,12 @@ import kr.ac.zebra.dto.Product;
 @Service("appProductService") // service로 bean에 등록시켜준다
 public class AppProductService {
 
-	private AppProductDAO productDAO;
+	private AppProductDAO appProductDAO;
 	private AppApplyDAO appApplyDAO;
 
 	@Autowired
 	public void setProductDAO(AppProductDAO productDAO) {
-		this.productDAO = productDAO;
+		this.appProductDAO = productDAO;
 	}
 
 	@Autowired
@@ -31,7 +31,7 @@ public class AppProductService {
 
 		System.out.println("Product Service");
 
-		Product product = productDAO.getProduct(barcode);
+		Product product = appProductDAO.getProduct(barcode);
 
 		if (product == null) {
 
@@ -49,14 +49,12 @@ public class AppProductService {
 
 	public List<Product> getProductSearch(String keyword) {
 
-		return productDAO.getSearchProduct(keyword);
+		return appProductDAO.getSearchProduct(keyword);
 	}
 
 	public List<Product> getCategoryProducts(String category) {
 
-		List<Product> categoryProducts = productDAO.getCategoryProducts(category);
-
-		return categoryProducts;
+		return appProductDAO.getCategoryProducts(category);
 	}
 
 	public AppApply getApply(String barcode) {
@@ -72,11 +70,11 @@ public class AppProductService {
 			return apply;
 		}
 	}
-	
-	public Boolean isExit(String barcode){
+
+	public Boolean isExit(String barcode) {
 		System.out.println("Service isExit()");
-		
-		return productDAO.isExit(barcode);
+
+		return appProductDAO.isExit(barcode);
 	}
 
 }

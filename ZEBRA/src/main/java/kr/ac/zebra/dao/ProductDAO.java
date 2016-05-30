@@ -148,7 +148,7 @@ public class ProductDAO {
 		
 		
 		System.out.println("getMostReviewProducts DAO 예외 처리 발생 획인 메세지 ");
-		e.printStackTrace();
+		
 		return null;
 
 	}

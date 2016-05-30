@@ -22,16 +22,6 @@ public class Review {
 
 	}
 
-	public Review(String id, String barcode, String reviewText, double starPoint, String level) {
-		super();
-
-		this.id = id;
-		this.barcode = barcode;
-		this.reviewText = reviewText;
-		this.starPoint = starPoint;
-		this.level = level;
-	}
-
 	public String getId() {
 		return id;
 	}

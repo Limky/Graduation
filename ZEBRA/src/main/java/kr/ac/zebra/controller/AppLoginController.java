@@ -22,6 +22,7 @@ public class AppLoginController {
 	@RequestMapping("/appLogin")
 	public String showloginTest(HttpServletRequest request) {
 
+		System.out.println("Login");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 
@@ -29,10 +30,6 @@ public class AppLoginController {
 
 		request.setAttribute("member", member);
 
-		/*
-		 * System.out.println("login test"); List<Integer> star =
-		 * reviewService.getStarPoint("8801056059842");
-		 */
 		return "appLogin";
 
 	}

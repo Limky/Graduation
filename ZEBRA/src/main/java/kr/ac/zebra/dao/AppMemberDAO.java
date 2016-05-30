@@ -28,14 +28,12 @@ public class AppMemberDAO {
 
 		try {
 			String sqlStatement = "select * from membertb where id=?";
-			
+
 			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id }, new AppMemberMapper());
 		} catch (Exception e) {
+			System.out.println("DAO ¿¹¿Ü Ã³¸® ¹ß»ý È¹ÀÎ ¸Þ¼¼Áö  getMember");
 
-			System.out.println("DAO ¿¹¿Ü Ã³¸® ¹ß»ý È¹ÀÎ ¸Þ¼¼Áö ");
-			e.printStackTrace();
 			return null;
-
 		}
 
 	}
@@ -43,97 +41,86 @@ public class AppMemberDAO {
 	// Querying and returning multiple object
 	public List<Member> getMembers() {
 
-		String sqlStatement = "select * from membertb";
+		try {
 
-		return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper()); // Anonymous
-																			// Classes
-	}
+			String sqlStatement = "select * from membertb";
 
-	public List<Member> getFirstGrade() {
-
-		String sqlStatement = "select * from membertb where level = 1 order by totalReviewCount desc limit 0,3";
-
-		return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
-
-	}
-
-	public List<Member> getSecondGrade() {
-
-		String sqlStatement = "select * from membertb where level = 2 order by totalReviewCount desc limit 0,3";
-
-		return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+			return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+		} catch (Exception e) {
+			System.out.println("DAO ¿¹¿Ü Ã³¸® ¹ß»ý È¹ÀÎ ¸Þ¼¼Áö  getMembers");
+			
+			return null;
+		}
 
 	}
 
-	public List<Member> getThirdGrade() {
+	public void setting(String id, int reviewCount, int point, int totalReviewCount) {
 
-		String sqlStatement = "select * from membertb where level = 3 order by totalReviewCount desc limit 0,3";
+		String sqlStatement = "update membertb set reviewCount = ?, point= ?, totalreviewcount= ? where id = ?";
 
-		return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+		totalReviewCount++;
+		reviewCount--;
+		point += 10;
+
+		jdbcTemplateObject.update(sqlStatement, new Object[] { reviewCount, point, totalReviewCount, id });
+
+		System.out.println(totalReviewCount);
+
+		if (totalReviewCount == 4) {
+			sqlStatement = "update membertb set level = 'silver' where id = ?";
+			jdbcTemplateObject.update(sqlStatement, new Object[] { id });
+		} else if (totalReviewCount == 7) {
+			sqlStatement = "update membertb set level = 'gold' where id = ?";
+			jdbcTemplateObject.update(sqlStatement, new Object[] { id });
+		}
 
 	}
+
+	public void setting2(String id, int reviewCount, int point, String nowDate, int totalReviewCount) {
+
+		String sqlStatement = "update membertb set reviewCount = ?, point= ?, lastreviewdate= ?, totalreviewcount= ? where id = ?";
+
+		totalReviewCount++;
+		reviewCount = 2;
+		point += 10;
+
+		jdbcTemplateObject.update(sqlStatement, new Object[] { reviewCount, point, nowDate, totalReviewCount, id });
+
+		if (totalReviewCount == 4) {
+			sqlStatement = "update membertb set level = 'Silver' where id = ?";
+			jdbcTemplateObject.update(sqlStatement, new Object[] { id });
+		} else if (totalReviewCount == 7) {
+			sqlStatement = "update membertb set level = 'Gold' where id = ?";
+			jdbcTemplateObject.update(sqlStatement, new Object[] { id });
+		}
+
+	}
+
+	// public List<Member> getFirstGrade() {
+	//
+	// String sqlStatement = "select * from membertb where level = 1 order by
+	// totalReviewCount desc limit 0,3";
+	//
+	// return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+	//
+	// }
+	//
+	// public List<Member> getSecondGrade() {
+	//
+	// String sqlStatement = "select * from membertb where level = 2 order by
+	// totalReviewCount desc limit 0,3";
+	//
+	// return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+	//
+	// }
+	//
+	// public List<Member> getThirdGrade() {
+	//
+	// String sqlStatement = "select * from membertb where level = 3 order by
+	// totalReviewCount desc limit 0,3";
+	//
+	// return jdbcTemplateObject.query(sqlStatement, new AppMemberMapper());
+	//
+	// }
+
 }
-
-/*
- * public int getRowCount() { String sqlStatement =
- * "select count(*) from member"; return
- * jdbcTemplateObject.queryForObject(sqlStatement, Integer.class);// ï¿½ë¸¯ï¿½êµ¹ï¿½ì“½
- * // ï¿½ì‚¤?‡‰?š¯? ¥ï¿½ë“ƒ
- * 
- * }
- * 
- * //
- * -----------------------------------------------------------------------------
- * ----------------------------------// // Querying and returning a single
- * object public Member getMember(String id) {
- * 
- * try { String sqlStatement = "select * from membertb where id=?";
- * 
- * return jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id },
- * new MemberMapper()); } catch (Exception e) {
- * 
- * System.out.println("DAO ¿¹¿Ü Ã³¸® ¹ß»ý È¹ÀÎ ¸Þ¼¼Áö "); e.printStackTrace(); return null;
- * 
- * }
- * 
- * }
- * 
- * 
- * 
- * public boolean insert(Member member) {
- * 
- * String id = member.getId(); String password = member.getPassword(); String
- * name = member.getName(); String memberUrl = member.getMemberUrl(); String
- * lastReviewDate = member.getLastReviewDate(); String phoneNumber =
- * member.getPhoneNumber(); int point = member.getPoint(); int level =
- * member.getLevel(); int reviewCount = member.getReviewCount(); int
- * totalReivewCount = member.getTotalReivewCount();
- * 
- * String sqlStatement =
- * "insert into membertb (id, password, name, memberUrl, lastReviewDate, phoneNumber, point, level, reviewCount, totalReivewCount) values (?,?,?,?,?,?,?,?,?,?)"
- * ; return (jdbcTemplateObject.update(sqlStatement, new Object[] { id,
- * password, name, memberUrl, lastReviewDate, phoneNumber, point, level,
- * reviewCount, totalReivewCount }) == 1); }
- * 
- * public boolean update(Member member) {
- * 
- * String id = member.getId(); String password = member.getPassword(); String
- * name = member.getName(); String memberUrl = member.getMemberUrl(); String
- * lastReviewDate = member.getLastReviewDate(); String phoneNumber =
- * member.getPhoneNumber(); int point = member.getPoint(); int level =
- * member.getLevel(); int reviewCount = member.getReviewCount(); int
- * totalReivewCount = member.getTotalReivewCount();
- * 
- * String sqlStatement =
- * "update membertb set id=?, password=?, name=?, memberUrl=?, lastReviewDate=?, phoneNumber=?, point=?, level=?, reviewCount=?, totalReivewCount=? where id=?"
- * ; return (jdbcTemplateObject.update(sqlStatement, new Object[] { id,
- * password, name, memberUrl, lastReviewDate, phoneNumber, point, level,
- * reviewCount, totalReivewCount }) == 1); }
- * 
- * public boolean delete(int id) {
- * 
- * String sqlstatement = "delete from membertb where id=?"; return
- * (jdbcTemplateObject.update(sqlstatement, new Object[] { id }) == 1); }
- * 
- * }
- */

@@ -24,7 +24,7 @@ public class AppApplyDAO {
 	public AppApply getApply(String barcode) {
 
 		try {
-			String sqlStatement = "select * from producttb where barcode=" + barcode;
+			String sqlStatement = "select * from applytb where barcode=" + barcode;
 
 			AppApply apply = jdbcTemplateObject.queryForObject(sqlStatement, new AppApplyMapper());
 
@@ -47,16 +47,26 @@ public class AppApplyDAO {
 
 	public List<AppApply> getApplys() {
 
-		String sqlStatement = "select * from producttb";
+		try {
+			String sqlStatement = "select * from applytb";
 
-		return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
+			return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
+		} catch (Exception e) {
+			return null;
+		}
 
 	}
 
 	public boolean insertProduct(String id, String barcode, String productName) {
 
-		String sqlStatement = "insert into applytb (barcode, id, productName) values (?,?,?)";
-		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, id, productName }) == 1);
+		try {
+			String sqlStatement = "insert into applytb (barcode, id, productName) values (?,?,?)";
+
+			return (jdbcTemplateObject.update(sqlStatement,
+					new Object[] { barcode, id, productName}) == 1);
+		} catch (Exception e) {
+			return false;
+		}
 
 	}
 

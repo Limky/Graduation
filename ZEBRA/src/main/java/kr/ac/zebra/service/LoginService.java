@@ -12,7 +12,7 @@ import kr.ac.zebra.dto.Member;
 public class LoginService {
 
 	private EnterpriseDAO enterpriseDAO;
-	private AppMemberDAO memberDAO;
+	private AppMemberDAO appMemberDAO;
 
 	@Autowired // DI ¡÷¿‘
 	public void setEnterpriseDAO(EnterpriseDAO enterpriseDAO) {
@@ -21,7 +21,7 @@ public class LoginService {
 
 	@Autowired
 	public void setMemberDAO(AppMemberDAO memberDAO) {
-		this.memberDAO = memberDAO;
+		this.appMemberDAO = memberDAO;
 	}
 	
 	public Enterprise checkEnterprise(String temail, String tpassword) {
@@ -51,7 +51,7 @@ public class LoginService {
 
 	public Member checkMember(String id, String password) {
 
-		Member member = memberDAO.getMember(id);
+		Member member = appMemberDAO.getMember(id);
 
 		if (member == null) {
 

@@ -5,9 +5,9 @@ public class AppApply {
 	private String barcode;
 	private String id;
 	private String productName;
-	
-	public AppApply(){
-		
+
+	public AppApply() {
+
 	}
 
 	public String getBarcode() {
@@ -36,9 +36,7 @@ public class AppApply {
 
 	@Override
 	public String toString() {
-		return "\"barcode\"=\"" + barcode + "\", \"id\"=\"" + id + "\", \"productName\"=\"" + productName + "\"";
+		return "AppApply [barcode=" + barcode + ", id=" + id + ", productName=" + productName + "]";
 	}
-	
-	
 
 }

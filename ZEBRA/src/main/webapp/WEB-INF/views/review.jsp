@@ -55,17 +55,21 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 	<%
-	
-		double starPoint = (double)request.getAttribute("starPoint");
-		String str = "";	
-		if(starPoint > 4.5) str ="star5";
-		else if(starPoint > 4) str ="star4";
-		else if(starPoint > 3.5) str ="star4";
-		else if(starPoint > 3) str = "star3";
-		else if(starPoint > 2.5) str="star3";
-		else if(starPoint > 2 )str="star2";
- 
-		%>
+		double starPoint = (double) request.getAttribute("starPoint");
+		String str = "";
+		if (starPoint > 4.5)
+			str = "star5";
+		else if (starPoint > 4)
+			str = "star4";
+		else if (starPoint > 3.5)
+			str = "star4";
+		else if (starPoint > 3)
+			str = "star3";
+		else if (starPoint > 2.5)
+			str = "star3";
+		else if (starPoint > 2)
+			str = "star2";
+	%>
 
 
 
@@ -92,7 +96,10 @@
 					</div>
 					<div class="col-md-6">
 						<img alt="" src="/ZEBRA/resources/image/<%=str%>.png"
-							width="200px" height="40px">스캔:<c:out value="${productInfo.scanCount}"></c:out> 리뷰:<c:out value="${productInfo.totalReviewCount}"></c:out>
+							width="200px" height="40px">스캔:
+						<c:out value="${productInfo.scanCount}"></c:out>
+						리뷰:
+						<c:out value="${productInfo.totalReviewCount}"></c:out>
 
 						<h2 style="font-weight: bolder;">
 							<c:out value="${productInfo.productName}"></c:out>
@@ -189,14 +196,12 @@
 
 				<hr>
 
-<style>
-#reviewDiv{
-
--webkit-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.29);
--moz-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.29);
-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.29);
+				<style>
+#reviewDiv {
+	-webkit-box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
+	-moz-box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
+	box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
 }
-
 </style>
 
 				<c:forEach var="reviewList" items="${reviewList}">
@@ -208,18 +213,20 @@ box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.29);
 								<p>
 									<img
 										src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
-										alt="..." class="img-circle" width="50px" height="50px" style="padding-left:5px">
+										alt="..." class="img-circle" width="50px" height="50px"
+										style="padding-left: 5px">
 									<%-- <c:out value="${reviewList.starPoint}"></c:out> --%>
-									ID:<c:out value="${reviewList.id}"></c:out>
-							<%-- 	<% 
+									ID:
+									<c:out value="${reviewList.id}"></c:out>
+									<%-- 	<% 
 								/* 	List<Review> reviews= (List<Review>)request.getAttribute("reviewsList"); */
 								List<Review> reviews= ${reviewList};
 								%> --%>
-								
+
 									<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
 										height="20px">
 								</p>
-								<p style="padding-left:5px">
+								<p style="padding-left: 5px">
 									<c:out value="${reviewList.reviewText}"></c:out>
 									<br />
 								</p>
@@ -239,18 +246,23 @@ box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.29);
 				<h3>Related Products</h3>
 
 				<c:forEach var="relatedProducts" items="${relatedProducts}">
-						<div class="col-md-4 portfolio-item" style="width: 250px; height: 315px">
-							<a href="/ZEBRA/review?barcode=${relatedProducts.barcode}"> <img class="img-responsive" src="${relatedProducts.productUrl}" alt=""  style="width: 150px; height:170px;"></a>
-							
+					<div class="col-md-4 portfolio-item"
+						style="width: 250px; height: 315px">
+						<a href="/ZEBRA/review?barcode=${relatedProducts.barcode}"> <img
+							class="img-responsive" src="${relatedProducts.productUrl}" alt=""
+							style="width: 150px; height: 170px;"></a>
+
 						<div class="caption">
 
 							<h5>
 								<hr>
-								<h5 style="font-weight: bolder; font-size:15px"><c:out value="${relatedProducts.productName}"></c:out></h5>
+								<h5 style="font-weight: bolder; font-size: 15px">
+									<c:out value="${relatedProducts.productName}"></c:out>
+								</h5>
 							</h5>
 							<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
 								height="20px">
-							
+
 
 						</div>
 					</div>

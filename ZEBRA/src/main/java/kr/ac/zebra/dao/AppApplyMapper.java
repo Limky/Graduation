@@ -18,7 +18,5 @@ public class AppApplyMapper implements RowMapper<AppApply> {
 		apply.setProductName(rs.getString("productName"));
 
 		return apply;
-
 	}
-
 }

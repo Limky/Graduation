@@ -23,7 +23,6 @@ public class AppProductController {
 	@RequestMapping("/appProductRegister")
 	public String showAppProductRegister(HttpServletRequest request) {
 
-		System.out.println("appProductRegister");
 		String id = request.getParameter("id");
 		String barcode = request.getParameter("barcode");
 		String productName = request.getParameter("productName");
@@ -61,9 +60,10 @@ public class AppProductController {
 	@RequestMapping("/appCategory")
 	public String getCategoryProduct(HttpServletRequest request) {
 
+		// System.out.println(request.getParameter("category"));
 		List<Product> categoryProducts = appProductService.getCategoryProducts(request.getParameter("category"));
 
-		request.setAttribute("products", categoryProducts);
+		request.setAttribute("productList", categoryProducts);
 
 		return "appCategory";
 	}

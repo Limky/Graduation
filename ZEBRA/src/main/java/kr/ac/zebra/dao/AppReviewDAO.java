@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,20 +22,6 @@ public class AppReviewDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public List<Review> getReviewsById(String id) {
-		try {
-			String sqlStatement = "select * from reviewtb where id=?";
-
-			return jdbcTemplateObject.query(sqlStatement, new Object[] { id }, new AppReviewMapper());
-		} catch (Exception e) {
-
-			System.out.println("DAO 예외 처리 발생 획인 메세지 getReviewsById ");
-			e.printStackTrace();
-
-			return null;
-		}
-	}
-
 	public Review getReview(String barcode) {
 
 		try {
@@ -44,7 +31,6 @@ public class AppReviewDAO {
 		} catch (Exception e) {
 
 			System.out.println("DAO 예외 처리 발생 획인 메세지 getReview ");
-			e.printStackTrace();
 
 			return null;
 		}
@@ -59,11 +45,23 @@ public class AppReviewDAO {
 		} catch (Exception e) {
 
 			System.out.println("DAO 예외 처리 발생 획인 메세지 getReviews ");
-			e.printStackTrace();
 
 			return null;
 		}
 
+	}
+
+	public List<Review> getReviewsById(String id) {
+		try {
+			String sqlStatement = "select * from reviewtb where id=?";
+
+			return jdbcTemplateObject.query(sqlStatement, new Object[] { id }, new AppReviewMapper());
+		} catch (Exception e) {
+
+			System.out.println("DAO 예외 처리 발생 획인 메세지 getReviewsById ");
+
+			return null;
+		}
 	}
 
 	public void setReview(String id, String barcode, String reviewText, double starPoint, String memberUrl,
@@ -76,6 +74,7 @@ public class AppReviewDAO {
 					new Object[] { id, barcode, reviewText, starPoint, level, memberUrl, productUrl });
 		} catch (Exception e) {
 			System.out.println("setReview() 예외 처리 발생 획인 메세지 ");
+			e.printStackTrace();
 		}
 	}
 
@@ -87,21 +86,26 @@ public class AppReviewDAO {
 			jdbcTemplateObject.update(sqlStatement, new Object[] { reviewText, starPoint, level, id, barcode });
 		} catch (Exception e) {
 			System.out.println("DAO 예외 처리 발생 획인 메세지 updateReview ");
-			e.printStackTrace();
 		}
 
 	}
 
-	public String isExit(String id, String barcode) {
+	public Review isExist(String id, String barcode) {
 
 		try {
-			String sqlStatement = "select reviewText from reviewtb where id=? and barcode=?";
+			String sqlStatement = "select * from reviewtb where id=? and barcode=?";
+
+			System.out.println(id);
+			System.out.println(barcode);
 
 			Review review = jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { id, barcode },
 					new AppReviewMapper());
 
-			return review.getReviewText();
+			System.out.println(review);
+
+			return review;
 		} catch (Exception e) {
+			System.out.println("fail");
 			return null;
 		}
 	}

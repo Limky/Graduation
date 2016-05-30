@@ -15,6 +15,7 @@ public class AppReviewMapper implements RowMapper<Review> {
 
 		appReview.setId(rs.getString("id"));
 		appReview.setBarcode(rs.getString("barcode"));
+		appReview.setLevel(rs.getString("level"));
 		appReview.setReviewText(rs.getString("reviewText"));
 		appReview.setStarPoint(rs.getDouble("starPoint"));
 		appReview.setMemberUrl(rs.getString("memberUrl"));
