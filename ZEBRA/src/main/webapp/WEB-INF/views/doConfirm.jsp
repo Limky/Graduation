@@ -48,8 +48,8 @@ h1 {
 
 	
 		<script type="text/javascript">
-			alert("로그인이 실패했습니다.");
-			location.href="/ZEBRA";		
+			alert("상품 반영 여부가 처리 되었습니다.");
+			location.href="/ZEBRA/Management";		
 		</script>
 
 		

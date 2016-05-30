@@ -51,7 +51,7 @@ public class MemberDAO {
 
 	public List<Member> getFirstGrade() {
 
-		String sqlStatement = "select * from membertb where level = 1 order by totalReviewCount desc limit 0,3";
+		String sqlStatement = "select * from membertb where level = 'Gold' order by totalReviewCount desc limit 0,3";
 
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
@@ -59,7 +59,7 @@ public class MemberDAO {
 	
 	public List<Member> getSecondGrade() {
 
-		String sqlStatement = "select * from membertb where level = 2 order by totalReviewCount desc limit 0,3";
+		String sqlStatement = "select * from membertb where level = 'Silver' order by totalReviewCount desc limit 0,3";
 
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
@@ -67,7 +67,7 @@ public class MemberDAO {
 	
 	public List<Member> getThirdGrade() {
 
-		String sqlStatement = "select * from membertb where level = 3 order by totalReviewCount desc limit 0,3";
+		String sqlStatement = "select * from membertb where level = 'Bronze' order by totalReviewCount desc limit 0,3";
 
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 

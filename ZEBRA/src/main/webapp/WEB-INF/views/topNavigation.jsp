@@ -172,7 +172,7 @@
 			</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
-							data-target="#SignUp-modal"><span
+							data-target="#"><span
 								class="glyphicon glyphicon-user"></span> <%=rcv%></a></li>
 						<li><a href="/ZEBRA/logout"><span
 								class="glyphicon glyphicon-log-in"></span> Logout</a></li>

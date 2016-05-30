@@ -122,7 +122,7 @@ public class AppReviewDAO {
 			}
 			star.add(i, sum);
 
-			System.out.println("star=" + star);
+			System.out.println("starDAO=" + star);
 
 			return star;
 		} catch (Exception e) {

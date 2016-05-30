@@ -75,9 +75,32 @@
 			str = "star2";
 		
 		
-
-
+		String star5 = "";
+		String star4 = "";
+		String star3 = "";
+		String star2 = "";
+		String star1 = "";
 		
+		
+		List<Integer> starRatingList = (List<Integer>)request.getAttribute("starRating");
+		
+		if(starRatingList==null){
+			
+			star5 ="0%";
+			star4 ="0%";
+			star3 ="0%";
+			star2 ="0%";
+			star1 ="0%"; 
+			
+		}else{
+			
+		 star5 = starRatingList.get(4)+"%";
+		 star4 = starRatingList.get(3)+"%";
+		 star3 = starRatingList.get(2)+"%";
+		 star2 = starRatingList.get(1)+"%";
+		 star1 = starRatingList.get(0)+"%";
+		
+		}
 		
 	%>
 
@@ -127,10 +150,10 @@
 						<div class="col-md-9">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
-									style="width:${star4Rating}">
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width:<%=star5%>">
 									<span class="sr-only"> 80% Complete (danger) </span>
-									<p align="center">${star4Rating}%</p>
+									<p align="center"><%=star5%></p>
 								</div>
 							</div>
 						</div>
@@ -141,10 +164,10 @@
 						<div class="col-md-9">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-									style="width: ${star3Rating}">
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width: <%=star4%>">
 									<span class="sr-only"> 60% Complete (danger) </span>
-									<p>${star3Rating}%</p>
+									<p><%=star4%></p>
 
 								</div>
 							</div>
@@ -156,10 +179,10 @@
 						<div class="col-md-9">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-									style="width: ${star2Rating}">
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width: <%=star3%>">
 									<span class="sr-only"> 40% Complete (danger) </span>
-									<p>${star2Rating}%</p>
+									<p><%=star3%></p>
 
 								</div>
 							</div>
@@ -171,10 +194,10 @@
 						<div class="col-md-9">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-									style="width: ${star1Rating}">
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width: <%=star2%>">
 									<span class="sr-only">20% Complete (danger) </span>
-									<p>${star1Rating}%</p>
+									<p><%=star2%></p>
 
 								</div>
 							</div>
@@ -186,10 +209,10 @@
 						<div class="col-md-9">
 							<div class="progress">
 								<div class="progress-bar progress-bar-danger" role="progressbar"
-									aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-									style="width: ${star0Rating}">
+									aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+									style="width: <%=star1%>">
 									<span class="sr-only"> 10% Complete (danger) </span>
-									<p>${star0Rating}%</p>
+									<p><%=star1%></p>
 								</div>
 							</div>
 						</div>
@@ -229,22 +252,28 @@
 					
 					int z=0;
 				%>
-
+<style>
+#aa:hover {
+    background-color: #E0E0E0;
+}
+</style>
 				<c:forEach var="reviewList" items="${reviewList}">
 
-					<div id="" style="padding-top: 5px">
+					<div style="padding-top: 5px">
 						<hr>
 
-						<div class="row">
+						<div class="row" id="aa" >
 							<div class="col-md-12" id="reviewDiv">
+					<p></p>
 								<p>
 									<img
 										src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
 										alt="..." class="img-circle" width="50px" height="50px"
-										style="padding-left: 5px">
+										style="padding-left:;padding-top:">
 									<%-- <c:out value="${reviewList.starPoint}"></c:out> --%>
 									ID:
 									<c:out value="${reviewList.id}"></c:out>
+									</P>
 									<%
 										
 											int starimag=i.get(z).intValue();
@@ -257,7 +286,6 @@
 									<%
 										}
 											if(starimag == 4){
-
 									%>
 									<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
 										height="20px">
@@ -338,7 +366,6 @@
 									<%
 										}
 											if(starimag == 4){
-
 									%>
 									<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
 										height="20px">

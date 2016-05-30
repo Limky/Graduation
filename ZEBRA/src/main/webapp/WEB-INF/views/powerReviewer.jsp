@@ -35,74 +35,48 @@
 
 
 
-	<h1>여기는 파워 리뷰어 페이지 입니다.</h1>
+<div class="jumbotron">
+  <h1 align="center">Bootstrap Tutorial</h1>      
+  <p align="center">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+</div>
 
-
-	<%-- 
-	<c:forEach var="firstGrade" items="${firstGrade}">
-		<p>
-			<c:out value="${firstGrade}"></c:out>
-			</br>
-		</p>
-	</c:forEach>
-
-	<c:forEach var="secondGrade" items="${secondGrade}">
-		<p>
-			<c:out value="${secondGrade}"></c:out>
-			</br>
-		</p>
-	</c:forEach>
-
-	<c:forEach var="thirdGrade" items="${thirdGrade}">
-		<p>
-			<c:out value="${thirdGrade}"></c:out>
-			</br>
-		</p>
-	</c:forEach>
- --%>
+<style>
+#reviewerDiv {
+	-webkit-box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
+	-moz-box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
+	box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
+}
+</style>
 
 
 	<!-- Page Content -->
-	<div class="container">
+	<div class="container" style="padding-top: 20px">
 
-		<!-- Introduction Row -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">
-					About Us <small>It's Nice to Meet You!</small>
-				</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Sint, explicabo dolores ipsam aliquam inventore corrupti eveniet
-					quisquam quod totam laudantium repudiandae obcaecati ea consectetur
-					debitis velit facere nisi expedita vel?</p>
-			</div>
-		</div>
+
 
 		<!-- Team Members Row -->
 		<div class="row">
-			<div class="col-lg-12">
-				<h2 class="page-header">Our Team</h2>
+			<div class="col-lg-12" >
+				<h2 class="page-header">Gold Level <img src="/ZEBRA/resources/image/Gold.PNG" alt="" width="50px" height="50px"></h2>
 			</div>
 
 			<c:forEach var="firstGrade" items="${firstGrade}">
 
-				<div class="col-lg-4 col-sm-6 text-center">
+				<div class="col-lg-4 col-sm-6 text-center" >
 					<img class="img-circle img-responsive img-center"
 						src="http://placehold.it/200x200" alt="">
 					<h3>
 						<c:out value="${firstGrade.name}"></c:out>
 						<small><c:out value="${firstGrade.totalReviewCount}"></c:out></small>
 					</h3>
-					<p>
-						<c:out value="${firstGrade.reviewCount}"></c:out>
-					</p>
+					
 				</div>
 
 			</c:forEach>
 
 
 			<div class="col-lg-12">
-				<h2 class="page-header">Our Team</h2>
+				<h2 class="page-header">Silver Level <img src="/ZEBRA/resources/image/Silver.PNG" alt="" width="50px" height="50px"></h2>
 			</div>
 			<c:forEach var="thirdGrade" items="${thirdGrade}">
 
@@ -113,9 +87,7 @@
 						<c:out value="${thirdGrade.name}"></c:out>
 						<small><c:out value="${thirdGrade.totalReviewCount}"></c:out></small>
 					</h3>
-					<p>
-						<c:out value="${thirdGrade.reviewCount}"></c:out>
-					</p>
+					
 				</div>
 
 			</c:forEach>
@@ -123,7 +95,7 @@
 
 
 			<div class="col-lg-12">
-				<h2 class="page-header">Our Team</h2>
+				<h2 class="page-header">Bronze Level <img src="/ZEBRA/resources/image/Bronze.PNG" alt="" width="50px" height="50px"></h2>
 			</div>
 
 			<c:forEach var="secondGrade" items="${secondGrade}">
@@ -135,9 +107,7 @@
 						<c:out value="${secondGrade.name}"></c:out>
 						<small><c:out value="${secondGrade.totalReviewCount}"></c:out></small>
 					</h3>
-					<p>
-						<c:out value="${secondGrade.reviewCount}"></c:out>
-					</p>
+			
 				</div>
 
 			</c:forEach>

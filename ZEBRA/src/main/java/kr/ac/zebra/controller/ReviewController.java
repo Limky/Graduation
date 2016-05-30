@@ -52,11 +52,7 @@ public class ReviewController {
 			
 		
 			  List<Integer> star = appReviewService.getStarPoint(barcode);
-			  model.addAttribute("star4Rating", star.get(4));
-			  model.addAttribute("star3Rating", star.get(3));
-			  model.addAttribute("star2Rating", star.get(2));
-			  model.addAttribute("star1Rating", star.get(1));
-			  model.addAttribute("star0Rating", star.get(0));
+			  request.setAttribute("starRating", star);
 			 
 			 
 			 System.out.println(star);

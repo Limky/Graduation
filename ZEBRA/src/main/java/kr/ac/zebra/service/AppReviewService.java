@@ -52,6 +52,9 @@ public class AppReviewService {
 	public List<Integer> getStarPoint(String barcode) {
 
 		List<Integer> star = reviewDAO.getStarPoint(barcode);
+		System.out.println("getStarPoint"+star);
+		if(star.get(5)==0) return null;
+		System.out.println("getStarPointAfter"+star);
 		List<Integer> starAvarage = new ArrayList<Integer>();
 		int sum = star.get(star.size() - 1);
 		int count;

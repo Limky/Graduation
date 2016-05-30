@@ -47,7 +47,7 @@ public class AppApplyDAO {
 
 	public List<AppApply> getApplys() {
 
-		String sqlStatement = "select * from producttb";
+		String sqlStatement = "select * from applytb";
 
 		return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
 
@@ -59,5 +59,8 @@ public class AppApplyDAO {
 		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, id, productName }) == 1);
 
 	}
+	
+	
+	
 
 }

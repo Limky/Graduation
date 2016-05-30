@@ -60,7 +60,7 @@ public class ProductDAO {
 
 	public boolean insert(Product product) {
 
-		
+		try{
 		 String barcode = product.getBarcode();
 		 String productName = product.getCompanyName();
 		 String description = product.getDescription();
@@ -75,10 +75,18 @@ public class ProductDAO {
 		String sqlStatement = "insert into producttb (barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint) values (?,?,?,?,?,?,?,?,?)";
 		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
 	
+		}catch (Exception e) {
+		
+		System.out.println("insert ProductDAO 예외 처리 발생 획인 메세지 ");
+		e.printStackTrace();
+		return false;
+		
+	}
 	
 	}
 
 	public boolean update(Product product) {
+
 
 		 String barcode = product.getBarcode();
 		 String productName = product.getCompanyName();
@@ -92,6 +100,9 @@ public class ProductDAO {
 
 		String sqlStatement = "update producttb set barcode=?, productName=?, description=?, category=?, productUrl=?, companyName=?, scanCount=?, totalReviewCount=?, starPoint=? where barcode=?";
 		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint }) == 1);
+
+	
+	
 	}
 
 	public boolean delete(int barcode) {
