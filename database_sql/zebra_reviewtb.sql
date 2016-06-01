@@ -26,12 +26,13 @@ CREATE TABLE `reviewtb` (
   `index` int(11) NOT NULL AUTO_INCREMENT,
   `id` varchar(45) NOT NULL,
   `barcode` varchar(45) NOT NULL,
+  `memberUrl` longtext NOT NULL,
+  `productUrl` longtext NOT NULL,
+  `level` varchar(45) NOT NULL,
   `reviewText` longtext NOT NULL,
   `starPoint` double NOT NULL,
-  `memberUrl` varchar(45) NOT NULL,
-  `productUrl` longtext NOT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `reviewtb` (
 
 LOCK TABLES `reviewtb` WRITE;
 /*!40000 ALTER TABLE `reviewtb` DISABLE KEYS */;
-INSERT INTO `reviewtb` VALUES (1,'a','9788955268426','이 책을 통하여 기술통계, 확률 및 확률분포를 익혔습니다!',4,'http://a',''),(2,'a','9788986497878','UML을 통하여 실무에서 사용할 수 있게 실무사례를 익혔습니다.',2,'http://a',''),(3,'b','9788955268423','추정과 가설검정, 분산분석에 대하여 익혔습니다',1,'http://b',''),(4,'b','9788986497878','소프트웨어개발을 전공하는 자로서 객체지향기법의 소프트웨어 개발에 관한 비젼을 얻었다',5,'http://b',''),(5,'c','841456049881','안드로이드 통신 테스트',3,'http://c',''),(6,'a','841456049881','안드로이드 통신 테스트 2',3,'http://a',''),(7,'b','841456049881','안드로이드 통신 테스트 3',2,'http://b',''),(30,'a','9842156','냄세가 참좋네요',4,'http://a','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg'),(31,'b','9842156','디올이라그런지 쩌네요',3,'http://b','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg'),(32,'bung56','8801056059842','목넘김이 부드럽고 깔끔해서 좋아요!',1,'h','h'),(33,'inhyuck111','8801056059842','각종 회의나 세미나에서 많이 활용중입니다!',1,'h','h'),(34,'a','8801056059842','dd',2,'Http://에이','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg'),(35,'a','8801056059842','dee',2,'Http://에이','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg'),(36,'a','8801056059842','호ㅓㅇ기탸',2,'Http://에이','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg'),(37,'a','8801056059842','a',3,'a','d'),(38,'a','8801056059842','s',3,'b','d'),(39,'a','8801056059842','d',3,'d','d'),(40,'a','8801056059842','f',3,'d','d'),(41,'a','8801056059842','g',4,'d','d'),(42,'a','8801056059842','g',4,'d','d'),(43,'a','8801056059842','h',4,'d','d'),(44,'a','8801056059842','j',4,'d','d'),(45,'a','8801056059842','re',4,'d','d'),(46,'a','8801056059842','w',5,'d','d');
+INSERT INTO `reviewtb` VALUES (1,'alice823','103','http://a','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','Gold','정리가 잘되어있어 공부하기 편해요',3),(2,'trycry','103','http://a','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','Gold','Spring framwork 구조를 자세히 알게되었어요',2.5),(3,'luckrock','103','http://b','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','Gold','생각보다 자세한 예시들이 없어서 아쉽네요',3.5),(4,'ultra','105','http://b','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','Gold','Spring을 처음 공부하시는분들께 추천합니다!',1.5),(5,'hot8118','103','https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','Gold','Spring의 모든것',2),(6,'limky8118','8801056049881','https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF','h','Silve','테스트',1),(32,'bung56','8801056049881','https://scontent.xx.fbcdn.net/v/t1.0-9/13321921_177022146029211_9105196508368089817_n.jpg?oh=123f561c9d448ef1d90f4243fb4dbd4a&oe=57E321F4','h','Bronze','테스트2',3.5),(78,'b','8801056049881','Http://비','http://www.dior.com/beauty/version-5.1432748111895/resize-image/ep/0/390/100/0/v6_packshots_pdg%252FPDG_Y0578850-F057885020.jpg','gold','ㄷㅇ륙',3),(79,'b','103','Http://비','http://bimage.interpark.com/goods_image/0/2/4/4/211110244g.jpg','gold','말이야 방구야',1),(80,'b','102','Http://비','http://image.auction.co.kr/itemimage/ec/20/c0/ec20c0b05.jpg','gold','리뷰등록',0.5),(81,'b','101','Http://비','http://gdimg.gmarket.co.kr/goods_image2/shop_img/588/107/588107548.jpg','gold','임인햑 바보',4.5);
 /*!40000 ALTER TABLE `reviewtb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-26 22:46:44
+-- Dump completed on 2016-06-01 11:18:04
