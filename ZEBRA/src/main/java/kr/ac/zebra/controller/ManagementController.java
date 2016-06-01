@@ -79,6 +79,13 @@ public class ManagementController {
 			if(managementService.insertProduct(product)){
 				
 				System.out.println("상품 반영 완료!!");
+				//2. 멤버 포인트 증가
+				managementService.increasePoint(request.getParameter("id"));
+				
+				//3. ApplyTable Delete 
+				managementService.DeleteApplyTb(request.getParameter("barcode"));
+					
+				System.out.println("멤버포인트 증가 && 어플라이 디비 삭제");
 				
 			}else{
 				
@@ -96,6 +103,11 @@ public class ManagementController {
 			//1. ApplyTable Delete 
 			//2. 멤버 포인트 감소
 			
+			//1. ApplyTable Delete 
+			managementService.DeleteApplyTb(request.getParameter("barcode"));
+			
+			//2. 멤버 포인트 감소
+			managementService.decreasePoint(request.getParameter("id"));
 			
 		}
 		

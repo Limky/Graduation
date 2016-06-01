@@ -56,7 +56,7 @@ public class MemberDAO {
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
 	}
-	
+
 	public List<Member> getSecondGrade() {
 
 		String sqlStatement = "select * from membertb where level = 'Silver' order by totalReviewCount desc limit 0,3";
@@ -64,7 +64,7 @@ public class MemberDAO {
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
 	}
-	
+
 	public List<Member> getThirdGrade() {
 
 		String sqlStatement = "select * from membertb where level = 'Bronze' order by totalReviewCount desc limit 0,3";
@@ -72,6 +72,43 @@ public class MemberDAO {
 		return jdbcTemplateObject.query(sqlStatement, new MemberMapper());
 
 	}
+
+	public boolean increaseMemberPoint(String id) {
+
+		try {
+
+			String sqlStatement = "update membertb set point = point + 5000 where id = ?";
+			return (jdbcTemplateObject.update(sqlStatement, new Object[] { id }) == 1);
+
+		} catch (Exception e) {
+
+			System.out.println("increaseMemberPointDAO 예외 처리 발생 획인 메세지 ");
+			e.printStackTrace();
+			return false;
+
+		}
+
+	}
+	
+	
+	public boolean decreaseMemberPoint(String id) {
+
+		try {
+
+			String sqlStatement = "update membertb set point = point - 1 where id = ?";
+			return (jdbcTemplateObject.update(sqlStatement, new Object[] { id }) == 1);
+
+		} catch (Exception e) {
+
+			System.out.println("increaseMemberPointDAO 예외 처리 발생 획인 메세지 ");
+			e.printStackTrace();
+			return false;
+
+		}
+
+	}
+	
+
 }
 
 /*

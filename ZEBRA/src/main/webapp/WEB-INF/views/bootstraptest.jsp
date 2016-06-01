@@ -4,154 +4,104 @@
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
+<html class="no-js">
+
 <head>
-<meta charset="utf-8">
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
-	crossorigin="anonymous">
-
+<title>Admin Home Page</title>
+<!-- Bootstrap -->
+<link href="resources/Graph/bootstrap/bootstrap/css/bootstrap.min.css"
+ rel="stylesheet" media="screen">
+<link
+ href="resources/Graph/bootstrap/bootstrap/css/bootstrap-responsive.min.css"
+ rel="stylesheet" media="screen">
+<link
+ href="resources/Graph/bootstrap/vendors/easypiechart/jquery.easy-pie-chart.css"
+ rel="stylesheet" media="screen">
+<link href="resources/Graph/bootstrap/assets/styles.css" rel="stylesheet"
+ media="screen">
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-
-
-
-<title>Home</title>
-
-<style type="text/css">
-#topspace {
-	padding-top: 70px;
-	padding-bottom: 10px;
-}
-</style>
-
+ src="resources/Graph/bootstrap/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 </head>
 <body>
 
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
-
-	<h1 id="topspace" align="center">Power Reviewers</h1>
-	<hr style="border: solid 2px red;">
-
-
-	<div class="container">
-		<h1>Gold Level</h1>
-		<p>The blockquote element is used to present content from another
-			source:</p>
-		<blockquote>
-			<p>For 50 years, WWF has been protecting the future of nature.
-				The world's leading conservation organization, WWF works in 100
-				countries and is supported by 1.2 million members in the United
-				States and close to 5 million globally.</p>
-			<footer>From WWF's website</footer>
-		</blockquote>
-	</div>
-
-
-	<div class="container">
-		<div class="bootstrap-demo">
-			<div class="row">
-
-				<div class="col-sm-6 col-md-4">
-					<!-- column 1 -->
-					<div class="thumbnail">
-						<!--  thumbnail 1  -->
-						<img class="img-circle"
-							src="http://www.tutorialspark.com/twitterBootstrap/china.jpg"
-							alt="china thumbnail">
-						<!-- image 1 -->
-						<div class="caption">
-							<!-- caption -->
-							<h3>The Great Wall of China</h3>
-							<p>The Great Wall of China is a series of fortifications
-								northern borders of China</p>
-							<p>
-								<a href="#" class="btn btn-primary" role="button">Buy
-									Tickets</a>
-								<!-- btn 1 -->
-								<a href="#" class="btn btn-default" role="button">Add to
-									Wishlist</a>
-							</p>
-							<!-- btn 2 -->
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4">
-					<!-- column 2 -->
-					<div class="thumbnail">
-						<!-- thumbnail 2 -->
-						<img class="img-circle"
-							src="http://www.tutorialspark.com/twitterBootstrap/statue-liberty.jpg"
-							alt="Statue of Liberty thumbnail">
-						<!-- image 2 -->
-						<div class="caption">
-							<!-- caption -->
-							<h3>Statue of Liberty</h3>
-							<p>The Statue of Liberty is a colossal neoclassical sculpture
-								on Liberty Island in the middle of New York Harbor, in
-								Manhattan, New York City.</p>
-							<p>
-								<a href="#" class="btn btn-primary" role="button">Buy
-									Tickets</a>
-								<!-- btn 1 -->
-								<a href="#" class="btn btn-default" role="button">Add to
-									Wishlist</a>
-							</p>
-							<!-- btn 2 -->
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4">
-					<!-- column 2 -->
-					<div class="thumbnail">
-						<!-- thumbnail 2 -->
-						<img class="img-circle"
-							src="https://scontent.xx.fbcdn.net/hphotos-xtl1/t31.0-8/12671674_121428374921922_1736655941279239457_o.jpg"
-							alt="Statue of Liberty thumbnail">
-						<!-- image 2 -->
-						<div class="caption">
-							<!-- caption -->
-							<h3>Statue of Liberty</h3>
-							<p>The Statue of Liberty is a colossal neoclassical sculpture
-								on Liberty Island in the middle of New York Harbor, in
-								Manhattan, New York City.</p>
-							<p>
-								<a href="#" class="btn btn-primary" role="button">Buy
-									Tickets</a>
-								<!-- btn 1 -->
-								<a href="#" class="btn btn-default" role="button">Add to
-									Wishlist</a>
-							</p>
-							<!-- btn 2 -->
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-	</div>
-
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left"><h3>Persentage For Sector Count</h3></div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span3">
+                                    <div class="chart" data-percent=100>${useCount.cinemaCompute}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">Cinema</span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="chart" data-percent=${useCount.exhibitionCompute}>${useCount.exhibitionCompute}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">Exhibition</span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="chart" data-percent=${useCount.libraryCompute}>${useCount.libraryCompute}%</div>
+                                    <div class="chart-bottom-heading"><span class="label label-info">Library</span>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                <div align="center"><h6>Sector Count</h6></div></br>
+                                   <table class="table table-bordered">
+        
+          <tr>
+           <th>Cinema</th>
+           <th>Exhibition</th>
+           <th>Library</th>
+          </tr>
+        
+         
+         <tr>
+          <th align="center">${useCount.cinema}</th>
+          <th align="center">${useCount.exhibition}</th>
+          <th align="center">${useCount.library}</th>
+         </tr>
+         
+        </table>
+                                </div>
+                            </div>
+                            <div> </br></div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+         
+                    
+              
+  
+  <hr>
+  <footer>
+  <div class="pull-right">
+   <p>&copy; Cocktail 2016</p>
+   </div>
+  </footer>
+ </div>
+ <!--/.fluid-container-->
+ <script src="resources/Graph/bootstrap/vendors/jquery-1.9.1.min.js"></script>
+ <script src="resources/Graph/bootstrap/bootstrap/js/bootstrap.min.js"></script>
+ <script
+  src="resources/Graph/bootstrap/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+ <script src="resources/Graph/bootstrap/assets/scripts.js"></script>
+ <script>
+  $(function() {
+   // Easy pie charts
+   $('.chart').easyPieChart({
+    animate : 1000
+   });
+  });
+ </script>
+</body>
 
 
 </body>
