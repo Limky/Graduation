@@ -62,15 +62,17 @@ blockquote {
 	padding: 0.5em 10px;
 	color: #FFF;
 }
+</style>
+
+<div class="container" align="center" style="padding-top: 80px">
+
+		<img src="/ZEBRA/resources/image/ourproduct.png"
+			style="width: 1000px; height: 300px;" >
+	</div>
 
 
-	</style>
-
-
-
-
-	<div class="container">
-		<h2 align="left">Consumer indicators</h2>
+	<div class="container" style="padding-top: 10px">
+		<h2 align="left">Requested Product Table</h2>
 		<blockquote style="background: FF3300">
 			<table class="table table-striped" id="testTable">
 				<thead>
@@ -108,7 +110,7 @@ blockquote {
 
 		</blockquote>
 
-	
+
 
 		<!-- Page Content -->
 		<div class="container">

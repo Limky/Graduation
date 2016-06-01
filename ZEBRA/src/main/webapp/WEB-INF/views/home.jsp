@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -40,138 +40,145 @@
 <body>
 
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
-		<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
- 	<!---------------------------------네비게이션 바 끝-------------------------  -->
+	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
+	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
 
 
 
 
 	<style>
-	@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-	
-	#title {
-		background-color:#880000     ;
-		/* 	margin: 50px;  */
-		padding-top: 60px;
-		padding-bottom:30px;
-		color: black;
-		font-size: 60px;
-	}
-	
-	#titlep{
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+#title {
+	background-color: #880000;
+	/* 	margin: 50px;  */
+	padding-top: 60px;
+	padding-bottom: 30px;
+	color: black;
+	font-size: 60px;
+}
+
+#titlep {
 	font-size: 20px;
-	
-	}
-	
-	.bootstrap-demo {
-		padding: 50px;
-		
-	}
-	</style>
+}
 
-		<h1 id="title" align="center"style="font-family: fantasy; color: #FFFFFF;">
-			<!-- <img alt="" src="/ZEBRA/resources/image/test.png" width="150px" height="100px"> -->ZEBRA<br>
+.bootstrap-demo {
+	padding: 50px;
+}
+</style>
 
-		<p id="titlep"class="lead" style="font-family: 'Nanum Gothic'; color: #dcdcdc; border:1" >
-Section of the community to build healthy consumption culture
-      </p>
-		</h1>
+	<h1 id="title" align="center"
+		style="font-family: fantasy; color: #FFFFFF;">
+		<!-- <img alt="" src="/ZEBRA/resources/image/test.png" width="150px" height="100px"> -->
+		ZEBRA<br>
+
+		<p id="titlep" class="lead"
+			style="font-family: 'Nanum Gothic'; color: #dcdcdc; border: 1">
+			Section of the community to build healthy consumption culture</p>
+	</h1>
 
 
 
-<!-- 
+	<!-- 
 		<div class="container"> -->
 
-<div class="container" style="padding-top: 40px">
-<!------------------------------------------------------쿠르셜 시작  ----------------------------------------------------------->
-			<div id="carousel-example-generic" class="carousel slide"
-				data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-example-generic" data-slide-to="0"
-						class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				</ol>
-				<!-- style='position: relative; top:-200' -->
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox"
-					style="width: 1158; height: 444">
+	<div class="container" style="padding-top: 40px">
+		<!------------------------------------------------------쿠르셜 시작  ----------------------------------------------------------->
+		<div id="carousel-example-generic" class="carousel slide"
+			data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0"
+					class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			<!-- style='position: relative; top:-200' -->
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox"
+				style="width: 1158; height: 444">
 
 
-					<div class="item active">
-						<img
-							src="https://scontent.xx.fbcdn.net/t31.0-8/13247694_172669706464455_118460718092039742_o.jpg">
+				<div class="item active">
+					<img
+						src="https://scontent.xx.fbcdn.net/t31.0-8/13247694_172669706464455_118460718092039742_o.jpg">
 
-						<div class="carousel-caption">
-							<h1 style="color: #FFFFFF; text-shadow:3px 3px #3c3c3c">Scan a barcode!</h1>
-							<p style="color: #FFFFFF;  text-shadow:1px 1px #3c3c3c">Find the barcode of the item you want.</p>
-							
-						</div>
+					<div class="carousel-caption">
+						<h1 style="color: #FFFFFF; text-shadow: 3px 3px #3c3c3c">Scan
+							a barcode!</h1>
+						<p style="color: #FFFFFF; text-shadow: 1px 1px #3c3c3c">Find
+							the barcode of the item you want.</p>
 
 					</div>
 
-
-					<div class="item">
-						<img
-							src="/ZEBRA/resources/image/cru-2.png"
-							title="cold" alt="...">
-						<div class="carousel-caption">
-							<h1>Cold Play</h1>
-							<p class="lead">Parachutes A Rush of Blood to the Head X&Y
-								Viva la Vida or Death and All His Friends Mylo Xyloto Ghost
-								Stories</p>
-						</div>
-					</div>
+				</div>
 
 
-					<div class="item">
-						<img align="middle"
-							src="https://scontent.xx.fbcdn.net/hphotos-xaf1/t31.0-8/12909531_121423344922425_8489312002504703306_o.jpg">
-
-						<div class="carousel-caption">
-							<h1 style="color: #FFFFFF">It's come from saying 'no' to
-								1,000 things</h1>
-							<p class="lead" style="color: #FFFFFF">I think if you do
-								something and it turns out pretty good, then you should go do
-								something else wonderful, not dwell on it for too long.</p>
-
-						</div>
-
+				<div class="item">
+					<img src="/ZEBRA/resources/image/cru-2.png" title="cold" alt="...">
+					<div class="carousel-caption">
+						<h1>Cold Play</h1>
+						<p class="lead">Parachutes A Rush of Blood to the Head X&Y
+							Viva la Vida or Death and All His Friends Mylo Xyloto Ghost
+							Stories</p>
 					</div>
 				</div>
 
 
+				<div class="item">
+					<img align="middle"
+						src="https://scontent.xx.fbcdn.net/hphotos-xaf1/t31.0-8/12909531_121423344922425_8489312002504703306_o.jpg">
 
+					<div class="carousel-caption">
+						<h1 style="color: #FFFFFF">It's come from saying 'no' to
+							1,000 things</h1>
+						<p class="lead" style="color: #FFFFFF">I think if you do
+							something and it turns out pretty good, then you should go do
+							something else wonderful, not dwell on it for too long.</p>
 
+					</div>
 
-				<!-- Controls -->
-				<a class="left carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="prev"> <span
-					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="next"> <span
-					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
+				</div>
 			</div>
 
-			<script type="text/javascript">
-				$('.carousel').carousel({
-					interval : 2000
-				})
-			</script>
-<!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
-</div>
 
 
-<h1 align="center" style="padding:40px ">ZEBRA Service</h1>
-<img src="https://scontent.xx.fbcdn.net/t31.0-8/13247920_172959903102102_2284409825658967265_o.jpg" alt="china thumbnail">
+
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#carousel-example-generic"
+				role="button" data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+		<script type="text/javascript">
+			$('.carousel').carousel({
+				interval : 2000
+			})
+		</script>
+		<!------------------------------------------------------쿠르셜 끝  ----------------------------------------------------------->
+	</div>
+
+
+	<h1 align="center" style="padding: 40px">ZEBRA Service</h1>
+	<img
+		src="https://scontent.xx.fbcdn.net/t31.0-8/13247920_172959903102102_2284409825658967265_o.jpg"
+		alt="china thumbnail">
+
+
+	<img alt="" src="/ZEBRA/resources/image/mainimg2.png" style="padding-top: 40px">
+	
+	<img alt="" src="/ZEBRA/resources/image/zebrara.PNG" style="padding-top: 40px; width: 500px; height:500px">
 
 	<!-- 	</div>컨테이너 끝  -->
-	
-		
+
+
 </body>
 </html>

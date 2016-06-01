@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
+import kr.ac.zebra.service.AppGcmService;
 import kr.ac.zebra.service.ManagementService;
 
 @Controller
 public class ManagementController {
 
 	private ManagementService managementService;
-
+	private AppGcmService appGcmService;
 	
 	@Autowired // di 주입
-	public void setProductService(ManagementService managementService) {
+	public void setProductService(ManagementService managementService, AppGcmService appGcmService) {
 		this.managementService = managementService;
-		
+		this.appGcmService = appGcmService;
 	}
 
 	@RequestMapping(value = "/Management", method = RequestMethod.GET)
@@ -84,7 +85,8 @@ public class ManagementController {
 				
 				//3. ApplyTable Delete 
 				managementService.DeleteApplyTb(request.getParameter("barcode"));
-					
+				appGcmService.pushNotificationToGCM();
+				
 				System.out.println("멤버포인트 증가 && 어플라이 디비 삭제");
 				
 			}else{

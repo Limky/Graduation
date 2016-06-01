@@ -140,6 +140,16 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<!-- CGM -->
+      <dependency>
+         <groupId>com.ganyo</groupId>
+         <artifactId>gcm-server</artifactId>
+         <version>1.0.2</version>
+      </dependency>
+
+ 
+		
 	</dependencies>
 	<build>
 		<plugins>

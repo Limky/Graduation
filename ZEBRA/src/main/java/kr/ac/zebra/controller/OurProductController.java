@@ -32,6 +32,8 @@ public class OurProductController {
 		String fiter = request.getParameter("filter");
 		String companyName = (String) session.getAttribute("logOk");
 		
+		List<Integer> listCount	= ourProductService.getCompanyCount(companyName);
+		request.setAttribute("listCount", listCount);
 		
 		//----------------------------------------------------------------------------------------
 		if (fiter.equals("All")) {

@@ -1,5 +1,6 @@
 package kr.ac.zebra.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -214,6 +215,26 @@ public class ProductDAO {
 	
 	
 	
+	 public List<Integer> getProductCount(String barcode) {
+
+	      List<Integer> count = new ArrayList<Integer>();
+	      int percentage = 0;
+
+	      String sqlStatMent = "select sum(totalReviewCount) from producttb where barcode = ?";
+
+	      count.add(jdbcTemplateObject.queryForInt(sqlStatMent, new Object[] { barcode }));
+
+	      sqlStatMent = "select sum(scanCount) from producttb where barcode = ?";
+
+	      count.add(jdbcTemplateObject.queryForInt(sqlStatMent, new Object[] { barcode }));
+
+	      percentage = count.get(0) * 100 / count.get(1);
+	      count.add(percentage);
+
+	      System.out.println("product=" + count);
+
+	      return count;
+	   }
 	
 	
 	

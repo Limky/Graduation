@@ -40,7 +40,44 @@
 
 </head>
 <body>
-	
+	<%
+
+
+	request.setCharacterEncoding("UTF-8");
+	String currentCategory= (String)session.getAttribute("currentCategory");
+
+	String style1 ="test";
+
+
+
+%>
+<%=currentCategory %>
+
+<style>
+
+
+/* unvisited link */
+#test:link {
+    color: red;
+}
+
+/* visited link */
+#test:visited {
+    color: red;
+}
+
+/* mouse over link */
+#test:hover {
+    color: #F15F5F;
+}
+
+/* selected link */
+#test:active {
+    color: blue;
+}
+
+</style>
+
 <div class="row" align="center">
   <div class="col-md-1"></div>
   <div class="col-md-1"></div>

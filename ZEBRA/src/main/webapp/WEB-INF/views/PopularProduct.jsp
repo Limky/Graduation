@@ -46,43 +46,41 @@
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
-<!-- <div class="container" align="center">
+	<!-- <div class="container" align="center">
    <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13256535_175802452817847_8678238176295810481_n.jpg?oh=3225592a48c3e7d8aa379b47c23f7a15&oe=57C68B66" width=200px, height=120px>
 </div> -->
 	<!---------------------------------검색 바 시작-------------------------  -->
 	<jsp:include page="Search.jsp" flush="false"></jsp:include>
 	<!---------------------------------검색 바 끝-------------------------  -->
 
-	
+
 	<!---------------------------------카테고리 바 시작-------------------------  -->
 	<jsp:include page="Category.jsp"></jsp:include>
 	<!---------------------------------카테고리 바 끝-------------------------  -->
-<%
+	<%
+		request.setCharacterEncoding("UTF-8");
+		String currentCategory = (String) session.getAttribute("currentCategory");
+	%>
+	<%=currentCategory%>
 
-
-	request.setCharacterEncoding("UTF-8");
-	String currentCategory= (String)session.getAttribute("currentCategory");
-
-	
-
-
-
-
-%>
-<%=currentCategory %>
-
-	<div class="container" style="padding:15px">
+	<div class="container" style="padding: 15px">
 		<div class="row">
 			<div class="col-md-4" align="center">
-				<h4 id="" style="font-family: fantasy;"><a href="/ZEBRA/PopularProduct?category=<%=currentCategory%>">Popularity</a></h4>
+				<h4 id="" style="font-family: fantasy; color: #7A7A7A">
+					<a href="/ZEBRA/PopularProduct?category=<%=currentCategory%>">Popularity</a>
+				</h4>
 				<hr align="center" style="border: solid 3px #A91717; width: 30%;">
 			</div>
 			<div class="col-md-4" align="center">
-				<h4 id="" style="font-family: fantasy; color: #7A7A7A"><a href="/ZEBRA/MostReview?category=<%=currentCategory%>">MostReview</a></h4>
+				<h4 id="" style="font-family: fantasy; color: #7A7A7A">
+					<a href="/ZEBRA/MostReview?category=<%=currentCategory%>">MostReview</a>
+				</h4>
 				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
 			</div>
 			<div class="col-md-4" align="center">
-				<h4 id="" style="font-family: fantasy; color: #7A7A7A"><a href="/ZEBRA/MostScan?category=<%=currentCategory%>">MostScan</a></h4>
+				<h4 id="" style="font-family: fantasy; color: #7A7A7A">
+					<a href="/ZEBRA/MostScan?category=<%=currentCategory%>">MostScan</a>
+				</h4>
 				<hr align="center" style="border: solid 2px #F15F5F; width: 30%;">
 			</div>
 		</div>
@@ -101,29 +99,39 @@
 		<div class="row">
 
 			<c:forEach var="popularProduct" items="${popularProductModel}">
-				
 
-				<div class="col-md-4 portfolio-item" style="border:3">
-					<a href="#"> <img class="img-responsive" src="${popularProduct.productUrl}" alt=""  style="width: 700px; height:400px;"></a>
+
+				<div class="col-md-4 portfolio-item" style="border: 3">
+					<a href="#"> <img class="img-responsive"
+						src="${popularProduct.productUrl}" alt=""
+						style="width: 700px; height: 400px;"></a>
 					<h1>
 						<small style="font-weight: 800"><c:out
-								value="${popularProduct.productName}"></c:out></small><br/>
-								<img alt="" src="/ZEBRA/resources/image/star4.png"
-							width="120px" height="30px"style="padding-top: 6px"><p style="font-size:20px">리뷰:<c:out
-								value="${popularProduct.totalReviewCount}"></c:out> 스캔:<c:out
-								value="${popularProduct.scanCount}"></c:out></p>
+								value="${popularProduct.productName}"></c:out></small><br /> <img alt=""
+							src="/ZEBRA/resources/image/star4.png" width="120px"
+							height="30px" style="padding-top: 6px">
+
+						<p style="font-size: 20px">
+							스캔:
+							<c:out value="${popularProduct.scanCount}"></c:out>
+							리뷰:
+							<c:out value="${popularProduct.totalReviewCount}"></c:out>
+							
+						</p>
 					</h1>
 					<div>
-					<p>
-						<c:out value="${popularProduct.description}"></c:out><br>
-					</p>
-					
-		<%-- 			<c:url var="addUrl" value="review" /> --%>
-				<form action="review" method="GET">
-					<button type="submit" class="btn btn-danger" name="barcode" value="${popularProduct.barcode}">Review</button>
-					</form>
+						<p>
+							<c:out value="${popularProduct.description}"></c:out>
+							<br>
+						</p>
+
+						<%-- 			<c:url var="addUrl" value="review" /> --%>
+						<form action="review" method="GET">
+							<button type="submit" class="btn btn-danger" name="barcode"
+								value="${popularProduct.barcode}">Review</button>
+						</form>
 					</div>
-					
+
 				</div>
 
 			</c:forEach>
@@ -136,11 +144,11 @@
 
 		<hr>
 
-	
+
 
 	</div>
-	
-	
+
+
 
 </body>
 

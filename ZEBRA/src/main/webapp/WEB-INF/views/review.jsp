@@ -47,6 +47,8 @@
 	var="heroicfeatures" />
 <link href="${heroicfeatures}" rel="stylesheet" />
 
+
+
 </head>
 
 <body style="background-color: white;">
@@ -57,9 +59,6 @@
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
-	<jsp:include page="bootstraptest.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
 
 
 	<%
@@ -103,11 +102,18 @@
 			star1 = starRatingList.get(0) + "%";
 
 		}
+		
 	%>
 
+<%
+	
+	List<Integer> listCount =  (List<Integer>)request.getAttribute("listCount");
 
 
-	<div class="container" style="padding-top: 10px">
+%>
+
+
+	<div class="container" style="padding-top: 50px">
 
 		<div class="row">
 
@@ -124,10 +130,11 @@
 					</div>
 					<div class="col-md-6">
 						<img alt="" src="/ZEBRA/resources/image/<%=str%>.png"
-							width="200px" height="40px">스캔:
+							width="200px" height="40px"><br/>스캔:
 						<c:out value="${productInfo.scanCount}"></c:out>
 						리뷰:
 						<c:out value="${productInfo.totalReviewCount}"></c:out>
+						대비:<%=listCount.get(2)%>%
 
 						<h2 style="font-weight: bolder;">
 							<c:out value="${productInfo.productName}"></c:out>

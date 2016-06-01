@@ -47,6 +47,13 @@ public class OurProductService {
 		
 	}
 	
+	public List<Integer> getCompanyCount(String companyName){
+		
+				
+		return ourProductDAO.getCompanyCount(companyName);		
+		
+	}
+	
 	
 	
 	

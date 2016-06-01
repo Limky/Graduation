@@ -1,5 +1,6 @@
 package kr.ac.zebra.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -107,5 +108,28 @@ public class OurProductDAO {
 		}
 
 	}
+	
+	public List<Integer> getCompanyCount(String companyName) {
+
+	      List<Integer> count = new ArrayList<Integer>();
+	      int percentage = 0;
+
+	      String sqlStatMent = "select sum(totalReviewCount) from producttb where companyName = ?";
+
+	      count.add(jdbcTemplateObject.queryForInt(sqlStatMent, new Object[] { companyName }));
+
+	      sqlStatMent = "select sum(scanCount) from producttb where companyName = ?";
+
+	      count.add(jdbcTemplateObject.queryForInt(sqlStatMent, new Object[] { companyName }));
+
+	      percentage = count.get(0) * 100 / count.get(1);
+	      count.add(percentage);
+
+	      System.out.println("company=" + count);
+
+	      return count;
+	   }
+
+	  
 
 }

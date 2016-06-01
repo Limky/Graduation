@@ -35,10 +35,12 @@
 
 
 
-<div class="jumbotron">
-  <h1 align="center">Bootstrap Tutorial</h1>      
-  <p align="center">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-</div>
+	<div class="container" align="center">
+
+		<img src="/ZEBRA/resources/image/testimg.png"
+			style="width: 1100px; height: 300px;">
+	</div>
+
 
 <style>
 #reviewerDiv {

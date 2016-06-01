@@ -32,6 +32,12 @@ public class ReviewService {
 	
 
 
+	public List<Integer> getProductCount(String barcode) {
+	
+		return productDAO.getProductCount(barcode);
+		
+	}
+
 	
 
 }

@@ -54,6 +54,8 @@ public class ReviewController {
 			  List<Integer> star = appReviewService.getStarPoint(barcode);
 			  request.setAttribute("starRating", star);
 			 
+			  List<Integer> listCount= reviewService.getProductCount(barcode);
+			  request.setAttribute("listCount", listCount);
 			 
 			 System.out.println(star);
 			 
