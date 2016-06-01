@@ -14,53 +14,60 @@ import kr.ac.zebra.dto.Product;
 @Component("appApplyDAO")
 public class AppApplyDAO {
 
-	private JdbcTemplate jdbcTemplateObject;
+   private JdbcTemplate jdbcTemplateObject;
 
-	@Autowired
-	public void setDataSource(DataSource dataSource) {
-		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
-	}
+   @Autowired
+   public void setDataSource(DataSource dataSource) {
+      this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+   }
 
-	public AppApply getApply(String barcode) {
+   public AppApply getApply(String barcode) {
 
-		try {
-			String sqlStatement = "select * from producttb where barcode=" + barcode;
+      try {
+         String sqlStatement = "select * from applytb where barcode=" + barcode;
 
-			AppApply apply = jdbcTemplateObject.queryForObject(sqlStatement, new AppApplyMapper());
+         AppApply apply = jdbcTemplateObject.queryForObject(sqlStatement, new AppApplyMapper());
 
-			if (apply.getBarcode().isEmpty()) {
+         if (apply.getBarcode().isEmpty()) {
 
-				return null;
-			} else {
+            return null;
+         } else {
 
-				return apply;
-			}
+            return apply;
+         }
 
-		} catch (Exception e) {
+      } catch (Exception e) {
 
-			System.out.println("getApply DAO 예외 처리 발생 획인 메세지 ");
-			return null;
+         System.out.println("getApply DAO 예외 처리 발생 획인 메세지 ");
+         return null;
 
-		}
+      }
 
-	}
+   }
 
-	public List<AppApply> getApplys() {
+   public List<AppApply> getApplys() {
 
-		String sqlStatement = "select * from applytb";
+      try {
+         String sqlStatement = "select * from applytb";
 
-		return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
+         return jdbcTemplateObject.query(sqlStatement, new AppApplyMapper());
+      } catch (Exception e) {
+         return null;
+      }
 
-	}
+   }
 
-	public boolean insertProduct(String id, String barcode, String productName) {
+   public boolean insertProduct(String id, String barcode, String productName) {
 
-		String sqlStatement = "insert into applytb (barcode, id, productName) values (?,?,?)";
-		return (jdbcTemplateObject.update(sqlStatement, new Object[] { barcode, id, productName }) == 1);
+      try {
+         String sqlStatement = "insert into applytb (barcode, id, productName) values (?,?,?)";
 
-	}
-	
-	
-	
+         return (jdbcTemplateObject.update(sqlStatement,
+               new Object[] { barcode, id, productName}) == 1);
+      } catch (Exception e) {
+         return false;
+      }
+
+   }
 
 }

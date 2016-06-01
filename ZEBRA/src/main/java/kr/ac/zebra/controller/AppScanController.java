@@ -17,45 +17,50 @@ import kr.ac.zebra.service.AppReviewService;
 @Controller
 public class AppScanController {
 
-	private AppProductService productService;
-	private AppReviewService reviewService;
+   private AppProductService appProductService;
+   private AppReviewService appReviewService;
 
-	@Autowired
-	public void setReviewService(AppReviewService reviewService) {
-		this.reviewService = reviewService;
-	}
+   @Autowired
+   public void setReviewService(AppReviewService reviewService) {
+      this.appReviewService = reviewService;
+   }
 
-	@Autowired
-	public void setProductService(AppProductService productService) {
-		this.productService = productService;
-	}
+   @Autowired
+   public void setProductService(AppProductService productService) {
+      this.appProductService = productService;
+   }
 
-	@RequestMapping("/appScan")
-	public String showScanInfo(HttpServletRequest request) {
+   @RequestMapping("/appScan")
+   public String showScanInfo(HttpServletRequest request) {
 
-		System.out.println("AppScan");
-		System.out.println(request.getParameter("barcode"));
+      System.out.println("AppScan");
 
-		Product product = productService.getProduct(request.getParameter("barcode"));
+      String barcode = request.getParameter("barcode");
 
-		List<Review> reviews = reviewService.getReviews(request.getParameter("barcode"));
+      Product product = appProductService.getProduct(barcode);
+      List<Review> reviews = appReviewService.getReviews(barcode);
 
-		if (product == null) {
-			AppApply apply = productService.getApply(request.getParameter("barcode"));
+      if (product == null) {
+         AppApply apply = appProductService.getApply(barcode);
+         String result = "";
 
-			if (apply == null) {
+         if (apply == null) {
+            result = "null";
+            request.setAttribute("result", result);
+         } else {
+            result = "existApply";
 
-				request.setAttribute("product", apply);
-			} else {
+            request.setAttribute("result", result);
+         }
+      } else {
+         appProductService.scanCounting(barcode);
 
-				request.setAttribute("product", "exist");
-			}
-		} else {
-			request.setAttribute("product", product);
-		}
+         request.setAttribute("product", product);
+         request.setAttribute("reviews", reviews);
+      }
 
-		request.setAttribute("reviews", reviews);
+      return "appScan";
 
-		return "appScan";
-	}
+   }
+
 }

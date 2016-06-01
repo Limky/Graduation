@@ -14,69 +14,71 @@ import kr.ac.zebra.dto.Product;
 @Service("appProductService") // service로 bean에 등록시켜준다
 public class AppProductService {
 
-	private AppProductDAO productDAO;
-	private AppApplyDAO appApplyDAO;
+   private AppProductDAO appProductDAO;
+   private AppApplyDAO appApplyDAO;
 
-	@Autowired
-	public void setProductDAO(AppProductDAO productDAO) {
-		this.productDAO = productDAO;
-	}
+   @Autowired
+   public void setProductDAO(AppProductDAO productDAO) {
+      this.appProductDAO = productDAO;
+   }
 
-	@Autowired
-	public void setAppApplyDAO(AppApplyDAO appApplyDAO) {
-		this.appApplyDAO = appApplyDAO;
-	}
+   @Autowired
+   public void setAppApplyDAO(AppApplyDAO appApplyDAO) {
+      this.appApplyDAO = appApplyDAO;
+   }
 
-	public Product getProduct(String barcode) {
+   public Product getProduct(String barcode) {
 
-		System.out.println("Product Service");
+      System.out.println("Product Service");
 
-		Product product = productDAO.getProduct(barcode);
+      Product product = appProductDAO.getProduct(barcode);
 
-		if (product == null) {
+      if (product == null) {
 
-			return null;
-		} else {
+         return null;
+      } else {
 
-			return product;
-		}
-	}
+         return product;
+      }
+   }
 
-	public Boolean insertProduct(String id, String barcode, String productName) {
+   public Boolean insertProduct(String id, String barcode, String productName) {
 
-		return appApplyDAO.insertProduct(id, barcode, productName);
-	}
+      return appApplyDAO.insertProduct(id, barcode, productName);
+   }
 
-	public List<Product> getProductSearch(String keyword) {
+   public List<Product> getProductSearch(String keyword) {
 
-		return productDAO.getSearchProduct(keyword);
-	}
+      return appProductDAO.getSearchProduct(keyword);
+   }
 
-	public List<Product> getCategoryProducts(String category) {
+   public List<Product> getCategoryProducts(String category) {
 
-		List<Product> categoryProducts = productDAO.getCategoryProducts(category);
+      return appProductDAO.getCategoryProducts(category);
+   }
 
-		return categoryProducts;
-	}
+   public AppApply getApply(String barcode) {
+      System.out.println("AppApply Service");
 
-	public AppApply getApply(String barcode) {
-		System.out.println("AppApply Service");
+      AppApply apply = appApplyDAO.getApply(barcode);
 
-		AppApply apply = appApplyDAO.getApply(barcode);
+      if (apply == null) {
 
-		if (apply == null) {
+         return null;
+      } else {
 
-			return null;
-		} else {
+         return apply;
+      }
+   }
 
-			return apply;
-		}
-	}
-	
-	public Boolean isExit(String barcode){
-		System.out.println("Service isExit()");
-		
-		return productDAO.isExit(barcode);
-	}
+   public Boolean isExit(String barcode) {
+      System.out.println("Service isExit()");
+
+      return appProductDAO.isExit(barcode);
+   }
+
+   public void scanCounting(String barcode) {
+      appProductDAO.scanCounting(barcode);
+   }
 
 }
