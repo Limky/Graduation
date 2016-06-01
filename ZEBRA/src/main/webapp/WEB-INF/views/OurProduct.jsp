@@ -28,16 +28,78 @@
 
 <META HTTP-EQUIVE="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=KSC5601">
 
+<title>Admin Home Page</title>
+<!-- Bootstrap -->
+<link href="resources/Graph/bootstrap/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" media="screen">
+<link
+	href="resources/Graph/bootstrap/bootstrap/css/bootstrap-responsive.min.css"
+	rel="stylesheet" media="screen">
+<link
+	href="resources/Graph/bootstrap/vendors/easypiechart/jquery.easy-pie-chart.css"
+	rel="stylesheet" media="screen">
+<link href="resources/Graph/bootstrap/assets/styles.css"
+	rel="stylesheet" media="screen">
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<script
+	src="resources/Graph/bootstrap/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 </head>
-<body>
-
+<body style="background-color:white;">
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
 	<jsp:include page="topNavigation.jsp"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
+	
 
+	
+<div class="container" style="padding: 15px; padding-top: 30px">
+		<div class="row-fluid" style="padding: 15px; padding-top: 30px">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">
+						<h3>Persent of Scanning Contrast review</h3>
+					</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span3">
+						<div class="chart" data-percent=100>${useCount.cinemaCompute}%</div>
+						<div class="chart-bottom-heading">
+							<span class="label label-info">Cinema</span>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div>
+					
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 
-
-	<div class="container" style="padding: 15px;padding-top:80px">
+	</div>
+	
+	
+ <!--/.fluid-container-->
+ <script src="resources/Graph/bootstrap/vendors/jquery-1.9.1.min.js"></script>
+ <script src="resources/Graph/bootstrap/bootstrap/js/bootstrap.min.js"></script>
+ <script
+  src="resources/Graph/bootstrap/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+ <script src="resources/Graph/bootstrap/assets/scripts.js"></script>
+ <script>
+  $(function() {
+   // Easy pie charts
+   $('.chart').easyPieChart({
+    animate : 1000
+   });
+  });
+ </script>
+	<div class="container" style="padding: 15px; padding-top: 40px">
 
 		<div class="row">
 			<div class="col-xs-6 col-sm-3" align="center">
@@ -100,7 +162,7 @@ blockquote {
 							<td>&nbsp;<c:out value="${ourProducts.totalReviewCount}"></c:out></td>
 							<td>&nbsp;<c:out value="${ourProducts.starPoint}"></c:out></td>
 							<td>&nbsp;<c:out value="${ourProducts.scanCount}"></c:out></td>
-							<td>&nbsp;<a>ReviewList</a></td>
+							<td>&nbsp;<a href="/ZEBRA/review?barcode=${ourProducts.barcode}">Detail</a></td>
 						</tr>
 					</c:forEach>
 
@@ -118,93 +180,35 @@ blockquote {
 
 
 
-		<%-- <div class="row">
-			<div class="col-md-6">
-				<table class="table table-striped" id="testTable">
-					<thead>
-						<tr>
-							<th>ProductName</th>
-							<th>ReviewCount</th>
-							<th>StarPoint</th>
-							<th>ScanCount</th>
-							<th>Reviews</th>
-						</tr>
-					</thead>
-					<tbody>
-
-						<c:forEach var="ourProducts" items="${ourProductsModel}">
-							<tr>
-								<td>&nbsp;<c:out value="${ourProducts.productName}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.totalReviewCount}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.starPoint}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.scanCount}"></c:out></td>
-								<td>&nbsp;<a>ReviewList</a></td>
-							</tr>
-						</c:forEach>
 
 
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-6">
-				<table class="table table-striped" id="testTable">
-					<thead>
-						<tr>
-							<th>ProductName</th>
-							<th>ReviewCount</th>
-							<th>StarPoint</th>
-							<th>ScanCount</th>
-							<th>Reviews</th>
-						</tr>
-					</thead>
-					<tbody>
-
-						<c:forEach var="ourProducts" items="${ourProductsModel}">
-							<tr>
-								<td>&nbsp;<c:out value="${ourProducts.productName}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.totalReviewCount}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.starPoint}"></c:out></td>
-								<td>&nbsp;<c:out value="${ourProducts.scanCount}"></c:out></td>
-								<td>&nbsp;<a>ReviewList</a></td>
-							</tr>
-						</c:forEach>
 
 
-					</tbody>
-				</table>
-			</div>
+		<!-- Page Content -->
+		<div class="container">
+
+
+
+
+			<!-- /.row -->
+			<hr>
+
+
+			<hr>
+
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>Copyright &copy; Your Website 2014</p>
+					</div>
+				</div>
+				<!-- /.row -->
+			</footer>
+
 		</div>
 
-	</div> --%>
-
-
-
-	<!-- Page Content -->
-	<div class="container">
-
-
-
-
-		<!-- /.row -->
-		<hr>
-
-
-		<hr>
-
-		<!-- Footer -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright &copy; Your Website 2014</p>
-				</div>
-			</div>
-			<!-- /.row -->
-		</footer>
-
-	</div>
-
-	<!-- /.container -->
-
+		<!-- /.container -->
 </body>
 
 </html>

@@ -47,17 +47,21 @@
 	var="heroicfeatures" />
 <link href="${heroicfeatures}" rel="stylesheet" />
 
-
-
 </head>
 
-<body style="background-color:">
+<body style="background-color: white;">
 
 
 
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 	<!---------------------------------네비게이션 바 끝-------------------------  -->
+
+	<!---------------------------------네비게이션 바 시작-------------------------  -->
+	<jsp:include page="bootstraptest.jsp" flush="false"></jsp:include>
+	<!---------------------------------네비게이션 바 끝-------------------------  -->
+
+
 	<%
 		double starPoint = (double) request.getAttribute("starPoint");
 		String str = "";
@@ -73,46 +77,37 @@
 			str = "star3";
 		else if (starPoint > 2)
 			str = "star2";
-		
-		
+
 		String star5 = "";
 		String star4 = "";
 		String star3 = "";
 		String star2 = "";
 		String star1 = "";
-		
-		
-		List<Integer> starRatingList = (List<Integer>)request.getAttribute("starRating");
-		
-		if(starRatingList==null){
-			
-			star5 ="0%";
-			star4 ="0%";
-			star3 ="0%";
-			star2 ="0%";
-			star1 ="0%"; 
-			
-		}else{
-			
-		 star5 = starRatingList.get(4)+"%";
-		 star4 = starRatingList.get(3)+"%";
-		 star3 = starRatingList.get(2)+"%";
-		 star2 = starRatingList.get(1)+"%";
-		 star1 = starRatingList.get(0)+"%";
-		
+
+		List<Integer> starRatingList = (List<Integer>) request.getAttribute("starRating");
+
+		if (starRatingList == null) {
+
+			star5 = "0%";
+			star4 = "0%";
+			star3 = "0%";
+			star2 = "0%";
+			star1 = "0%";
+
+		} else {
+
+			star5 = starRatingList.get(4) + "%";
+			star4 = starRatingList.get(3) + "%";
+			star3 = starRatingList.get(2) + "%";
+			star2 = starRatingList.get(1) + "%";
+			star1 = starRatingList.get(0) + "%";
+
 		}
-		
 	%>
 
 
 
-
-
-
-	<!-- /.container -->
-
-
-	<div class="container" style="padding-top: 80px">
+	<div class="container" style="padding-top: 10px">
 
 		<div class="row">
 
@@ -225,10 +220,11 @@
 
 				<!--    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
  -->
-				<div class="col-md-8"></div>
+			
 
 				<hr>
-
+				
+				
 				<style>
 #reviewDiv {
 	-webkit-box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.29);
@@ -243,18 +239,18 @@
 					for (int j = 0; j < reviewList.size(); j++) {
 						i.add(j, reviewList.get(j).getStarPoint());
 					}
-					
+
 					List<Double> relatedStar = new ArrayList();
 					List<Product> relatedProduct = (List<Product>) request.getAttribute("relatedProductsRequ");
 					for (int j = 0; j < relatedProduct.size(); j++) {
 						relatedStar.add(j, relatedProduct.get(j).getStarPoint());
 					}
-					
-					int z=0;
+
+					int z = 0;
 				%>
-<style>
+				<style>
 #aa:hover {
-    background-color: #E0E0E0;
+	background-color: #E0E0E0;
 }
 </style>
 				<c:forEach var="reviewList" items="${reviewList}">
@@ -262,57 +258,56 @@
 					<div style="padding-top: 5px">
 						<hr>
 
-						<div class="row" id="aa" >
+						<div class="row" id="aa">
 							<div class="col-md-12" id="reviewDiv">
-					<p></p>
+								<p></p>
 								<p>
 									<img
 										src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
 										alt="..." class="img-circle" width="50px" height="50px"
-										style="padding-left:;padding-top:">
+										style="padding-left:; padding-top:">
 									<%-- <c:out value="${reviewList.starPoint}"></c:out> --%>
 									ID:
 									<c:out value="${reviewList.id}"></c:out>
-									</P>
-									<%
-										
-											int starimag=i.get(z).intValue();
-											if(starimag == 5){
-									%>
+								</P>
+								<%
+									int starimag = i.get(z).intValue();
+										if (starimag == 5) {
+								%>
 
-									<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
-										height="20px">
+								<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
+									height="20px">
 
-									<%
-										}
-											if(starimag == 4){
-									%>
-									<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
-										height="20px">
+								<%
+									}
+										if (starimag == 4) {
+								%>
+								<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
+									height="20px">
 
-									<%
-										
-											}if(starimag == 3){
-										%>
-									<img alt="" src="/ZEBRA/resources/image/star3.png" width="80px"
-										height="20px">
-										<%
-											}if(starimag == 2){
-										
-										%>
-											<img alt="" src="/ZEBRA/resources/image/star2.png" width="80px"
-										height="20px">
-										<%
-											}if(starimag == 1){
-										
-										%>
-										<img alt="" src="/ZEBRA/resources/image/star1.png" width="80px"
-										height="20px">
-										<%
-											}z++;
-										
-										%>
-										
+								<%
+									}
+										if (starimag == 3) {
+								%>
+								<img alt="" src="/ZEBRA/resources/image/star3.png" width="80px"
+									height="20px">
+								<%
+									}
+										if (starimag == 2) {
+								%>
+								<img alt="" src="/ZEBRA/resources/image/star2.png" width="80px"
+									height="20px">
+								<%
+									}
+										if (starimag == 1) {
+								%>
+								<img alt="" src="/ZEBRA/resources/image/star1.png" width="80px"
+									height="20px">
+								<%
+									}
+										z++;
+								%>
+
 								</p>
 
 								<p style="padding-left: 5px">
@@ -329,11 +324,10 @@
 
 
 			</div>
-	
-	<%
-	z=0;
-	
-	%>
+
+			<%
+				z = 0;
+			%>
 
 			<!-- Blog Sidebar Widgets Column -->
 			<div class="col-md-4" style="padding-top: 80px">
@@ -355,43 +349,42 @@
 								</h5>
 							</h5>
 							<%
-										
-											int starimag=relatedStar.get(z).intValue();
-											if(starimag == 5){
-									%>
+								int starimag = relatedStar.get(z).intValue();
+									if (starimag == 5) {
+							%>
 
-									<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
-										height="20px">
+							<img alt="" src="/ZEBRA/resources/image/star5.png" width="80px"
+								height="20px">
 
-									<%
-										}
-											if(starimag == 4){
-									%>
-									<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
-										height="20px">
+							<%
+								}
+									if (starimag == 4) {
+							%>
+							<img alt="" src="/ZEBRA/resources/image/star4.png" width="80px"
+								height="20px">
 
-									<%
-										
-											}if(starimag == 3){
-										%>
-									<img alt="" src="/ZEBRA/resources/image/star3.png" width="80px"
-										height="20px">
-										<%
-											}if(starimag == 2){
-										
-										%>
-											<img alt="" src="/ZEBRA/resources/image/star2.png" width="80px"
-										height="20px">
-										<%
-											}if(starimag == 1){
-										
-										%>
-										<img alt="" src="/ZEBRA/resources/image/star1.png" width="80px"
-										height="20px">
-										<%
-											}z++;
-										
-										%>
+							<%
+								}
+									if (starimag == 3) {
+							%>
+							<img alt="" src="/ZEBRA/resources/image/star3.png" width="80px"
+								height="20px">
+							<%
+								}
+									if (starimag == 2) {
+							%>
+							<img alt="" src="/ZEBRA/resources/image/star2.png" width="80px"
+								height="20px">
+							<%
+								}
+									if (starimag == 1) {
+							%>
+							<img alt="" src="/ZEBRA/resources/image/star1.png" width="80px"
+								height="20px">
+							<%
+								}
+									z++;
+							%>
 
 
 						</div>

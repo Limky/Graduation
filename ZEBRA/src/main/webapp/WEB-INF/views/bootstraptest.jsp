@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
-<html class="no-js">
+<html>
 
 <head>
 <title>Admin Home Page</title>
@@ -29,64 +29,67 @@
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 </head>
 <body>
+	<div class="container" style="padding: 15px; padding-top: 30px">
+		<div class="row-fluid" style="padding: 15px; padding-top: 30px">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">
+						<h3>Persent of Scanning Contrast review</h3>
+					</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span3">
+						<div class="chart" data-percent=100>${useCount.cinemaCompute}%</div>
+						<div class="chart-bottom-heading">
+							<span class="label label-info">Cinema</span>
+						</div>
+					</div>
+					<div class="span3">
+						<div class="chart" data-percent=${useCount.exhibitionCompute}>${useCount.exhibitionCompute}%</div>
+						<div class="chart-bottom-heading">
+							<span class="label label-info">Exhibition</span>
+						</div>
+					</div>
+					<div class="span3">
+						<div class="chart" data-percent=${useCount.libraryCompute}>${useCount.libraryCompute}%</div>
+						<div class="chart-bottom-heading">
+							<span class="label label-info">Library</span>
+						</div>
+					</div>
+					<div class="span3">
+						<div align="center">
+							<h5>Scan Reviews Count Indicator</h5>
+						</div>
+						</br>
+						<table class="table table-bordered">
 
-                    <div class="row-fluid">
-                        <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><h3>Persentage For Sector Count</h3></div>
-                            </div>
-                            <div class="block-content collapse in">
-                                <div class="span3">
-                                    <div class="chart" data-percent=100>${useCount.cinemaCompute}%</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">Cinema</span>
-                                    </div>
-                                </div>
-                                <div class="span3">
-                                    <div class="chart" data-percent=${useCount.exhibitionCompute}>${useCount.exhibitionCompute}%</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">Exhibition</span>
-                                    </div>
-                                </div>
-                                <div class="span3">
-                                    <div class="chart" data-percent=${useCount.libraryCompute}>${useCount.libraryCompute}%</div>
-                                    <div class="chart-bottom-heading"><span class="label label-info">Library</span>
-                                    </div>
-                                </div>
-                                <div class="span3">
-                                <div align="center"><h6>Sector Count</h6></div></br>
-                                   <table class="table table-bordered">
-        
-          <tr>
-           <th>Cinema</th>
-           <th>Exhibition</th>
-           <th>Library</th>
-          </tr>
-        
-         
-         <tr>
-          <th align="center">${useCount.cinema}</th>
-          <th align="center">${useCount.exhibition}</th>
-          <th align="center">${useCount.library}</th>
-         </tr>
-         
-        </table>
-                                </div>
-                            </div>
-                            <div> </br></div>
-                        </div>
-                        <!-- /block -->
-                    </div>
-         
-                    
-              
-  
-  <hr>
-  <footer>
-  <div class="pull-right">
-   <p>&copy; Cocktail 2016</p>
-   </div>
-  </footer>
- </div>
+							<tr>
+								<th>Scan</th>
+								<th>Review</th>
+								<th>Persent</th>
+							</tr>
+
+
+							<tr>
+								<th align="center">${useCount.cinema}</th>
+								<th align="center">${useCount.exhibition}</th>
+								<th align="center">${useCount.library}</th>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div>
+					</br>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
+
+	</div>
+	
+	
  <!--/.fluid-container-->
  <script src="resources/Graph/bootstrap/vendors/jquery-1.9.1.min.js"></script>
  <script src="resources/Graph/bootstrap/bootstrap/js/bootstrap.min.js"></script>
@@ -101,7 +104,7 @@
    });
   });
  </script>
-</body>
+
 
 
 </body>
