@@ -64,19 +64,22 @@
 	<%
 		double starPoint = (double) request.getAttribute("starPoint");
 		String str = "";
-		if (starPoint > 4.5)
+		if (starPoint >= 4.5)
 			str = "star5";
-		else if (starPoint > 4)
+		else if (starPoint >= 4)
 			str = "star4";
-		else if (starPoint > 3.5)
+		else if (starPoint >= 3.5)
 			str = "star4";
-		else if (starPoint > 3)
+		else if (starPoint >= 3)
 			str = "star3";
-		else if (starPoint > 2.5)
+		else if (starPoint >= 2.5)
 			str = "star3";
-		else if (starPoint > 2)
+		else if (starPoint >= 2)
 			str = "star2";
-
+		else{
+			str = "star1";
+		}
+		
 		String star5 = "";
 		String star4 = "";
 		String star3 = "";
@@ -270,12 +273,13 @@
 								<p></p>
 								<p>
 									<img
-										src="https://scontent.xx.fbcdn.net/v/t1.0-9/13133331_159272791137480_2076198251917202711_n.jpg?oh=0ff3e11adaa947acfd481819011865c8&oe=57E2D8BF"
+										src="${reviewList.memberUrl}"
 										alt="..." class="img-circle" width="50px" height="50px"
 										style="padding-left:; padding-top:">
 									<%-- <c:out value="${reviewList.starPoint}"></c:out> --%>
 									ID:
 									<c:out value="${reviewList.id}"></c:out>
+								
 								</P>
 								<%
 									int starimag = i.get(z).intValue();
@@ -315,7 +319,7 @@
 										z++;
 								%>
 
-								</p>
+									Level:<c:out value="${reviewList.level}"></c:out></p>
 
 								<p style="padding-left: 5px">
 									<c:out value="${reviewList.reviewText}"></c:out>
@@ -424,7 +428,7 @@
 			<footer>
 				<div class="row">
 					<div class="col-lg-12">
-						<p>Copyright &copy; Your Website 2014</p>
+						<p>Copyright &copy; Your Website 2016</p>
 					</div>
 				</div>
 			</footer>

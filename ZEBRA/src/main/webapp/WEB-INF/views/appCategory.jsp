@@ -12,7 +12,7 @@
 
 	JSONObject jObject = new JSONObject();
 
-	jObject.put("products", products);
+	jObject.put("productInfo", products);
 
 	out.println(jObject.toJSONString());
 %>

@@ -85,7 +85,7 @@ public class ManagementController {
 				
 				//3. ApplyTable Delete 
 				managementService.DeleteApplyTb(request.getParameter("barcode"));
-				appGcmService.pushNotificationToGCM();
+				appGcmService.pushNotificationToGCM(1, request.getParameter("barcode"));
 				
 				System.out.println("멤버포인트 증가 && 어플라이 디비 삭제");
 				
@@ -110,7 +110,8 @@ public class ManagementController {
 			
 			//2. 멤버 포인트 감소
 			managementService.decreasePoint(request.getParameter("id"));
-			
+			System.out.println("잘못된 상품 reject");
+			appGcmService.pushNotificationToGCM(0, request.getParameter("barcode"));
 		}
 		
 	

@@ -61,6 +61,7 @@ public class AppProductController {
 	@RequestMapping("/appCategory")
 	public String getCategoryProduct(HttpServletRequest request) {
 
+		System.out.println("appCategory Controller");
 		List<Product> categoryProducts = appProductService.getCategoryProducts(request.getParameter("category"));
 
 		request.setAttribute("products", categoryProducts);

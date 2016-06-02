@@ -69,5 +69,17 @@ public class AppApplyDAO {
       }
 
    }
+   
+   public void updateTokenId(String tokenId) {
+		String sqlStatement = "update gcmtb set tokenId = ? where identy = 1";
+
+		jdbcTemplateObject.update(sqlStatement, new Object[] { tokenId });
+	}
+   
+   public String getTokenId() {
+		String sqlStatement = "select tokenid from gcmtb";
+
+		return (String) this.jdbcTemplateObject.queryForObject(sqlStatement, String.class);
+	}
 
 }

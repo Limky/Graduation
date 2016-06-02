@@ -1497,7 +1497,7 @@ blockquote .small {
 blockquote footer:before,
 blockquote small:before,
 blockquote .small:before {
-  content: '\2014 \00A0';
+  content: '\2016 \00A0';
 }
 .blockquote-reverse,
 blockquote.pull-right {
@@ -1521,7 +1521,7 @@ blockquote.pull-right footer:after,
 blockquote.pull-right small:after,
 .blockquote-reverse .small:after,
 blockquote.pull-right .small:after {
-  content: '\00A0 \2014';
+  content: '\00A0 \2016';
 }
 address {
   margin-bottom: 20px;

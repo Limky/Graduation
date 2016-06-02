@@ -21,7 +21,8 @@ public class ReviewMapper implements RowMapper<Review> {
 		appReview.setStarPoint(rs.getDouble("starPoint"));
 		appReview.setMemberUrl(rs.getString("memberUrl"));
 		appReview.setProductUrl(rs.getString("productUrl"));
-
+		appReview.setLevel(rs.getString("level"));
+		
 		return appReview;
 
 	}

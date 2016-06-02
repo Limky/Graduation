@@ -110,7 +110,10 @@
 					<p>
 						<c:out value="${MostScanProductsModel.description}"></c:out><br>
 					</p>
-					<button type="button" class="btn btn-danger">Review</button>
+					<form action="review" method="GET">
+					<button type="submit" class="btn btn-danger" name="barcode"
+								value="${MostScanProductsModel.barcode}">Review</button>
+								</form>
 					</div>
 					
 				</div>

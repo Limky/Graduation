@@ -1,5 +1,6 @@
 package kr.ac.zebra.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,32 @@ public class ReviewService {
 		
 	}
 
+	
+	public List<Integer> getStarPoint(String barcode) {
+
+		List<Integer> star = reviewDAO.getStarPoint(barcode);
+		List<Integer> starAvarage = new ArrayList<Integer>();
+		int sum = star.get(star.size() - 1);
+		int count;
+
+		if (sum != 0) {
+			for (int i = 0; i < 6; i++) {
+				count = (star.get(i) * 100) / sum;
+				starAvarage.add(i, count);
+				System.out.println(count);
+			}
+		} else {
+			for (int i = 0; i < 6; i++) {
+				count = 0;
+				starAvarage.add(i, count);
+				System.out.println(count);
+			}
+		}
+
+		System.out.println(starAvarage);
+
+		return starAvarage;
+	}
 	
 
 }

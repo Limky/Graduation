@@ -1,5 +1,6 @@
 package kr.ac.zebra.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -79,4 +80,30 @@ public class ReviewDAO {
 		}
 
 	}
+	
+	
+	
+	public List<Integer> getStarPoint(String barcode) {
+
+	      try {
+	         String sqlStatement = "select count(if(starPoint=?, starPoint, null)) from reviewtb where barcode = ?";
+	         int sum = 0;
+	         int count = 0;
+	         int i = 0;
+	         List<Integer> star = new ArrayList<Integer>();
+
+	         for (i = 0; i < 5; i++) {
+	            count = jdbcTemplateObject.queryForInt(sqlStatement, new Object[] { i + 1, barcode });
+	            sum += count;
+	            star.add(i, count);
+	         }
+	         star.add(i, sum);
+
+	         System.out.println("star=" + star);
+
+	         return star;
+	      } catch (Exception e) {
+	         return null;
+	      }
+	   }
 }

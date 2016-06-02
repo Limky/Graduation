@@ -66,7 +66,7 @@
 
 				<div class="col-lg-4 col-sm-6 text-center" >
 					<img class="img-circle img-responsive img-center"
-						src="http://placehold.it/200x200" alt="">
+						src="${firstGrade.memberUrl}" alt="">
 					<h3>
 						<c:out value="${firstGrade.name}"></c:out>
 						<small><c:out value="${firstGrade.totalReviewCount}"></c:out></small>
@@ -84,7 +84,7 @@
 
 				<div class="col-lg-4 col-sm-6 text-center">
 					<img class="img-circle img-responsive img-center"
-						src="http://placehold.it/200x200" alt="">
+						src="${thirdGrade.memberUrl}" alt="">
 					<h3>
 						<c:out value="${thirdGrade.name}"></c:out>
 						<small><c:out value="${thirdGrade.totalReviewCount}"></c:out></small>
@@ -104,7 +104,7 @@
 
 				<div class="col-lg-4 col-sm-6 text-center">
 					<img class="img-circle img-responsive img-center"
-						src="http://placehold.it/200x200" alt="">
+						src="${secondGrade.memberUrl}" alt="">
 					<h3>
 						<c:out value="${secondGrade.name}"></c:out>
 						<small><c:out value="${secondGrade.totalReviewCount}"></c:out></small>
@@ -132,7 +132,7 @@
 		<footer>
 			<div class="row">
 				<div class="col-lg-12">
-					<p>Copyright &copy; Your Website 2014</p>
+					<p>Copyright &copy; Your Website 2016</p>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>

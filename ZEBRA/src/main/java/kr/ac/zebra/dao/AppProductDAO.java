@@ -68,11 +68,13 @@ public class AppProductDAO {
    }
 
    public List<Product> getCategoryProducts(String category) {
+	   System.out.println("DAO");
       try {
          String sqlStatement = "select * from producttb where category= ?";
 
          return jdbcTemplateObject.query(sqlStatement, new Object[] { category }, new AppProductMapper());
       } catch (Exception e) {
+    	  e.printStackTrace();
 
          return null;
       }

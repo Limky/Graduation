@@ -135,7 +135,7 @@ public class AppReviewDAO {
    }
    
    public void reviewCounting(String barcode){
-      String sqlStatement = "update producttb set totalReviewCount=totalReviewCount+1 where barcode =";
+      String sqlStatement = "update producttb set totalReviewCount=totalReviewCount+1 where barcode = ?";
       
       jdbcTemplateObject.update(sqlStatement, new Object[]{barcode});
    }

@@ -183,7 +183,7 @@ public class ProductDAO {
 			else{
 				
 			System.out.println("getMostScanProducts 모든 상품 이외 눌렀음 DAO");
-			String sqlStatement = "select * from producttb  where  category =" + category +" order by scanCount DESC LIMIT 0, 10;";
+			String sqlStatement = "select * from producttb  where  category =" + category +" order by scanCount DESC LIMIT 0, 20;";
 			return jdbcTemplateObject.query(sqlStatement, new ProductMapper()); // Anonymous	
 				
 			}

@@ -4086,7 +4086,7 @@ blockquote cite {
   color: #555555; }
 
 blockquote cite:before {
-  content: "\2014 \0020"; }
+  content: "\2016 \0020"; }
 
 blockquote cite a, blockquote cite a:visited {
   color: #555555; }

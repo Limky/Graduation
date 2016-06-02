@@ -7,13 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.zebra.dto.Member;
+import kr.ac.zebra.service.AppGcmService;
 import kr.ac.zebra.service.LoginService;
 
 @Controller
 public class AppLoginController {
 
-	public LoginService loginService;
-
+	private LoginService loginService;
+	private AppGcmService appGcmService;
+	
+	@Autowired
+	public void setLoginService(LoginService loginService, AppGcmService appGcmService) {
+		this.loginService = loginService;
+		this.appGcmService = appGcmService;
+	}
+	
 	@Autowired
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
@@ -24,6 +32,10 @@ public class AppLoginController {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String tokenId = request.getParameter("token");
+		
+		
+		appGcmService.updateTokenId(tokenId);
 
 		Member member = loginService.checkMember(id, password);
 
