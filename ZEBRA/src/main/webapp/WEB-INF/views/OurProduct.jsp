@@ -12,7 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
-<title>Bootstrap Example</title>
+<title>OurProduct</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
 
 <META HTTP-EQUIVE="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=KSC5601">
 
-<title>Admin Home Page</title>
+
 <!-- Bootstrap -->
 <link href="resources/Graph/bootstrap/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
@@ -48,6 +48,9 @@
 	src="resources/Graph/bootstrap/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:900' rel='stylesheet' type='text/css'>
 </head>
 <body style="background-color: white;">
 	<!---------------------------------네비게이션 바 시작-------------------------  -->
@@ -73,22 +76,22 @@
 			<div class="block">
 				<div class="navbar navbar-inner block-header">
 					<div class="muted pull-left">
-						<h4>Persent of Scanning Contrast review</h4>
+						<h4 font-family: 'Roboto', sans-serif;>Persent of Scanning Contrast review</h4>
 					</div>
 				</div>
 				<div class="block-content collapse in" style="padding-bottom: 20px">
 					<div class="span3">
-						<h4 style="padding-left: 20px">Scan Count</h4>
+						<h4 style="padding-left: 20px" font-family: 'Roboto', sans-serif;>Scan Count</h4>
 						<br />
 						<h2 style="padding-left: 50px"><%=listCount.get(1)%></h2>
 					</div>
 					<div class="span3">
-						<h4>Review Count</h4>
+						<h4 font-family: 'Roboto', sans-serif;>Review Count</h4>
 						<br />
-						<h2 style="padding-left: 30px"><%=listCount.get(0)%></h2>
+						<h2 style="padding-left: 40px"><%=listCount.get(0)%></h2>
 					</div>
 					<div class="span3">
-						<h4>Scanning Contrast review</h4>
+						<h4 font-family: 'Roboto', sans-serif;>Scanning Contrast review</h4>
 						<br />
 						<h2 style="padding-left: 70px"><%=listCount.get(2)%>%
 						</h2>

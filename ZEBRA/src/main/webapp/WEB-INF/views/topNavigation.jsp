@@ -31,6 +31,7 @@
 	crossorigin="anonymous"></script>
 
 
+
 <style>
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 /****** LOGIN MODAL ******/
@@ -163,7 +164,7 @@
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
 				
-				<li><a class="page-scroll" href="#about">About Services</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/OurProduct?filter=All">OurProduct</a></li>
@@ -204,7 +205,7 @@
 				<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 				<li class="hidden"><a class="page-scroll" href="#page-top"></a>
 				</li>
-				<li><a class="page-scroll" href="#about">About Services</a></li>
+				<li><a class="page-scroll" href="/ZEBRA/">About Services</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 				<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
 			</ul>

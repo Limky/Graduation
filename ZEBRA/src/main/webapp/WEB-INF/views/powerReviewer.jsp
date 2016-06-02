@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
-<title>Round About - Start Bootstrap Template</title>
+<title>powerReviewer</title>
 
 <spring:url value="/resources/core/css/bootstrap.min.css"
 	var="bootstrap" />

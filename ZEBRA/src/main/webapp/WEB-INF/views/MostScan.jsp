@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Popular</title>
+<title>MostScan</title>
 
 <spring:url value="/resources/core/css/bootstrap.min.css" var="coreCss" />
 <spring:url value="/resources/core/css/3-col-portfolio.css"
