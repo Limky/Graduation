@@ -1,8 +1,11 @@
 package zebra.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +19,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -25,6 +31,8 @@ import at.markushi.ui.CircleButton;
 import example.zxing.R;
 import zebra.adapters.NaviAdapter;
 import zebra.beans.NaviItem;
+import zebra.gcm.QuickstartPreferences;
+import zebra.gcm.RegistrationIntentService;
 import zebra.json.MyReview;
 import zebra.json.Review;
 import zebra.manager.MemberManager;
@@ -35,9 +43,16 @@ import zebra.views.NaviHeaderView;
 
 
 public class MainActivity extends AppCompatActivity {
+    //GCM
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final String TAG = "MainActivity";
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
+
     LinearLayout loginButton, barcodeButton, categoryButton, searchButton;
 
     String barcode;
+
+    TextView myText;
 
     //for toolbar
     DrawerLayout mDrawerLayout;
@@ -50,14 +65,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginButton = (LinearLayout)findViewById(R.id.loginButton);
-        barcodeButton = (LinearLayout)findViewById(R.id.barcodeButton);
-        categoryButton = (LinearLayout)findViewById(R.id.categoryButton);
-        searchButton = (LinearLayout)findViewById(R.id.searchButton);
+        getInstanceIdToken();
+
+        registBroadcastReceiver();
+
+        if (ScanManager.getInstance().getIsGCM()) {
+            barcode = ScanManager.getInstance().getBarcode();
+            ScanManager.getInstance().setIsGCM(false);
+            network();
+        }
+
+        loginButton = (LinearLayout) findViewById(R.id.loginButton);
+        barcodeButton = (LinearLayout) findViewById(R.id.barcodeButton);
+        categoryButton = (LinearLayout) findViewById(R.id.categoryButton);
+        searchButton = (LinearLayout) findViewById(R.id.searchButton);
+        myText = (TextView) findViewById(R.id.myText);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (MemberManager.getInstance().getIsLogin()) {
+                    networkMyPage();
+                    return;
+                }
                 Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
             }
@@ -91,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setToolbar(false);
+        if (MemberManager.getInstance().getIsLogin()) {
+            myText.setText("My Page");
+        }
     }
 
     void setToolbar(boolean isFirst) {
@@ -119,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 naviAdapter.add(item);
             }
             if (i == 3) {
-                if(MemberManager.getInstance().getIsLogin()) {
+                if (MemberManager.getInstance().getIsLogin()) {
                     NaviItem item = new NaviItem(R.drawable.logout, "로그아웃");
                     naviAdapter.add(item);
                 } else {
@@ -139,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
                         setToolbar(false);
                 }
                 int editedPosition = position + 1;
-                Toast.makeText(MainActivity.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
@@ -165,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
-    public void networkMyPage(){
+    public void networkMyPage() {
         NetworkManager.getInstance().myReview(this, MemberManager.getInstance().getId(), new NetworkManager.OnResultResponseListener<MyReview>() {
             @Override
             public void onSuccess(MyReview result) {
@@ -185,11 +217,18 @@ public class MainActivity extends AppCompatActivity {
         NetworkManager.getInstance().review(this, barcode, new NetworkManager.OnResultResponseListener<Review>() {
             @Override
             public void onSuccess(Review result) {
-
                 //등록 된 상품이 없는 경우
-                if (result.productInfo == null) {
+                if (result == null) {
+                    if (MemberManager.getInstance().getIsLogin() == false) {
+                        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                        i.putExtra("fromRegister", true);
+                        startActivity(i);
+                        return;
+                    }
                     Intent i = new Intent(MainActivity.this, ProductRegisterActivity.class);
                     startActivity(i);
+                } else if (result.productInfo.productName.equals("nothingApply")) {
+                    Toast.makeText(MainActivity.this, "이미 등록 요청 된 상품입니다.", Toast.LENGTH_LONG).show();
                 } else { //리뷰 get
                     Intent i = new Intent(MainActivity.this, ReviewActivityTest.class);
                     ScanManager.getInstance().setProductUrl(result.productInfo.productUrl);
@@ -200,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFail(int code, String responseString) {
-                Toast.makeText(MainActivity.this, "실패" + code, Toast.LENGTH_LONG).show();
                 Log.d("Main", "실패");
             }
         });
@@ -212,10 +250,8 @@ public class MainActivity extends AppCompatActivity {
         if (result != null) {
             if (result.getContents() == null) {
                 Log.d("MainActivity", "Cancelled scan");
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("MainActivity", "Scanned");
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
                 //ScanManager에 barcode를 set
                 ScanManager.getInstance().setBarcode(result.getContents());
@@ -224,7 +260,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             Log.d("MainActivity", "Cancelled scan");
-            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -244,5 +279,66 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Instance ID를 이용하여 디바이스 토큰을 가져오는 RegistrationIntentService를 실행한다.
+     */
+    //GCM get token
+    public void getInstanceIdToken() {
+        if (checkPlayServices()) {
+            // Start IntentService to register this application with GCM.
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            startService(intent);
+        }
+    }
+
+    /**
+     * Google Play Service를 사용할 수 있는 환경이지를 체크한다.
+     */
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * LocalBroadcast 리시버를 정의한다. 토큰을 획득하기 위한 READY, GENERATING, COMPLETE 액션에 따라 UI에 변화를 준다.
+     */
+    public void registBroadcastReceiver() {
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+
+                if (action.equals(QuickstartPreferences.REGISTRATION_READY)) {
+                    // 액션이 READY일 경우
+
+                } else if (action.equals(QuickstartPreferences.REGISTRATION_GENERATING)) {
+                    // 액션이 GENERATING일 경우
+
+                } else if (action.equals(QuickstartPreferences.REGISTRATION_COMPLETE)) {
+                    // 액션이 COMPLETE일 경우
+                }
+            }
+        };
+    }
+
+    /**
+     * 앱이 화면에서 사라지면 등록된 LocalBoardcast를 모두 삭제한다.
+     */
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
     }
 }

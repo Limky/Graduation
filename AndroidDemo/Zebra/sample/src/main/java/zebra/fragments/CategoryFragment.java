@@ -32,7 +32,6 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 network("1");
-                Toast.makeText((CategoryActivity)getActivity(), "눌림", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -43,14 +42,13 @@ public class CategoryFragment extends Fragment {
         NetworkManager.getInstance().category((CategoryActivity)getActivity(), category, new NetworkManager.OnResultResponseListener<Search>() {
             @Override
             public void onSuccess(Search result) {
-                ((CategoryActivity)getActivity()).popFragment();
                 SearchManager.getInstance().setSearch(result);
+                ((CategoryActivity)getActivity()).popFragment();
                 ((CategoryActivity)getActivity()).pushCategorySearchFragment();
             }
 
             @Override
             public void onFail(int code, String responseString) {
-                Toast.makeText((CategoryActivity)getActivity(), "실패"+code, Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -3,8 +3,6 @@ package example.zxing;
 import android.app.Application;
 import android.content.Context;
 
-//import com.squareup.leakcanary.LeakCanary;
-
 /**
  *
  */

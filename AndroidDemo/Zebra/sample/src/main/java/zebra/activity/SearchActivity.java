@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -61,6 +62,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 keyword = searchEdit.getText().toString();
+                if(TextUtils.isEmpty(keyword)){
+                    Toast.makeText(SearchActivity.this, "검색어를 입력 해주세요.", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 network(keyword);
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 View view = getCurrentFocus();
@@ -94,7 +99,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int editedPosition = position+1;
-                Toast.makeText(SearchActivity.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
@@ -136,7 +140,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onFail(int code, String responseString) {
-                Toast.makeText(SearchActivity.this, "실패"+code, Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
+        android:elevation="10dp"
         app:popupTheme="@style/Theme.AppCompat"
         app:theme="@style/ToolbarTheme">
 
@@ -20,24 +21,15 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/barcodeNaviButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginRight="10dp"
-                android:background="@color/primary"
-                android:paddingBottom="15dp"
-                android:src="@drawable/ic_barcode_white" />
-
-            <ImageButton
-                android:id="@+id/searchNaviButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginRight="10dp"
-                android:background="@color/primary"
-                android:src="@drawable/ic_searche_white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="70dp"
+                android:gravity="center_horizontal"
+                android:text="ZEBRA"
+                android:textColor="@color/text_white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
@@ -56,13 +48,6 @@
             android:layout_alignParentTop="true"
             android:background="@color/text_white"
             android:orientation="vertical">
-
-            <!--<LinearLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:orientation="vertical"></LinearLayout>-->
 
             <TabHost
                 android:id="@android:id/tabhost"
@@ -93,6 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:showDividers="none"></TabWidget>
+
                 </LinearLayout>
             </TabHost>
 

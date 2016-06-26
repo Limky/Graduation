@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import example.zxing.R;
 import zebra.adapters.MyReviewAdapter;
@@ -18,6 +19,7 @@ import zebra.manager.MemberManager;
  * Created by multimedia on 2016-05-29.
  */
 public class MyReviewFragment extends Fragment {
+    TextView point, count;
 
     ListView reviewList;
     MyReviewAdapter mAdapter;
@@ -27,6 +29,11 @@ public class MyReviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_review, container, false);
+
+        point = (TextView)view.findViewById(R.id.point);
+        count = (TextView)view.findViewById(R.id.count);
+        point.setText("Point : "+MemberManager.getInstance().getPoint());
+        count.setText("Count : "+MemberManager.getInstance().getReviewCount());
 
         result = MemberManager.getInstance().getReviews();
 

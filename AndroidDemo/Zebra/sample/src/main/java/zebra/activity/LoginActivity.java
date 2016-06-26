@@ -1,5 +1,6 @@
 package zebra.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,12 +31,18 @@ public class LoginActivity extends AppCompatActivity {
     NaviAdapter naviAdapter;
     ActionBarDrawerToggle mDrawerToggle;
 
+    public static boolean fromRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         setToolbar();
+
+        Intent intent = getIntent();
+
+        fromRegister = intent.getBooleanExtra("fromRegister", false);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(R.id.container, new LoginFragment()).commit();
@@ -79,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int editedPosition = position+1;
-                Toast.makeText(LoginActivity.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });

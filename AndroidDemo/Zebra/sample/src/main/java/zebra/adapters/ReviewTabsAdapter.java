@@ -106,6 +106,11 @@ public class ReviewTabsAdapter extends FragmentPagerAdapter implements TabHost.O
         mTabHost.addTab(tabSpec);
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
 
     /* TabHost Implements ... */
     @Override

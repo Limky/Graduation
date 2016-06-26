@@ -4,17 +4,14 @@ import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import example.zxing.R;
 import zebra.activity.ReviewActivityTest;
-import zebra.activity.SearchActivity;
 import zebra.adapters.SearchAdapter;
 import zebra.beans.SearchItem;
 import zebra.json.Review;
@@ -42,6 +39,7 @@ public class SearchOkFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final View viewInner = view;
                 SearchItem item = (SearchItem) parent.getAdapter().getItem(position);
+                ScanManager.getInstance().setBarcode(item.barcode);
                 NetworkManager.getInstance().review(view.getContext(), item.barcode, new NetworkManager.OnResultResponseListener<Review>() {
                     @Override
                     public void onSuccess(Review result) {

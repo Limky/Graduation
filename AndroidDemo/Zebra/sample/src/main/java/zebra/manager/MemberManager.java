@@ -28,8 +28,9 @@ public class MemberManager {
         name = result.member.name;
         phoneNumber = result.member.phoneNumber;
         point = result.member.point;
-        level = result.member.memberUrl;
+        level = result.member.level;
         lastReviewDate = result.member.lastReviewDate;
+        memberUrl = result.member.memberUrl;
         reviewCount = result.member.reviewCount;
         totalReviewCount = result.member.totalReviewCount;
         isLogin = true;

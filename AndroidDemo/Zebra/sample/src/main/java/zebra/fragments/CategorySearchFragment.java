@@ -39,6 +39,7 @@ public class CategorySearchFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final View viewInner = view;
                 SearchItem item = (SearchItem) parent.getAdapter().getItem(position);
+                ScanManager.getInstance().setBarcode(item.barcode);
                 NetworkManager.getInstance().review(view.getContext(), item.barcode, new NetworkManager.OnResultResponseListener<Review>() {
                     @Override
                     public void onSuccess(Review result) {
@@ -53,10 +54,8 @@ public class CategorySearchFragment extends Fragment {
 
                     }
                 });
-
             }
         });
-
         return view;
     }
 

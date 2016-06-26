@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "151589866030",
+    "project_id": "androidzebra-e7923"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151589866030:android:7b8ca85f4e403bb6",
+        "android_client_info": {
+          "package_name": "zebra.gcm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK2SzzsCVpeGEjWsybTxjOvdlLeLdcEts"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

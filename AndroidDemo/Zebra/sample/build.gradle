@@ -7,6 +7,7 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion project.androidTargetSdk
+        applicationId "example.zxing"
         versionCode 1
         versionName "1.0"
     }
@@ -41,4 +42,7 @@ dependencies {
 
     //for image load from Url
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //GCM
+    compile 'com.google.android.gms:play-services-gcm:9.0.1'
 }
