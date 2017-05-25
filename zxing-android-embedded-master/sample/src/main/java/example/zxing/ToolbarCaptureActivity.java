@@ -1,5 +1,6 @@
 package example.zxing;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,8 +32,8 @@ public class ToolbarCaptureActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.capture_appcompat);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         toolbar.setTitle("Scan Barcode");
         setSupportActionBar(toolbar);
@@ -44,7 +45,7 @@ public class ToolbarCaptureActivity extends AppCompatActivity implements View.On
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();
 
-        //floating action button 추가
+        //floating actionCameraPreview button 추가
         fab = (FloatingActionButton)findViewById(R.id.fab);
         fab1 = (FloatingActionButton)findViewById(R.id.fab1);
         fab2 = (FloatingActionButton)findViewById(R.id.fab2);
@@ -68,9 +69,15 @@ public class ToolbarCaptureActivity extends AppCompatActivity implements View.On
             case R.id.fab1:
                 Log.d("Raj", "Fab 1");
                 Toast.makeText(getApplicationContext(), "fab1", Toast.LENGTH_LONG).show();
+
                 //intent test
-                Intent i = new Intent(ToolbarCaptureActivity.this, ReviewActivity.class);
+                Intent i = new Intent();
+
+                ComponentName name = new ComponentName("example.zxing","example.zxing.MainActivity");
+                i.setComponent(name);
+
                 startActivity(i);
+                finish();
                 break;
             case R.id.fab2:
                 Log.d("Raj", "Fab 2");

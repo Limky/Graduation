@@ -1,5 +1,6 @@
 package example.zxing;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -22,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new IntentIntegrator(this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
-     //   setContentView(R.layout.capture_appcompat);
+        setContentView(R.layout.activity_main);
     }
 
     public void scanBarcode(View view) {
@@ -76,22 +76,35 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Log.d("MainActivity", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent();
+                ComponentName name = new ComponentName("example.zxing","example.zxing.ReviewActivity");
+                intent.setComponent(name);
+
+                startActivity(intent);
+                //finish();
             }
         } else {
+            Log.d("MainActivity", "Cancelled scan");
+            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
 
+
     /**
      * Sample of scanning from a Fragment
      */
+
+
     public static class ScanFragment extends Fragment {
         private String toast;
 
         public ScanFragment() {
         }
+
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
@@ -100,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MainActivity", "onActivityCreated");
             displayToast();
         }
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -115,9 +129,12 @@ public class MainActivity extends AppCompatActivity {
             return view;
         }
 
+
+
         public void scanFromFragment() {
             IntentIntegrator.forSupportFragment(this).initiateScan();
         }
+
 
         private void displayToast() {
             if(getActivity() != null && toast != null) {
@@ -125,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 toast = null;
             }
         }
+
+
 
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -141,4 +160,29 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void scanClicked(View v){
+        new IntentIntegrator(this).setCaptureActivity(ToolbarCaptureActivity.class).initiateScan();
+        /*
+        Intent intent = new Intent();
+        ComponentName name = new ComponentName("example.zxing", "example.zxing.ToolbarCaptureActivity");
+
+        intent.setComponent(name);
+
+        startActivity(intent);
+        */
+        //finish();
+    }
+
+
+    public void reviewClicked(View v){
+        Intent intent = new Intent();
+        ComponentName name = new ComponentName("example.zxing", "example.zxing.ReviewActivity");
+
+        intent.setComponent(name);
+
+        startActivity(intent);
+        //finish();
+    }
+
 }
